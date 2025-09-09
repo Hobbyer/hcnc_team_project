@@ -6,6 +6,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\LG\Desktop\HCNC_6기\hcnc_team_project"/>
 			<item value="C:\eGovFrameDev-3.10.0-64bit_nexa\workspace"/>
 			<item value="C:\eGovFrameDev-3.10.0-64bit_nexa\workspace\EduPjt_20240830_LAST"/>
 		</list>
