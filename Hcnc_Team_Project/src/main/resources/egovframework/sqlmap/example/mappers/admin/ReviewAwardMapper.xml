@@ -8,52 +8,77 @@
 	          r.REVIEW_ID
 	        , r.MEMBER_ID
 	        , r.PRODUCT_ID
-	        , p.PRODUCT_CODE AS PRODUCT_CODE
-	        , p.PRODUCT_NAME AS PRODUCT_NAME
+	        , p.PRODUCT_CODE
+	        , p.PRODUCT_NAME
 	        , r.REVIEW_TITLE
 	        , r.REVIEW_CONTENT
 	        , r.STAR_POINT
-	        , r.INPUT_DT
-	        , r.REVIEW_STATUS
-	        , oi.ORDER_ID
-	        , CASE WHEN pt.POINT_ID IS NOT NULL THEN 'Y' ELSE 'N' END AS POINT_ISSUED
-	        , pt.INPUT_DT AS ISSUED_DT
+	        , DATE_FORMAT(r.INPUT_DT, '%Y-%m-%d') AS INPUT_DT
+	        , r.ORDER_ID
+	        , CASE 
+	            WHEN pt.POINT_ID IS NOT NULL THEN '지급'
+	            ELSE '미지급'
+	          END AS POINT_ISSUED
+	        , CASE 
+	            WHEN pt.INPUT_DT IS NOT NULL THEN DATE_FORMAT(pt.INPUT_DT, '%Y-%m-%d')
+	            ELSE NULL
+	          END AS ISSUED_DT 
 	    FROM REVIEWS r
 	    LEFT JOIN PRODUCTS p
 	        ON r.PRODUCT_ID = p.PRODUCT_ID
-	    LEFT JOIN ORDER_ITEMS oi
-	        ON r.PRODUCT_ID = oi.PRODUCT_ID
-	    LEFT JOIN ORDERS o
-	        ON oi.ORDER_ID = o.ORDER_ID
-	        AND r.MEMBER_ID = o.MEMBER_ID
 	    LEFT JOIN POINTS pt
 	        ON r.MEMBER_ID = pt.MEMBER_ID
-	        AND pt.DESCRIPTION = CONCAT('[리뷰 이벤트 포인트 지급]', oi.ORDER_ID, ':', r.REVIEW_ID)
+	        AND (pt.DESCRIPTION LIKE CONCAT('[리뷰 이벤트 포인트 지급]', r.ORDER_ID, ':', r.REVIEW_ID, '%')
+	             OR pt.DESCRIPTION LIKE CONCAT('[리뷰 이벤트 수동 지급]', r.ORDER_ID, ':', r.REVIEW_ID, '%'))
 	    WHERE 1=1
-	        <if test="SEARCH_TYPE == '상품코드'">
-	            AND p.PRODUCT_CODE LIKE CONCAT('%', #{searchValue}, '%')
-	        </if>
-	        <if test="SEARCH_TYPE == '상품명'">
-	            AND p.PRODUCT_NAME LIKE CONCAT('%', #{searchValue}, '%')
-	        </if>
-	        <if test="SEARCH_TYPE == '아이디'">
-	            AND r.MEMBER_ID LIKE CONCAT('%', #{searchValue}, '%')
-	        </if>
-	        <if test="pointYn != null and pointYn != '' and pointYn != ''">
-			    <choose>
-			        <when test="pointYn == 'Y'"> 
-			            AND pt.POINT_ID IS NOT NULL
-			        </when>
-			        <when test="pointYn == 'N'">
-			            AND pt.POINT_ID IS NULL
-			        </when>
-			    </choose>
+			<if test="POINT_ISSUED != null and POINT_ISSUED != '' and POINT_ISSUED != 'all'">
+			    <if test='POINT_ISSUED == "Y"'>
+			        AND pt.POINT_ID IS NOT NULL
+			    </if>
+			    <if test='POINT_ISSUED == "N"'>
+			        AND pt.POINT_ID IS NULL
+			    </if>
 			</if>
-	    GROUP BY r.REVIEW_ID
+			<if test="SEARCH_COMBO != null and SEARCH_COMBO != '' and SEARCH_COMBO != '검색분류' and SEARCH_DATA != null and SEARCH_DATA != ''">
+	            <choose>
+	                <when test="SEARCH_COMBO == '상품코드'">
+	                    AND p.PRODUCT_CODE LIKE CONCAT('%', #{SEARCH_DATA}, '%')
+	                </when>
+	                <when test="SEARCH_COMBO == '상품명'">
+	                    AND p.PRODUCT_NAME LIKE CONCAT('%', #{SEARCH_DATA}, '%')
+	                </when>
+	                <when test="SEARCH_COMBO == '아이디'">
+	                    AND r.MEMBER_ID LIKE CONCAT('%', #{SEARCH_DATA}, '%')
+	                </when>
+	            </choose>
+	        </if>
+			<if test="START_DT != null and START_DT != ''">
+	            AND DATE(r.INPUT_DT) &gt;= #{START_DT}
+	        </if>
+	        <if test="END_DT != null and END_DT != ''">
+	            AND DATE(r.INPUT_DT) &lt;= #{END_DT}
+	        </if>
+	    GROUP BY r.REVIEW_ID, r.MEMBER_ID, r.PRODUCT_ID, p.PRODUCT_CODE, p.PRODUCT_NAME, 
+	             r.REVIEW_TITLE, r.REVIEW_CONTENT, r.STAR_POINT, r.INPUT_DT, r.ORDER_ID, 
+	             pt.POINT_ID, pt.INPUT_DT
 	    ORDER BY r.INPUT_DT DESC
 	</select>
+	
+	<!-- 디테일은 list로 처리 > 이미지불러오기추가 -->
+	<select id="selectReviewImageByAdmin" resultType="java.util.Map" parameterType="String">
+	    SELECT
+	          REVIEW_IMG_ID
+	        , REVIEW_ID
+	        , IMG_ORIGIN_NAME
+	        , IMG_ATTACHED_NAME
+	        , IMG_PATH
+	    FROM REVIEW_IMG
+	    WHERE REVIEW_ID = #{REVIEW_ID}
+	    ORDER BY REVIEW_IMG_ID
+	</select>
     
-    <!-- 자동 포인트 지급 -->
+    <!-- 자동 포인트 지급 : 트리거화예정-->
+    <!--
     <insert id="insertAutoReviewRewardPointsByAdmin">
         INSERT INTO POINTS (
               MEMBER_ID      
@@ -78,12 +103,13 @@
             ON p.MEMBER_ID = r.MEMBER_ID
            AND p.DESCRIPTION = CONCAT(#{descriptionPrefix}, oi.ORDER_ID, ':', r.REVIEW_ID)
         WHERE r.REVIEW_STATUS = 'Y' 
-          AND CHAR_LENGTH(r.REVIEW_CONTENT) >= 100
-          AND r.STAR_POINT >= 4
-          AND r.INPUT_DT BETWEEN o.ORDER_DT AND DATE_ADD(o.ORDER_DT, INTERVAL 3 DAY)
+          AND CHAR_LENGTH(r.REVIEW_CONTENT) >= 80
+          AND r.STAR_POINT >= 3
+          AND r.INPUT_DT BETWEEN o.ORDER_DT AND DATE_ADD(o.ORDER_DT, INTERVAL 7 DAY)
           AND p.POINT_ID IS NULL
         ORDER BY r.INPUT_DT DESC
     </insert>
+    -->
     
     <!-- 수동 지급 -->
     <insert id="insertReviewRewardPointsByAdmin">

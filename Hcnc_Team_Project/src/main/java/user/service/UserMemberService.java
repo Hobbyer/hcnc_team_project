@@ -99,4 +99,20 @@ public class UserMemberService {
 	public int updateLastLoginByUser(String id) {
 		return userMemberMapper.updateLastLoginByUser(id);
 	}
+
+	public List<Map<String, Object>> selectPointListByUser(String id){
+		return userMemberMapper.selectPointListByUser(id);
+	}
+
+	public List<Map<String, Object>> selectCouponListByUser(String id){
+		return userMemberMapper.selectCouponListByUser(id);
+	}
+
+	public int selectTotalPointByUser(String id) {
+		return userMemberMapper.selectTotalPointByUser(id);
+	}
+
+	public int selectTotalSpendByUser(String id) {
+		return userMemberMapper.selectTotalSpendByUser(id);
+	}
 }

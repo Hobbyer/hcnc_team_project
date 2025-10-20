@@ -28,4 +28,12 @@ public interface UserMemberMapper {
 	public int updateWithDrawByUser(String id);
 
 	public int updateLastLoginByUser(String id);
+
+	public List<Map<String, Object>> selectPointListByUser(String id);
+
+	public List<Map<String, Object>> selectCouponListByUser(String id);
+
+	public int selectTotalPointByUser(String id);
+
+	public int selectTotalSpendByUser(String id);
 }

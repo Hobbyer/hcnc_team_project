@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -25,11 +26,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import user.interceptor.UserInterceptor;
 
 @Configuration
+@EnableWebMvc
 public class UserWebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new UserInterceptor())
-                .addPathPatterns("/mypage/**")   // 특정 경로
+                .addPathPatterns("/mypage/**", "/wishView.do","wishView.do","wishView")   // 특정 경로
                 .excludePathPatterns("/login/**", "/css/**", "/js/**"); // 필요 시 제외
     }
 

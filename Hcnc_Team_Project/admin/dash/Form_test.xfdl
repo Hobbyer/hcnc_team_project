@@ -1,49 +1,455 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_test" width="1280" height="720" titletext="New Form" onload="Form_test_onload" background="#F4F7FE">
+  <Form id="Form_test" width="1280" height="720" titletext="New Form" onload="Form_test_onload" background="#F4F7FE" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <!-- 제목 -->
         <!-- ⭐ 신규 주문 -->
-        <Div id="newOrder" taborder="0" text="" left="3.13%" top="20" width="29.30%" height="130" borderRadius="5px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white">
+        <!-- ⭐ 결제 대기 -->
+        <Div id="newOrder" taborder="0" text="" left="2.34%" top="12" width="30.00%" height="130" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white" formscrolltype="none" onclick="newOrder_onclick">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="신규 주문" left="22" top="15" width="167" height="23" font="normal 12pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00" taborder="0" text="신규 주문" left="27" top="15" width="97" height="33" font="normal 16pt/0 &quot;Noto Sans KR Black&quot;" color="black" onclick="newOrder_Static00_onclick"/>
+              <Static id="Static00_00" taborder="1" left="28" top="46" width="144" height="15" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;"/>
+              <Static id="Static01" taborder="2" text="0" left="141" top="21" height="96" font="normal 60pt/normal &quot;Arial Black&quot;" textAlign="right" verticalAlign="top" color="#135dae" right="12.50%" letterSpacing="0px"/>
+              <Static id="Static00_01" taborder="3" text="건" top="77" width="27" height="33" font="normal 16pt/0 &quot;Noto Sans KR&quot;" color="black" onclick="newOrder_Static00_onclick" textAlign="left" right="20"/>
             </Layout>
           </Layouts>
+          <InitValue/>
         </Div>
-        <!-- ⭐ 결제 대기 -->
-        <Div id="payStatus" taborder="1" text="" left="35.16%" top="20" width="29.30%" height="130" borderRadius="5px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white">
+        <Div id="payStatus" taborder="1" text="" top="12" height="130" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white" onclick="payStatus_onclick" width="29.84%" right="35.08%">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="결제 대기" left="22" top="15" width="167" height="23" font="normal 12pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00" taborder="0" text="결제 대기" left="27" top="15" width="97" height="33" font="normal 16pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00_00" taborder="1" text="현재 시간 기준" left="28" top="46" width="144" height="15" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;"/>
+              <Static id="Static00_01" taborder="2" text="건" top="77" width="27" height="33" font="normal 16pt/0 &quot;Noto Sans KR&quot;" color="black" onclick="newOrder_Static00_onclick" textAlign="left" right="18"/>
+              <Static id="Static01" taborder="3" text="0" left="130" top="21" height="96" font="normal 60pt/normal &quot;Arial Black&quot;" textAlign="right" verticalAlign="top" color="#135dae" right="11.26%" letterSpacing="0px"/>
             </Layout>
           </Layouts>
         </Div>
         <!-- ⭐ 발송 대기 -->
-        <Div id="shipStatus" taborder="2" text="" right="3.13%" top="20" width="29.30%" height="130" borderRadius="5px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white">
+        <Div id="shipStatus" taborder="2" text="" top="12" width="30.00%" height="130" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white" onclick="shipStatus_onclick" right="2.27%">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="발송 대기" left="22" top="15" width="167" height="23" font="normal 12pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00" taborder="0" text="발송 대기" left="27" top="15" width="97" height="33" font="normal 16pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00_00" taborder="1" text="현재 시간 기준" left="28" top="46" width="144" height="15" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;"/>
+              <Static id="Static00_01" taborder="2" text="건" top="77" width="27" height="33" font="normal 16pt/0 &quot;Noto Sans KR&quot;" color="black" onclick="newOrder_Static00_onclick" textAlign="left" right="20"/>
+              <Static id="Static01" taborder="3" text="0" left="133" top="21" height="96" font="normal 60pt/normal &quot;Arial Black&quot;" textAlign="right" verticalAlign="top" color="#135dae" right="12.50%" letterSpacing="-2px"/>
             </Layout>
           </Layouts>
+        </Div>
+        <Div id="shipStatus00" taborder="3" text="" top="170" width="30.00%" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" background="white" right="2.27%" bottom="40">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="금일 주문 내역" left="27" top="15" width="137" height="33" font="normal 16pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00_00" taborder="1" left="28" top="47" width="144" height="15" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;"/>
+              <Grid id="grid_list" taborder="2" left="0" top="80" right="0" bottom="0" background="#FFFFFF" border="0px none" borderRadius="10px" autofittype="col" binddataset="ds_stat" cellcomboscrollbarsize="4" celltextareascrollbarsize="4" scrollbarsize="10" scrollbartrackbarsize="40">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="140"/>
+                      <Column size="87"/>
+                      <Column size="144"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="44" band="head"/>
+                      <Row size="33"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="시간대별" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/>
+                      <Cell col="1" text="주문량" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/>
+                      <Cell col="2" text="주문금액" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:CHART_LABEL" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black"/>
+                      <Cell col="1" text="bind:ORDER_COUNT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;" color="black"/>
+                      <Cell col="2" text="bind:TOTAL_AMOUNT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="#135dae"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="4" text="Div00" left="2.34%" top="170" background="white" right="35%" borderRadius="7px" onmouseleave="Div_onmouseleave" onmousemove="Div_onmousemove" cursor="pointer" bottom="40">
+          <Layouts>
+            <Layout>
+              <BasicChart id="BasicChart00" taborder="0" left="20" top="50" bottom="0" background="white" borderRadius="10px" binddataset="ds_stat" categorycolumn="bind:CHART_LABEL" onseriesclick="Div00_BasicChart00_onseriesclick" right="20">
+                <Contents><![CDATA[{
+	"legend": {
+		"id": "legend",
+		"padding": "20px 10px 3px",
+		"itemtextfont": "normal 10/normal \"Noto Sans KR\"",
+		"itemtextcolor": "#4c4c4c",
+		"visible": true,
+		"markertype": "circle",
+		"align": "topright",
+		"itemcolumncount": "1",
+		"markertextgap": "2",
+		"markersize": "7"
+	},
+	"hrangebar": {
+		"id": "hrangebar",
+		"trackbarpadding": "1px",
+		"background": "#eaeaea",
+		"linestyle": "1px solid #d5d5d5",
+		"trackbarlinestyle": "0px none",
+		"trackbarfillstyle": "#c9c9c9",
+		"size": "12",
+		"visible": false
+	},
+	"vrangebar": {
+		"id": "vrangebar",
+		"trackbarpadding": "1px",
+		"background": "#eaeaea",
+		"linestyle": "1px solid #d5d5d5",
+		"trackbarlinestyle": "0px none",
+		"trackbarfillstyle": "#c9c9c9",
+		"size": "12",
+		"visible": false
+	},
+	"tooltip": {
+		"id": "tooltip",
+		"background": "#4b4b4b",
+		"linestyle": "0px none",
+		"textcolor": "white",
+		"textfont": "10pt/normal '맑은 고딕'",
+		"padding": "5px",
+		"visible": true
+	},
+	"board": {
+		"id": "board",
+		"visible": false
+	},
+	"categoryaxis": {
+		"id": "categoryaxis",
+		"titletextcolor": "#4c4c4c",
+		"titletextfont": "bold 12pt '맑은 고딕'",
+		"labeltextcolor": "#6f6f6f",
+		"labeltextfont": "normal 400 10/normal \"Noto Sans KR\"",
+		"axislinestyle": "1px solid #525252",
+		"ticklinestyle": "1px solid #525252",
+		"visible": true,
+		"titletext": " ",
+		"labeltype": "currency",
+		"ticksize": "5",
+		"gap": "0",
+		"axislineopacity": "0"
+	},
+	"valueaxes": [
+		{
+			"id": "valueaxis0",
+			"boardlinevisible": true,
+			"labeltextfont": "normal 400 8/normal \"Noto Sans KR\"",
+			"titletextcolor": "#38b9ff",
+			"ticklinestyle": "1px solid #7b7b7b",
+			"axislinestyle": "1px solid #7b7b7b",
+			"visible": "true",
+			"titletextalign": "high",
+			"ticks": "4",
+			"autotickscale": "20",
+			"ticklineopacity": "1",
+			"boardlineopacity": "0",
+			"labeltype": "currency",
+			"labeltextcolor": "#7b7b7b",
+			"axislineopacity": "1",
+			"titlerotate": "0",
+			"opposite": "false",
+			"titletextfont": "normal 10pt/normal \"Arial\"",
+			"titletext": " ",
+			"gap": "0",
+			"ticksize": "3",
+			"labelgap": "0",
+			"boardlinestyle": "1px solid #7b7b7b"
+		},
+		{
+			"id": "valueaxis1",
+			"titletext": " ",
+			"boardlinevisible": true,
+			"labeltextcolor": "#7b7b7b",
+			"labeltextfont": "normal 9/normal \"Noto Sans KR\"",
+			"titletextcolor": "#009ff4",
+			"titletextfont": "normal 800 9/normal \"Noto Sans KR\"",
+			"ticklinestyle": "1px solid #525252",
+			"axislinestyle": "1px solid #7b7b7b",
+			"opposite": "true",
+			"autotickscale": "50",
+			"ticks": "4",
+			"titletextalign": "high",
+			"titlerotate": "0",
+			"ticksize": "3",
+			"labelgap": "3",
+			"boardlineopacity": "1",
+			"boardlinestyle": "1px solid #c9c9c9"
+		}
+	],
+	"seriesset": [
+		{
+			"id": "총액",
+			"titletext": "총액",
+			"barvisible": "true",
+			"itemtextvisible": true,
+			"itemtextfont": "normal 12/normal \"Noto Sans KR Medium\"",
+			"valuecolumn": "bind:TOTAL_AMOUNT",
+			"itemtextcolor": "white",
+			"selectcolumn": "bind:TOTAL_AMOUNT",
+			"lineareavisible": "false",
+			"linevisible": "false",
+			"pointvisible": "true",
+			"pointitemtextgap": "0",
+			"selectpointopacity": "0",
+			"stacktype": "none",
+			"selecttype": "unselect",
+			"barsize": "15",
+			"baropacity": "1",
+			"valueaxis": "valueaxis0",
+			"highlightbarvisible": "false",
+			"barfillstyle": "#135dae",
+			"linetype": "",
+			"lineareaopacity": "0",
+			"highlightlineopacity": "0",
+			"lineopacity": "0",
+			"selectlineareaopacity": "0",
+			"selectlineopacity": "0",
+			"pointsize": "0",
+			"pointopacity": "0",
+			"highlightpointopacity": "0",
+			"barlinestyle": "0"
+		},
+		{
+			"id": "판매수량",
+			"titletext": "판매수량",
+			"valuecolumn": "bind:ORDER_COUNT",
+			"valueaxis": "valueaxis1",
+			"barlinestyle": "1px solid #1a85be",
+			"barfillstyle": "#1a85be",
+			"barvisible": "false",
+			"lineareavisible": "false",
+			"linevisible": "true",
+			"pointvisible": "true",
+			"itemtextvisible": "true",
+			"itemtextcolor": "#009ff4",
+			"itemtextfont": "normal 400 10/normal \"Noto Sans KR\"",
+			"pointsize": "9",
+			"pointfillstyle": "#008bd6",
+			"pointlinestyle": "1px solid #009ff4",
+			"pointitemtextgap": "9",
+			"linetype": "segment",
+			"linestyle": "2px solid #009ff4",
+			"selecttype": "unselect"
+		}
+	]
+}]]></Contents>
+              </BasicChart>
+              <Static id="Static00" taborder="1" text="금일 주문 차트" left="27" top="15" width="157" height="33" font="normal 16pt/0 &quot;Noto Sans KR Black&quot;" color="black"/>
+              <Static id="Static00_00" taborder="2" left="28" top="47" width="144" height="15" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" text="(4시간 단위로 묶여있습니다.)"/>
+              <Div id="Div00_00" taborder="3" left="0.00%" top="0" bottom="0" right="0.00%" borderRadius="7px" onmouseleave="Div_onmouseleave" onmousemove="Div_onmousemove" cursor="pointer" text="" onclick="Div00_00_onclick">
+                <Layouts>
+                  <Layout/>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="shipStatus01" taborder="5" text="" right="2.27%" top="12" width="30.00%" height="130" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" onclick="shipStatus_onclick">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="payStatus00" taborder="6" text="" top="12" height="130" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" onclick="payStatus_onclick" width="29.84%" right="35.08%">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="newOrder00" taborder="7" text="" left="2.27%" top="12" width="30.00%" height="130" borderRadius="7px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" cursor="pointer" onmousemove="Div_onmousemove" onmouseout="Div_onmouseout" onmouseleave="Div_onmouseleave" formscrolltype="none" onclick="newOrder_onclick" opacity="1">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+          <InitValue/>
         </Div>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[// Form 로드
 this.Form_test_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-    
+    this.fnselectNewOrderCountByAdmin();
+	this.fnselectPendingPaymentCountByAdmin();
+	this.fnselectPendingShipCountByAdmin();
+	this.fnselectDashStatByAdmin();
+	this.setTodayText();
 };
 
 this.Div_onmousemove = function(obj:nexacro.Div,e:nexacro.MouseEventInfo)
 {
-    obj.set_boxShadow("0px 0px 5px 5px rgba(200,200,200,0.30)");
+    obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
 };
 
 this.Div_onmouseleave = function(obj:nexacro.Div,e:nexacro.MouseEventInfo)
 {
     obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
-};]]></Script>
+};
+
+this.payStatus_onclick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
+{
+	var glbAd = nexacro.getApplication();
+    glbAd.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame.set_formurl(
+        "order::Form_Order_Pay.xfdl"
+    );
+};
+
+this.shipStatus_onclick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
+{
+	var glbAd = nexacro.getApplication();
+    glbAd.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame.set_formurl(
+        "order::Form_Order_Ship.xfdl"
+    );
+};
+
+this.newOrder_onclick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
+{
+	var glbAd = nexacro.getApplication();
+    glbAd.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame.set_formurl(
+        "order::Form_Order_Main.xfdl"
+    );
+};
+
+
+
+// 오늘자 주문 개수 조회
+this.fnselectNewOrderCountByAdmin = function() {
+    var strSvcID       = "selectNewOrderCountByAdmin";
+    var strURL         = "svc::selectNewOrderCountByAdmin.do?time=" + new Date().getTime();  // Spring Controller 매핑
+    var strInDatasets  = "";                   // 검색조건 dataset 전달
+    var strOutDatasets = "ds_orderCount=ds_orderCount"; 
+    var strArg         = ""; 
+    var strCallback    = "fnCallback";
+
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArg, strCallback);
+};
+
+// 오늘자 결제대기 개수 조회
+this.fnselectPendingPaymentCountByAdmin = function() {
+    var strSvcID       = "selectPendingPaymentCountByAdmin";
+    var strURL         = "svc::selectPendingPaymentCountByAdmin.do?time=" + new Date().getTime();  // Spring Controller 매핑
+    var strInDatasets  = "";                  
+    var strOutDatasets = "ds_payCount=ds_payCount"; 
+    var strArg         = ""; 
+    var strCallback    = "fnCallback";
+
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArg, strCallback);
+};
+
+// 오늘자 배송 대기 개수 조회
+this.fnselectPendingShipCountByAdmin = function() {
+    var strSvcID       = "selectPendingShipCountByAdmin";
+    var strURL         = "svc::selectPendingShipCountByAdmin.do?time=" + new Date().getTime();  // Spring Controller 매핑
+    var strInDatasets  = "";                  
+    var strOutDatasets = "ds_shipCount=ds_shipCount"; 
+    var strArg         = ""; 
+    var strCallback    = "fnCallback";
+
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArg, strCallback);
+};
+
+// 공통 콜백
+this.fnCallback = function(svc, err, errMsg) {
+    if (err < 0) {
+        this.alert("에러 발생: " + errMsg);
+		
+        return;
+    }
+    switch(svc){
+        case "selectNewOrderCountByAdmin"  :
+			var cnt = this.ds_orderCount.getColumn(0,"COUNT");
+			this.newOrder.form.Static01.set_text(cnt);
+            break;
+			
+		case "selectPendingPaymentCountByAdmin"  :
+			var cnt = this.ds_payCount.getColumn(0,"COUNT");
+			this.payStatus.form.Static01.set_text(cnt);
+            break; 
+		case "selectPendingShipCountByAdmin"  :
+			var cnt = this.ds_shipCount.getColumn(0,"COUNT");
+			this.shipStatus.form.Static01.set_text(cnt);
+            break;
+			
+		case "selectDashStatByAdmin"  :
+            break;
+    }
+};
+
+
+// 주문 내역 조회
+this.fnselectDashStatByAdmin = function() {
+    var strSvcID       = "selectDashStatByAdmin";
+    var strURL         = "svc::selectDashStatByAdmin.do?time=" + new Date().getTime();  
+    var strInDatasets  = "";                  
+    var strOutDatasets = "ds_stat=ds_stat"; 
+    var strArg         = ""; 
+    var strCallback    = "fnCallback";
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArg, strCallback);
+};
+
+
+// 오늘날짜 받아오는 함수
+this.setTodayText = function() {
+    var today = new Date();
+    var month = today.getMonth() + 1;  // 0부터 시작하므로 +1
+    var day = today.getDate();
+    
+    var dateText = month + "월 " + day + "일 기준";
+	
+    this.newOrder.form.Static00_00.set_text(dateText);
+	this.shipStatus00.form.Static00_00.set_text(dateText);
+};
+
+// 통계로 이동
+this.Div00_00_onclick = function(obj:nexacro.Div,e:nexacro.ClickEventInfo)
+{
+	var glbAd = nexacro.getApplication();
+    glbAd.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame.set_formurl(
+        "stat::Form_stat_main.xfdl"
+    );
+};
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_orderCount">
+        <ColumnInfo>
+          <Column id="COUNT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_payCount">
+        <ColumnInfo>
+          <Column id="COUNT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_shipCount">
+        <ColumnInfo>
+          <Column id="COUNT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_stat">
+        <ColumnInfo>
+          <Column id="CHART_LABEL" type="STRING" size="256"/>
+          <Column id="TOTAL_AMOUNT" type="STRING" size="256"/>
+          <Column id="ORDER_COUNT" type="STRING" size="256"/>
+          <Column id="CHART_TYPE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

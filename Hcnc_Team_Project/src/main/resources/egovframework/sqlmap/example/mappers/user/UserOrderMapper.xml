@@ -16,8 +16,7 @@
     			AND ( PI.IS_MAIN IS NULL OR PI.IS_MAIN = 'Y')
 	</select>
 	 -->
-	 
-	 
+
 	<select id="selectOrderRequestItemListByUser" parameterType="java.lang.Long" resultType="java.util.HashMap">
 		SELECT CI.CART_ITEM_ID, CI.PRODUCT_ID, CI.PRODUCT_OPTION, CI.PRICE, CI.QUANTITY, CI.SUB_TOTAL
 			 , P.PRODUCT_NAME, P.COST_PRICE
@@ -139,6 +138,13 @@
 				</if>
 	</update>
 	
+	<update id="updateMemberPriceAmount" parameterType="java.util.Map">
+		UPDATE MEMBERS
+			SET PRICE_AMOUNT = PRICE_AMOUNT + #{finalAmount}
+			WHERE 1=1
+				AND MEMBER_ID = #{memberId}
+	</update>
+	
 	<delete id="deleteCartItemByUser" parameterType="java.util.Map">
 		DELETE FROM CART_ITEMS
 			WHERE 1=1
@@ -195,9 +201,9 @@
 	</select>
 	
 	<select id="selectOrderDetailByUser" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		SELECT O.ORDER_ID, O.ORDER_NUMBER, O.PHONE_NUMBER, O.ORDER_COMMENT, DATE_FORMAT(O.ORDER_DT, '%Y.%m.%d') AS ORDER_DT, O.TOTAL_AMOUNT, O.DISCOUNT_AMOUNT, O.FINAL_AMOUNT, O.PAYMENT_METHOD, O.SHIPPING_POST, O.SHIPPING_ADDR_1, O.SHIPPING_ADDR_2, O.USER_NAME, O.SHIPPING_COMMENT
+		SELECT O.ORDER_ID, O.ORDER_NUMBER, O.PHONE_NUMBER, IFNULL(O.ORDER_COMMENT, '상품준비중') AS ORDER_STATUS, DATE_FORMAT(O.ORDER_DT, '%Y.%m.%d') AS ORDER_DT, O.TOTAL_AMOUNT, O.DISCOUNT_AMOUNT, O.FINAL_AMOUNT, O.PAYMENT_METHOD, O.SHIPPING_POST, O.SHIPPING_ADDR_1, O.SHIPPING_ADDR_2, O.USER_NAME, O.SHIPPING_COMMENT
 			, OI.ORDER_ITEM_ID, OI.PRODUCT_ID, OI.PRODUCT_NAME, OI.PRICE, OI.QUANTITY, OI.SUB_TOTAL, OI.ORDER_STATUS, OI.PRODUCT_OPTION
-			, PI.IMAGE_ID, PI.IMAGE_URL
+			, PI.IMAGE_ID, IFNULL(PI.IMAGE_URL, '') AS IMAGE_URL
 			FROM ORDERS O
 				INNER JOIN ORDER_ITEMS OI
 				ON O.ORDER_ID = OI.ORDER_ID
@@ -206,4 +212,17 @@
 			WHERE O.ORDER_ID = #{orderId}
 	</select>
 	
+
+	<select id="selectDeliveryTrackingByUser" parameterType="java.util.Map" resultType="java.util.HashMap">
+		SELECT O.ORDER_ID, O.USER_NAME, O.PHONE_NUMBER, O.SHIPPING_POST, O.SHIPPING_ADDR_1, O.SHIPPING_ADDR_2
+			, S.TRACKING_NUMBER
+			, C.COURIER_NAME
+			FROM ORDERS O
+				LEFT JOIN SHIPS S
+					ON O.ORDER_ID = S.ORDER_ID
+				INNER JOIN COURIER C
+					ON S.COURIER_ID = C.COURIER_ID
+			WHERE 1=1
+				AND O.ORDER_ID = #{orderId}
+	</select>			
 </mapper> 

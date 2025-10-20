@@ -46,6 +46,8 @@ public class UserCartService {
 				item.put("IS_CHECKED", row.get("IS_CHECKED"));
 				item.put("CART_ITEM_ID", cartItemId);
 				item.put("IS_WISHLIST", row.get("IS_WISHLIST"));
+				item.put("IMAGE_ID", row.get("IMAGE_ID"));
+				item.put("IMAGE_URL", row.get("IMAGE_URL"));
 				
 				// 옵션이 있는 경우 담을 리스트 추가해놓기
 				item.put("options", new ArrayList<HashMap<String, Object>>());

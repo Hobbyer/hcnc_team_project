@@ -43,14 +43,14 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("point_detail_box","20","17","1240","153",null,null,null,null,null,null,this);
+            obj = new Static("point_detail_box","40","17","1200","143",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("white");
             obj.set_text("");
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Radio("point_type","120","30","190","26",null,null,null,null,null,null,this);
+            obj = new Radio("point_type","130","30","200","26",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_innerdataset("ds_type");
             obj.set_codecolumn("CHANGE_TYPE");
@@ -59,48 +59,53 @@
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("member_name00","770","69","270","34",null,null,null,null,null,null,this);
+            obj = new Edit("member_name00","780","69","270","34",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_border("1px solid black");
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Calendar("Calendar00","110","70","270","33",null,null,null,null,null,null,this);
+            obj = new Calendar("Calendar00","120","70","270","33",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_border("1px solid black");
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Calendar("Calendar00_00","410","70","270","33",null,null,null,null,null,null,this);
+            obj = new Calendar("Calendar00_00","420","70","270","33",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_border("1px solid black");
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00","382","74","28","24",null,null,null,null,null,null,this);
+            obj = new Static("Static00","392","74","28","24",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("~");
             obj.set_textAlign("center");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","545","124","98","36",null,null,null,null,null,null,this);
+            obj = new Button("Button00","550","120","87","30",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("검색");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
-            obj.set_color("white");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#ffffff");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button01","650","124","100","36",null,null,null,null,null,null,this);
+            obj = new Button("Button01","647","120","87","30",null,null,null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_text("초기화");
-            obj.set_background(" #9ca3af");
-            obj.set_borderRadius("4px");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#f5f5f5");
+            obj.set_borderRadius("8px");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_color("#666666");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("pointAndCoupon","20","209","1240","451",null,null,null,null,null,null,this);
+            obj = new Grid("pointAndCoupon","40","200","1200",null,null,"20",null,null,null,null,this);
             obj.set_taborder("8");
             obj.set_background("#FFFFFF");
             obj.set_border("0px none");
@@ -110,63 +115,72 @@
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"52\"/><Column size=\"99\"/><Column size=\"136\"/><Column size=\"540\"/><Column size=\"170\"/><Column size=\"225\"/></Columns><Rows><Row size=\"48\" band=\"head\"/><Row size=\"40\"/></Rows><Band id=\"head\"><Cell text=\"NO\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"1\" text=\"유형\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"2\" text=\"포인트\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"3\" text=\"설명\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"4\" text=\"발행 시기\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"5\" text=\"주문 번호\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" textAlign=\"center\"/><Cell col=\"1\" text=\"bind:CHANGE_TYPE\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" displaytype=\"combotext\" edittype=\"combo\" combocodecol=\"CHANGE_TYPE\" combodataset=\"ds_type_edit\" combodatacol=\"LABEL\"/><Cell col=\"2\" text=\"bind:POINT\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" displaytype=\"number\" edittype=\"mask\"/><Cell col=\"3\" text=\"bind:DESCRIPTION\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" edittype=\"normal\" displaytype=\"normal\"/><Cell col=\"4\" edittype=\"none\" text=\"bind:INPUT_DT\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"5\" displaytype=\"normal\" edittype=\"none\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" text=\"bind:ORDER_NUMBER\" textAlign=\"center\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button02","588","672","110","38",null,null,null,null,null,null,this);
+            obj = new Button("Button02","600","672","98","38",null,null,null,null,null,null,this);
             obj.set_taborder("9");
             obj.set_text("뒤로가기");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_color("white");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_color("#ffffff");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button03","1140","110","110","38",null,null,null,null,null,null,this);
+            obj = new Button("Button03","1120","100","110","38",null,null,null,null,null,null,this);
             obj.set_taborder("10");
             obj.set_text("포인트 적립 및 차감");
-            obj.set_borderRadius("4px");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
-            obj.set_background(" #9ca3af");
+            obj.set_borderRadius("8px");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#f5f5f5");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_color("#666666");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Button("plus","27","177","63","22",null,null,null,null,null,null,this);
+            obj = new Button("plus","47","167","63","22",null,null,null,null,null,null,this);
             obj.set_taborder("11");
             obj.set_text("행 추가");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_color("white");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_color("#ffffff");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Button("minus","100","177","60","22",null,null,null,null,null,null,this);
+            obj = new Button("minus","120","168","60","22",null,null,null,null,null,null,this);
             obj.set_taborder("12");
             obj.set_text("행 삭제");
-            obj.set_background(" #9ca3af");
-            obj.set_borderRadius("4px");
-            obj.set_color("white");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#f5f5f5");
+            obj.set_borderRadius("8px");
+            obj.set_color("#666666");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02","46","30","54","23",null,null,null,null,null,null,this);
+            obj = new Static("Static02","56","30","54","23",null,null,null,null,null,null,this);
             obj.set_taborder("13");
             obj.set_text("적립구분");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02_00","46","75","54","23",null,null,null,null,null,null,this);
+            obj = new Static("Static02_00","56","75","54","23",null,null,null,null,null,null,this);
             obj.set_taborder("14");
             obj.set_text("발행시기");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02_00_00","700","75","54","23",null,null,null,null,null,null,this);
+            obj = new Static("Static02_00_00","720","75","54","23",null,null,null,null,null,null,this);
             obj.set_taborder("15");
             obj.set_text("주문번호");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02_01","1130","147","129","23",null,null,null,null,null,null,this);
+            obj = new Static("Static02_01","1116","137","129","23",null,null,null,null,null,null,this);
             obj.set_taborder("16");
-            obj.set_text("*행을 추가해 주세요");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_text("*먼저 행을 추가해 주세요");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
             obj.set_textAlign("center");
             obj.set_color("red");
             this.addChild(obj.name, obj);
@@ -318,6 +332,8 @@
 
         		if(this.ds_insCnt.getColumn(0,"INSERTED") > 0){
         			this.alert("포인트가 성공적으로 저장되었습니다.");
+
+        			 this.ds_list.clearData();
 
         			// 저장 후 다시 조회하여 최신 데이터 반영
         			this.fn_selectPointDetailList();

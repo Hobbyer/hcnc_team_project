@@ -179,14 +179,6 @@
             obj.set_scrollbartrackbarsize("40");
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"107\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"44\" band=\"head\"/><Row size=\"33\"/></Rows><Band id=\"head\"><Cell text=\"주문번호\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"1\" text=\"주문자\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"2\" text=\"총금액\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"3\" text=\"할인금액\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"4\" text=\"최종금액\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"5\" text=\"결제상태\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"6\" text=\"배송상태\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"7\" text=\"쿠폰\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"8\" text=\"할인금액\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"9\" text=\"주문일\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/></Band><Band id=\"body\"><Cell text=\"bind:ORDER_NUMBER\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Medium&quot;\" color=\"black\"/><Cell col=\"1\" text=\"bind:USER_NAME\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"2\" text=\"bind:TOTAL_AMOUNT\" textAlign=\"right\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"3\" text=\"bind:DISCOUNT_AMOUNT\" textAlign=\"right\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"4\" text=\"bind:FINAL_AMOUNT\" textAlign=\"right\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"5\" text=\"bind:PAYMENT_STATUS\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"6\" text=\"bind:SHIPMENT_STATUS\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"7\" text=\"bind:COUPON_TYPE\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"8\" text=\"bind:POINT\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/><Cell col=\"9\" text=\"bind:ORDER_DT\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\" color=\"black\"/></Band></Format></Formats>");
             this.grid_wrapper.addChild(obj.name, obj);
-
-            obj = new Static("stc_ship00_00","46","33.61%","200","28",null,null,null,null,null,null,this);
-            obj.set_taborder("2");
-            obj.set_text("* 더블클릭하면 상세조회가 가능합니다.");
-            obj.set_font("normal 9pt/normal \"Noto Sans KR Medium\"");
-            obj.set_textAlign("left");
-            obj.set_color("#135dae");
-            this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
             obj = new Layout("default","",1280,720,this,function(p){});
@@ -349,7 +341,7 @@
         // 검색 영역 hover 효과
         this.search_area_onmousemove = function(obj, e)
         {
-            obj.set_boxShadow("0px 0px 3px 4px rgba(200,200,200,0.30)");
+            obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
         };
 
         this.search_area_onmouseleave = function(obj, e)
@@ -360,7 +352,7 @@
         // Grid wrapper hover 효과
         this.grid_wrapper_onmousemove = function(obj, e)
         {
-            obj.set_boxShadow("0px 0px 4px 3px rgba(200,200,200,0.30)");
+            obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
         };
 
         this.grid_wrapper_onmouseleave = function(obj, e)
@@ -384,7 +376,6 @@
             this.search_area.form.btn_reset.addEventHandler("onclick",this.search_area_btn_reset_onclick,this);
             this.grid_wrapper.addEventHandler("onmousemove",this.grid_wrapper_onmousemove,this);
             this.grid_wrapper.addEventHandler("onmouseleave",this.grid_wrapper_onmouseleave,this);
-            this.stc_ship00_00.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
         };
         this.loadIncludeScript("Form_Order_Main.xfdl");
         this.loadPreloadList();

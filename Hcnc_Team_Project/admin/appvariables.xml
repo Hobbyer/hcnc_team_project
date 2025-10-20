@@ -14,7 +14,7 @@
           <Col id="MENU_ID">00</Col>
           <Col id="MENU_NM">📊 메인대쉬보드</Col>
           <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_PATH">member::Form_MemberList.xfdl</Col>
+          <Col id="MENU_PATH">dash::Form_test.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_ID">01</Col>
@@ -118,18 +118,12 @@
         </Row>
         <Row>
           <Col id="MENU_ID">0303</Col>
-          <Col id="MENU_NM">   주문상태 관리</Col>
-          <Col id="MENU_LEVEL">1</Col>
-          <Col id="MENU_PATH">order::Form_Order_Status.xfdl</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_ID">0304</Col>
           <Col id="MENU_NM">   송장 관리</Col>
           <Col id="MENU_LEVEL">1</Col>
           <Col id="MENU_PATH">order::Form_Order_Ship.xfdl</Col>
         </Row>
         <Row>
-          <Col id="MENU_ID">0305</Col>
+          <Col id="MENU_ID">0304</Col>
           <Col id="MENU_NM">   배송비 정책 관리</Col>
           <Col id="MENU_LEVEL">1</Col>
           <Col id="MENU_PATH">order::Form_Order_PostPrice.xfdl</Col>

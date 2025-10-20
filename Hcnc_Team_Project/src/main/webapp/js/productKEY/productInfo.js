@@ -2,7 +2,6 @@ var urlParams = new URLSearchParams(window.location.search);
 	
 var productId = urlParams.get('productId');
 
-
 // 수량 버튼 (새로운 옵션 시스템과 통합)
 function countDown() {
   var quantity = parseInt($('#quantity').val()) || 1;
@@ -91,10 +90,8 @@ function pushCart() {
         
         option += selectElement.value + ' \n';
         
-        console.log("선택된 옵션:", optionName + " = " + selectElement.value);
     }
     
-    console.log("최종 optionIds:", optionIds); // 확인용
     
     if(hasOption && allSelects.length > 0 || allSelects.length <= 0){
       isProcessing = true; // 플래그 설정 (버튼 광클 금지!)
@@ -144,24 +141,49 @@ function pushCart() {
     }
 }
 
+function pushWish(){
+  $.ajax({
+      url: "/toggleWishlist.do",
+      type: "post",
+      data: {productId : productId},
+      dataType: "json",
+      success: function(res){
+          if(res.success) {
+              // 메시지가 없을 경우 기본 메시지 사용
+              var message = res.message;
+              if (!message || message === null || message === 'null') {
+                  message = res.isWished ? "위시리스트에 추가되었습니다." : "위시리스트에서 제거되었습니다.";
+              }
+              
+          } else {
+              var errorMessage = res.message;
+              if (!errorMessage || errorMessage === null || errorMessage === 'null') {
+                  errorMessage = "처리 중 오류가 발생했습니다.";
+              }
+          }
+      },
+      error: function(err){}
+  });
+}
+
 // 주문 번호 생성
-    var orderCounter = 0;
-    
-    function generateUniqueOrderNumber(){
-      orderCounter++;
-      var timestamp = new Date().getTime().toString().slice(-10); //뒤 10자리
-      var counter = ('0000' + orderCounter).slice(-4); //4자리 카운터
-      var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      var randomPart = '';
-      
-      // 남은 6자리를 랜덤으로 채움
-      for(var i = 0; i < 6; i++){
-        var randomIndex = Math.floor(Math.random() * chars.length);
-        randomPart += chars.charAt(randomIndex);
-      }
-      
-      return timestamp + counter + randomPart; //총 20자
-    }
+var orderCounter = 0;
+
+function generateUniqueOrderNumber(){
+  orderCounter++;
+  var timestamp = new Date().getTime().toString().slice(-10); //뒤 10자리
+  var counter = ('0000' + orderCounter).slice(-4); //4자리 카운터
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var randomPart = '';
+  
+  // 남은 6자리를 랜덤으로 채움
+  for(var i = 0; i < 6; i++){
+    var randomIndex = Math.floor(Math.random() * chars.length);
+    randomPart += chars.charAt(randomIndex);
+  }
+  
+  return timestamp + counter + randomPart; //총 20자
+}
 
 function buyNow(){
   if(isProcessing){

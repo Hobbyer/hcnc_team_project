@@ -84,7 +84,6 @@
             </Layout>
           </Layouts>
         </Div>
-        <Static id="stc_ship00_00" taborder="2" text="* 더블클릭하면 상세조회가 가능합니다." top="33.61%" width="200" height="28" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" textAlign="left" color="#135dae" left="46"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[// 온로드시
@@ -216,7 +215,7 @@ this.search_area_Calendar00_00_00_onchanged = function(obj, e)
 // 검색 영역 hover 효과
 this.search_area_onmousemove = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
 {
-    obj.set_boxShadow("0px 0px 3px 4px rgba(200,200,200,0.30)");
+    obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
 };
 
 this.search_area_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
@@ -227,7 +226,7 @@ this.search_area_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventIn
 // Grid wrapper hover 효과
 this.grid_wrapper_onmousemove = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
 {
-    obj.set_boxShadow("0px 0px 4px 3px rgba(200,200,200,0.30)");
+    obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
 };
 
 this.grid_wrapper_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)

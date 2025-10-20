@@ -1,59 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Board_Notice" width="1280" height="720" titletext="New Form" color="blue" background="#F4F7FE" onload="Form_Board_Notice_onload">
+  <Form id="Form_Board_Notice" width="1280" height="720" titletext="New Form" color="blue" background="#F4F7FE" onload="Form_Board_Notice_onload" scrolltype="none" scrollbartype="none" scrollbarsize="0">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Div id="search_area" taborder="2" left="40" top="0" height="60" background="#ffffff" borderRadius="10px" text="" right="40">
+        <!-- 검색 영역 -->
+        <Div id="search_area" taborder="1" left="40" top="10" height="60" background="#ffffff" borderRadius="10px" text="" right="40" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="search_area_onmousemove" onmouseleave="search_area_onmouseleave">
           <Layouts>
             <Layout>
-              <Static id="stc_name" taborder="2" text="작성자" left="717" top="14" width="50" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Edit id="Edit00" taborder="3" left="768" top="17" width="105" height="30" onkeyup="search_area_Edit00_onkeyup" borderRadius="5px"/>
-              <Button id="Button00" taborder="4" text="⌕" left="855" top="17" width="30" height="30" background="#135dae" borderRadius="5px" color="white" onclick="search_area_Button00_onclick" cursor="pointer" border="0px none,0px,0px"/>
-              <Static id="stc_ship" taborder="0" text="게시글 유형" left="30" top="14" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Radio id="rad_type" taborder="1" left="117" top="15" width="350" height="36" innerdataset="ds_boardType" codecolumn="CODE" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onitemchanged="search_area_rad_ship_onitemchanged" index="0" text="전체" value="전체"/>
+              <Static id="stc_name" taborder="2" text="작성자" top="11" width="50" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="36.08%"/>
+              <Edit id="Edit00" taborder="3" top="14" width="105" height="30" onkeyup="search_area_Edit00_onkeyup" borderRadius="5px" right="27.25%"/>
+              <Static id="stc_ship" taborder="0" text="게시글 유형" left="2.5%" top="11" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
+              <Radio id="rad_type" taborder="1" left="9.75%" top="12" width="350" height="36" innerdataset="ds_boardType" codecolumn="CODE" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onitemchanged="search_area_rad_ship_onitemchanged" index="0" text="전체" value="전체"/>
+              <Button id="btn_new" taborder="4" text="등록" top="14" height="30" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" onclick="btn_new_onclick" right="3.83%" width="100" border="0px none"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="grid_list" taborder="0" left="40" top="85" right="40" bottom="40" binddataset="ds_board" autofittype="col" background="#FFFFFF" border="0px none" borderRadius="10px" onheadclick="grid_list_onheadclick" oncelldblclick="grid_list_oncelldblclick">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="26"/>
-                <Column size="38"/>
-                <Column size="36"/>
-                <Column size="152"/>
-                <Column size="36"/>
-              </Columns>
-              <Rows>
-                <Row size="40" band="head"/>
-                <Row size="34"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="chk" displaytype="checkboxcontrol" edittype="checkbox" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="1" text="NO." font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="2" text="게시분류" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="3" text="제목" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="4" text="작성자" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="1" checkboxfalsevalue="0" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="1" text="expr:currow+1" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="2" text="bind:BOARD_NAME" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="3" text="bind:POST_TITLE" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="4" text="bind:USER_NAME" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Button id="btn_new" taborder="1" text="등록" top="16" height="30" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" onclick="btn_new_onclick" right="65" width="100" border="0px none"/>
+        <Static id="stc_ship00_00" taborder="2" text="* 더블클릭하면 수정이 가능합니다." top="80" width="200" height="24" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" textAlign="left" color="#135dae" left="50"/>
+        <!-- Grid를 감싸는 Div (그림자 적용용) -->
+        <Div id="grid_wrapper" taborder="3" left="40" top="110" right="40" bottom="40" background="#FFFFFF" borderRadius="10px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="grid_wrapper_onmousemove" onmouseleave="grid_wrapper_onmouseleave">
+          <Layouts>
+            <Layout>
+              <!-- 헤더 Grid (고정) -->
+              <Grid id="grid_header" taborder="0" left="0" top="0" right="10" height="40" binddataset="ds_board" autofittype="col" background="#FFFFFF" border="0px none" selecttype="row" readonly="true" enableevent="false" scrolltype="none" scrollbartype="none">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="36"/>
+                      <Column size="36"/>
+                      <Column size="152"/>
+                      <Column size="36"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="40"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="No" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="1" text="게시분류" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="2" text="제목" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="3" text="작성자" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <!-- Body Grid (스크롤) -->
+              <Grid id="grid_list" taborder="1" left="0" top="40" right="0" bottom="0" binddataset="ds_board" autofittype="col" background="#FFFFFF" border="0px none" borderRadius="0px 0px 10px 10px" onheadclick="grid_list_onheadclick" oncelldblclick="grid_list_oncelldblclick" scrollbartype="auto" scrollbarsize="10" scrollbartrackbarsize="40">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="36"/>
+                      <Column size="36"/>
+                      <Column size="152"/>
+                      <Column size="36"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="34"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:POST_ID" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="1" text="bind:BOARD_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="2" text="bind:POST_TITLE" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="3" text="bind:USER_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//페이지 온로드시
 this.Form_Board_Notice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.fnselectPostListByAdmin();
+	
 };
 
+// 검색 영역 hover 효과
+this.search_area_onmousemove = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
+};
+
+this.search_area_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+};
+
+// Grid wrapper hover 효과
+this.grid_wrapper_onmousemove = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
+};
+
+this.grid_wrapper_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+};
 
 //등록 버튼
 this.btn_new_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -111,15 +154,23 @@ this.search_area_rad_ship_onitemchanged = function(obj:nexacro.Radio,e:nexacro.I
 
 this.fnInsertPost = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {		
-		 // 팝업 크기
-        var popW = 500;
-        var popH = 350;
-
-        var objChildFrame = new ChildFrame(); // 하나의 새 폼 만들고
-		objChildFrame.init("itemPop", 200, 200, popW, popH, null, null, "popup::Pop_BaordInsert.xfdl"); // init
-		objChildFrame.showModal(this.getOwnerFrame(),'', this, "fn_popupCallback"); // 모달 띄어주기
-    
+		var popW = 500;
+		var popH = 600;
+		
+		// 모니터 화면 기준 중앙 좌표 계산
+		var screenWidth = system.getScreenWidth();
+		var screenHeight = system.getScreenHeight();
+		
+		var absX = (screenWidth - popW) / 2;
+		var absY = (screenHeight - popH) / 2;
+		
+		// 팝업 열기
+		var objChildFrame = new ChildFrame();
+		objChildFrame.init("itemPop", absX, absY, popW, popH, null, null, "popup::Pop_BaordInsert.xfdl");
+		objChildFrame.showModal(this.getOwnerFrame(), '', this, "fn_popupCallback");
 };
+
+
 
 //엔터 눌렀을때 조회되게
 this.search_area_Edit00_onkeyup = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
@@ -130,26 +181,39 @@ this.search_area_Edit00_onkeyup = function(obj:nexacro.Edit,e:nexacro.KeyEventIn
 };
 
 
-
 this.grid_list_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
-	 if(e.row < 0) return; // 헤더 클릭 무시
+	if(e.row < 0) return;
     
     var nRow = e.row;
-    var paramPostId = this.ds_board.getColumn(nRow, "POST_ID"); // 실제 컬럼명에 맞게 수정
+    var paramPostId = this.ds_board.getColumn(nRow, "POST_ID");
       
     if(paramPostId) {
-        // 상세보기 팝업 열기
-		
-		var popW = 800;
-        var popH = 700;
-        var objChildFrame = new ChildFrame(); // 하나의 새 폼 만들고
-		objChildFrame.init("detailPop", 0, 0, popW, popH, null, null, "popup::Pop_BoardDetail.xfdl"); // init
-		objChildFrame.paramPostId = paramPostId;
-		objChildFrame.showModal(this.getOwnerFrame(),'', this, "fn_popupCallback"); // 모달 띄어주기
+        var popW = 500;
+        var popH = 600;
+        
+        // 모니터 화면 기준 중앙
+        var screenWidth = system.getScreenWidth();
+        var screenHeight = system.getScreenHeight();
+        
+        var absX = (screenWidth - popW) / 2;
+        var absY = (screenHeight - popH) / 2;
+        
+        var objChildFrame = new ChildFrame();
+        objChildFrame.init("detailPop", absX, absY, popW, popH, null, null, "popup::Pop_BoardDetail.xfdl");
+        objChildFrame.paramPostId = paramPostId;
+        objChildFrame.showModal(this.getOwnerFrame(), '', this, "fn_popupCallback");
     }
 };
-]]></Script>
+
+
+this.fn_popupCallback = function(strId, strVal)
+{
+    trace("팝업 닫힘 - ID: " + strId + ", 결과: " + strVal);
+    
+    // 목록 새로고침
+    this.fnselectPostListByAdmin();
+};]]></Script>
     <Objects>
       <Dataset id="ds_boardType">
         <ColumnInfo>
@@ -190,6 +254,7 @@ this.grid_list_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEve
           <Column id="CHK" type="STRING" size="256"/>
           <Column id="POST_ID" type="STRING" size="256"/>
           <Column id="BOARD_NAME" type="STRING" size="256"/>
+          <Column id="USER_NAME" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_search">

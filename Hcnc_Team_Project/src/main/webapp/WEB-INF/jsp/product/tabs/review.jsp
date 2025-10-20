@@ -527,7 +527,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="review-filter-right">
+			<!-- <div class="review-filter-right">
 				<div class="dropdown-center">
 					<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<span>별점전체보기</span>
@@ -539,7 +539,7 @@
 						<li><a class="dropdown-item" href="#">Action three</a></li>
 					</ul>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="review-content-list">
 			<ul class="reviews" style="padding: 0;">
@@ -557,7 +557,6 @@
 <script>
 	var urlParams = new URLSearchParams(window.location.search);
 	
-	var memberId = "user01";
 	var productId = urlParams.get('productId');
 	
 	var currentPage = 1;
@@ -577,8 +576,6 @@
 		var reviewBtn = document.getElementById('review-sort-btn');
 		var dateBtn = document.getElementById('date-sort-btn');
 		var photoBtn = document.getElementById('photo-filter-btn');
-		
-		console.log('버튼 상태 업데이트:', {byReview: byReview, byInputDT: byInputDT, photoOnly: photoOnly});
 		
 		// 리뷰순 버튼 상태
 		if (reviewBtn) {
@@ -611,11 +608,12 @@
 	// 포토 필터 토글
 	function togglePhotoFilter() {
 		photoOnly = !photoOnly;
-		console.log('포토필터 토글:', photoOnly);
 		updateFilterButtons();
 		loadReviewList(1, byReview, byInputDT);
 	}
 	
+	
+	var isPageJustLoaded = true;
 	function loadReviewList(page, byReview, byInputDT){
 		var pageSize = 10;
 		
@@ -635,8 +633,6 @@
 			success: function(res){
 				var reviews = res.reviews;
 				var reviewCnt = res.reviewCnt.REVIEW_CNT;
-
-				console.log('리뷰 리스트 로드 성공:', reviews);
 				
 				// 중요: currentPage를 먼저 업데이트
 				currentPage = page;
@@ -650,7 +646,9 @@
 				}
 				
 				// 페이지 변경 시 탭 네비게이션으로 스크롤
-				scrollToTabNavigation();
+				if (!isPageJustLoaded) {
+                	scrollToTabNavigation();
+            	}
 			},
 			error: function(xhr, status, error) {
 				console.log('리뷰 리스트 로드 실패:', error);
@@ -703,7 +701,7 @@
 				list +=	'<div class="review-imgs" id="'+ reviews[i].REVIEW_ID +'_imgs" style="display: flex;"></div>';
 				list +=	'<div class="review-content">'+ reviews[i].REVIEW_CONTENT +'</div>';
 				list +=	'<div class="bottom-info" id="'+ reviews[i].REVIEW_ID +'_bottomInfo">';
-				list +=	'<span>펼쳐보기</span>';
+				// list +=	'<span>펼쳐보기</span>';
 				list += '</div>';
 				list +=	'</div>';
 				list += '</li>';
@@ -834,6 +832,10 @@
 		updateStarDisplay(0);
 		$("#avg-point-text").text('0.0점');
 		$("#total-reviews-text").text('리뷰를 불러오는 중...');
+		
+		setTimeout(function() {
+	        isPageJustLoaded = false;
+	    }, 500);
 	});
 	
 </script>

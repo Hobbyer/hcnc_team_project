@@ -130,9 +130,8 @@
 	         , S.DELIVERD_DT                                    -- 배송 완료 일자
 	         , S.UPDATE_DT                                      -- 수정 일자
 	         , CONCAT(
-				  MIN(CONCAT(I.PRODUCT_NAME,' ',                
-				   IFNULL(I.PRODUCT_OPTION,''),'*',
-				   I.QUANTITY,'개')),
+				  MIN(CONCAT('[',I.PRODUCT_NAME,' ',                
+				   '*', I.QUANTITY,'개',']')),
 				  CASE WHEN COUNT(*) > 1
 				       THEN CONCAT(' 외 ', COUNT(*)-1, '건')
 				       ELSE ''
@@ -241,7 +240,7 @@
 	</update>
 	
 	<update id="updateOrderCommentByAdmin" parameterType="map">
-	    # 배송 상태 업데이트 OR 인서트시 실행될 쿼리문
+	# 배송 상태 업데이트 OR 인서트시 실행될 쿼리문
 	    
 	    UPDATE ORDERS 
 	       SET ORDER_COMMENT = CASE
@@ -294,4 +293,46 @@
 	        </when>
 	    </choose>
 	</select>
+	
+	<select id="selectNewOrderCountByAdmin" resultType="Integer">
+	# 대쉬보드에 신규주문 건수
+	SELECT COUNT(*) AS COUNT
+      FROM ORDERS
+     WHERE DATE(ORDER_DT) = CURDATE()
+	</select>
+	
+	<select id="selectPendingPaymentCountByAdmin" resultType="Integer">
+	# 대쉬보드에서 결제대기 건수
+	SELECT COUNT(*) AS COUNT
+	  FROM PAYMENTS
+	 WHERE PAYMENT_STATUS = "입금대기"
+	</select>
+	
+	<select id="selectPendingShipCountByAdmin" resultType="Integer">
+	# 대쉬보드에서 배송대기 건수
+	SELECT COUNT(*) AS COUNT
+	  FROM ORDERS O
+	  LEFT JOIN SHIPS S ON O.ORDER_ID = S.ORDER_ID
+	 WHERE S.SHIPMENT_STATUS IS NULL 
+        OR S.SHIPMENT_STATUS = '발송대기'
+	</select>
+	
+	<select id="selectDashStatByAdmin" resultType="map">
+	/* 대시보드 - 오늘 시간대별 통계 (4시간 단위) */
+    SELECT 
+        CONCAT(
+            LPAD(FLOOR(HOUR(ORDER_DT) / 4) * 4, 2, '0'), ':00',
+            '-',
+            LPAD((FLOOR(HOUR(ORDER_DT) / 4) + 1) * 4, 2, '0'), ':00'
+        ) AS CHART_LABEL,
+        SUM(FINAL_AMOUNT) AS TOTAL_AMOUNT,
+        COUNT(*) AS ORDER_COUNT,
+        '시간대별' AS CHART_TYPE
+    FROM ORDERS
+    WHERE DATE(ORDER_DT) = CURDATE()
+    GROUP BY FLOOR(HOUR(ORDER_DT) / 4)
+    ORDER BY FLOOR(HOUR(ORDER_DT) / 4)
+	</select>
+	
+	
 </mapper>

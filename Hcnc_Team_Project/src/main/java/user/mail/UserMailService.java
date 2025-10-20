@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserMailService {
-	  private final String host = "smtp.naver.com";
+		private final String host = "smtp.naver.com";
 	    private final String username = "wpvos123@naver.com";
 	    private final String password = "DLQD7YBGS949";
 

@@ -9,22 +9,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableCaching //메모리에 데이터를 미리 적재 spring cach
+@EnableCaching //메모리에 데이터를 미리 적재 spring cache
 public class UserCacheConfig {
     
     @Bean
     public CacheManager cacheManager() {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
         cacheManager.setCaches(Arrays.asList(
-            new ConcurrentMapCache("categories"),//카테고리서브카테고리
+            new ConcurrentMapCache("categories"),//카테고리 서브카테고리
             new ConcurrentMapCache("subCategories"),
             new ConcurrentMapCache("banners"),//메인도
-            new ConcurrentMapCache("newProducts"),//타입별1
-            new ConcurrentMapCache("hotProducts"),//타입별2
-            new ConcurrentMapCache("recommendProducts"),//타입별3
-            new ConcurrentMapCache("newProductsCnt"),//타입별1
-            new ConcurrentMapCache("hotProductsCnt"),//타입별2
-            new ConcurrentMapCache("recommendProductsCnt")//타입별3
+            new ConcurrentMapCache("mainNewProducts"),//메인 신상품
+            new ConcurrentMapCache("mainRecommendProducts"),//메인 추천상품
+            new ConcurrentMapCache("mainHotProducts")//메인 인기상품
         ));
         return cacheManager;
     }

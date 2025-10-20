@@ -3,21 +3,64 @@
   <Form id="Form_MemberBlackList" width="1280" height="720" titletext="New Form" background="#F4F7FE" onload="Form_MemberBlackList_onload">
     <Layouts>
       <Layout height="720" width="1280">
-        <Static id="black_search_box" taborder="0" left="20" top="17" width="1240" height="113" background="white" text="" borderRadius="8px"/>
+
+        <Static id="black_search_box" taborder="0" left="40" top="17" height="113" background="white" text="" borderRadius="8px" right="40"/>
         <Static id="Static00_00" taborder="1" text="아이디" left="273" top="36" width="46" height="27" font="14px/normal &quot;Noto Sans KR Black&quot;" textAlign="center"/>
         <Static id="Static00_00_00" taborder="2" text="이름" left="35" top="35" width="32" height="27" font="14px/normal &quot;Noto Sans KR Black&quot;" textAlign="center"/>
+
         <Static id="Static00_00_00_00" taborder="3" text="전화번호" left="520" top="35" width="60" height="27" font="14px/normal &quot;Noto Sans KR Black&quot;" textAlign="center"/>
-        <Edit id="Edit00" taborder="4" left="78" top="36" width="172" height="29" borderRadius="8px" border="1px solid black" onkeyup="Edit00_onkeyup"/>
-        <Edit id="Edit00_00" taborder="5" left="330" top="36" width="170" height="28" borderRadius="8px" border="1px solid black" onkeyup="Edit00_00_onkeyup"/>
-        <Button id="search_btn" taborder="6" text="검색하기" left="540" top="85" width="98" height="30" background="#2563eb" borderRadius="4px" color="white" font="12px/normal &quot;Noto Sans KR Black&quot;" onclick="search_btn_onclick"/>
-        <Button id="Button01" taborder="7" text="초기화" left="660" top="85" width="104" height="30" background=" #9ca3af" borderRadius="4px" font="12px/normal &quot;Noto Sans KR Black&quot;" onclick="Button01_onclick"/>
-        <Grid id="black_list" taborder="8" left="20" top="140" height="570" background="#FFFFFF" border="0px none" borderRadius="10px" autofittype="none" binddataset="ds_list" oncellclick="black_list_oncellclick" autosizebandtype="body" cellclickbound="control" width="1240">&gt;
-          <Formats><Format id="default"><Columns><Column size="52"/><Column size="165"/><Column size="136"/><Column size="156"/><Column size="108"/><Column size="110"/><Column size="186"/><Column size="222"/><Column size="103"/></Columns><Rows><Row size="48" band="head"/><Row size="40"/></Rows><Band id="head"><Cell text="NO" textAlign="CENTER" font="11pt/normal &quot;LG Smart UI Bold&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="1" text="아이디" textAlign="CENTER" font="11pt/normal &quot;LG Smart UI Bold&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="2" text="이름" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="3" text="이메일" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="4" text="전화번호" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="5" text="등급" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="6" text="블랙처리일" textAlign="CENTER" font="11pt/normal &quot;LG Smart UI Bold&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="7" text="가입일" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222" font="11pt/normal &quot;LG Smart UI Bold&quot;"/><Cell col="8" text="관리" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222" font="11pt/normal &quot;LG Smart UI Bold&quot;"/></Band><Band id="body"><Cell text="expr:currow + 1" textAlign="center" font="12px/normal &quot;LG Smart UI Bold&quot;"/><Cell col="1" text="bind:MEMBER_ID" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="2" text="bind:USER_NAME" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="3" text="bind:EMAIL_ADDR" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="4" text="bind:PHONE_NUMBER" font="12px/normal &quot;Noto Sans KR Black&quot;" textAlign="center" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="###-####-####"/><Cell col="5" font="12px/normal &quot;Noto Sans KR Black&quot;" text="bind:GRADE_NAME" textAlign="center"/><Cell col="6" text="bind:UPDATE_DT" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="7" text="bind:INPUT_DT" displaytype="normal" edittype="none" combocodecol="GRADE_CODE" combodatacol="GRADE_NAME" combodataset="ds_grade" font="12px/normal &quot;Noto Sans KR Black&quot;" textAlign="center"/><Cell col="8" displaytype="buttoncontrol" edittype="button" text="신고 내역" font="12px/normal &quot;LG Smart UI Bold&quot;" textAlign="center" color="red"/></Band></Format></Formats></Grid>
-        <MaskEdit id="MaskEdit00" taborder="9" left="590" top="34" width="170" height="32" format="###-####-####" limitbymask="none" type="string" border="1px solid black" borderRadius="8px" onkeyup="MaskEdit00_onkeyup"/>
+        <Edit id="Edit00" taborder="4" left="98" top="36" width="172" height="29" borderRadius="8px" border="1px solid black" onkeyup="Edit00_onkeyup"/>
+        <Edit id="Edit00_00" taborder="5" left="340" top="36" width="170" height="28" borderRadius="8px" border="1px solid black" onkeyup="Edit00_00_onkeyup"/>
+        <Button id="search_btn" taborder="6" text="검색하기" left="570" top="85" width="90" height="35" background="#667eea" borderRadius="8px" color="#ffffff" font="11px/normal &quot;Noto Sans KR Black&quot;" onclick="search_btn_onclick" border="0px solid #667eea" cursor="pointer"/>
+        <Button id="Button01" taborder="7" text="초기화" left="670" top="85" width="100" height="35" background=" #f5f5f5" borderRadius="8px" font="11px/normal &quot;Noto Sans KR Black&quot;" onclick="Button01_onclick" border="1px solid #e0e0e0" color="#666666" cursor="pointer"/>
+        <Grid id="black_list" taborder="8" left="40" top="140" background="#FFFFFF" border="0px none" borderRadius="10px" autofittype="col" binddataset="ds_list" oncellclick="black_list_oncellclick" autosizebandtype="body" cellclickbound="control" bottom="20" width="1200">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="52"/>
+                <Column size="165"/>
+                <Column size="131"/>
+                <Column size="156"/>
+                <Column size="108"/>
+                <Column size="104"/>
+                <Column size="186"/>
+                <Column size="206"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="48" band="head"/>
+                <Row size="40"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO" textAlign="CENTER" font="11pt/normal &quot;LG Smart UI Bold&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="1" text="아이디" textAlign="CENTER" font="11pt/normal &quot;LG Smart UI Bold&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="2" text="이름" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="3" text="이메일" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="4" text="전화번호" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="5" text="등급" textAlign="CENTER" font="bold 11pt 'LG Smart UI Bold'" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="6" text="블랙처리일" textAlign="CENTER" font="11pt/normal &quot;LG Smart UI Bold&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/>
+                <Cell col="7" text="가입일" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222" font="11pt/normal &quot;LG Smart UI Bold&quot;"/>
+                <Cell col="8" text="관리" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222" font="11pt/normal &quot;LG Smart UI Bold&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
+                <Cell col="1" text="bind:MEMBER_ID" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
+                <Cell col="2" text="bind:USER_NAME" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
+                <Cell col="3" text="bind:EMAIL_ADDR" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
+                <Cell col="4" text="bind:PHONE_NUMBER" font="12px/normal &quot;Noto Sans KR Black&quot;" textAlign="center" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="###-####-####"/>
+                <Cell col="5" font="12px/normal &quot;Noto Sans KR Black&quot;" text="bind:GRADE_NAME" textAlign="center"/>
+                <Cell col="6" text="bind:UPDATE_DT" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
+                <Cell col="7" text="bind:INPUT_DT" displaytype="normal" edittype="none" combocodecol="GRADE_CODE" combodatacol="GRADE_NAME" combodataset="ds_grade" font="12px/normal &quot;Noto Sans KR Black&quot;" textAlign="center"/>
+                <Cell col="8" displaytype="buttoncontrol" edittype="button" text="신고 내역" font="12px/normal &quot;LG Smart UI Bold&quot;" textAlign="center" color="red"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <MaskEdit id="MaskEdit00" taborder="9" left="590" top="34" width="180" height="32" format="###-####-####" limitbymask="none" type="string" border="1px solid black" borderRadius="8px" onkeyup="MaskEdit00_onkeyup"/>
         <Static id="Static00_00_00_00_00" taborder="10" text="가입일" left="780" top="37" width="60" height="27" font="14px/normal &quot;Noto Sans KR Black&quot;" textAlign="center"/>
-        <Calendar id="Calendar00" taborder="11" left="840" top="34" width="180" height="31" border="1px solid black" borderRadius="8px" onchanged="Calendar00_onchanged"/>
-        <Calendar id="Calendar01" taborder="12" left="1050" top="35" width="180" height="29" border="1px solid black" borderRadius="8px" onchanged="Calendar01_onchanged"/>
-        <Static id="Static00" taborder="13" text="~" left="1030" top="40" width="20" height="22" font="bold 14px/normal &quot;Gulim&quot;"/>
+        <Calendar id="Calendar00" taborder="11" left="840" top="34" width="170" height="31" border="1px solid black" borderRadius="8px" onchanged="Calendar00_onchanged"/>
+        <Calendar id="Calendar01" taborder="12" left="1040" top="36" width="170" height="30" border="1px solid black" borderRadius="8px" onchanged="Calendar01_onchanged"/>
+        <Static id="Static00" taborder="13" text="~" left="1020" top="38" width="20" height="22" font="bold 14px/normal &quot;Gulim&quot;"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.Form_MemberBlackList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -132,55 +175,49 @@ this.MaskEdit00_onkeyup = function(obj:nexacro.MaskEdit,e:nexacro.KeyEventInfo)
 //시작일
 this.Calendar00_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 {
-	var startDate = this.Calendar00.value;
-    var endDate   = this.Calendar01.value;
+    // Div 안의 컴포넌트 참조 수정
+    var startDate = this.black_search_box.form.Calendar00.value;
+    var endDate   = this.black_search_box.form.Calendar01.value;
     
-    if (!startDate) return; // 시작일 없으면 처리 중단
+    if (!startDate) return;
     
-    // 종료일이 있고, 종료일이 시작일보다 빠른 경우
     if (endDate && endDate < startDate) {
         this.alert("종료일은 시작일보다 빠를 수 없습니다.");
-        this.Calendar01.set_value(startDate);
+        this.black_search_box.form.Calendar01.set_value(startDate);
         endDate = startDate;
     }
     
-    // 시작일은 00시 00분
     this.ds_search.setColumn(0, "START_INPUT_DT", startDate + "000000");
     
-    // 종료일이 있으면 23시 59분까지 설정
     if (endDate) {
         this.ds_search.setColumn(0, "END_INPUT_DT", endDate + "235959");
     }
-	
-	//자동 검색 
-	this.fn_selectBlackList()
+    
+    this.fn_selectBlackList()
 };
 
 //종료일
 this.Calendar01_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
 {
-	var startDate = this.Calendar00.value;
-    var endDate   = this.Calendar01.value;
+    // Div 안의 컴포넌트 참조 수정
+    var startDate = this.black_search_box.form.Calendar00.value;
+    var endDate   = this.black_search_box.form.Calendar01.value;
     
-    if (!endDate) return; // 종료일 없으면 처리 중단
+    if (!endDate) return;
     
-    // 종료일이 시작일보다 빠른 경우
     if (startDate && endDate < startDate) {
         this.alert("종료일은 시작일보다 빠를 수 없습니다.");
-        this.Calendar01.set_value(startDate);
+        this.black_search_box.form.Calendar01.set_value(startDate);
         endDate = startDate;
     }
     
-    // 종료일은 23시 59분
     this.ds_search.setColumn(0, "END_INPUT_DT", endDate + "235959");
     
-    // 시작일이 있으면 00시 00분까지 세팅
     if (startDate) {
         this.ds_search.setColumn(0, "START_INPUT_DT", startDate + "000000");
     }
-	
-	//자동 검색 
-	this.fn_selectBlackList();
+    
+    this.fn_selectBlackList();
 };
 ]]></Script>
     <Bind>

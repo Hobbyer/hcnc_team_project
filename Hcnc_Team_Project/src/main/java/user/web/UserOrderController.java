@@ -289,4 +289,17 @@ public class UserOrderController {
 
 		return mav;
 	}
+
+	@RequestMapping(value = "/getDeliveryTracking.do")
+	public ModelAndView getDeliveryTracking(@RequestParam HashMap<String, Object> param) {
+		ModelAndView mav = new ModelAndView("jsonView");
+
+		System.out.println(param);
+
+		HashMap<String, Object> deliveryTracking = userOrderService.selectDeliveryTrackingByUser(param);
+
+		mav.addObject("deliveryTracking", deliveryTracking);
+
+		return mav;
+	}
 }

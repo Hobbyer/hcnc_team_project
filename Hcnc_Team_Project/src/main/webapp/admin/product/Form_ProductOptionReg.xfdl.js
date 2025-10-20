@@ -20,7 +20,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_optionReg", this);
             obj.set_useclientlayout("true");
-            obj._setContents("<ColumnInfo><Column id=\"OPTION_ID\" type=\"INT\"/><Column id=\"PRODUCT_ID\" type=\"INT\"/><Column id=\"OPTION_NAME\" type=\"STRING\"/><Column id=\"OPTION_VALUE\" type=\"STRING\"/><Column id=\"ADDITIONAL_PRICE\" type=\"INT\"/><Column id=\"INPUT_ID\" type=\"STRING\"/><Column id=\"UPDATE_ID\" type=\"STRING\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"OPTION_ID\" type=\"INT\"/><Column id=\"PRODUCT_ID\" type=\"INT\"/><Column id=\"OPTION_NAME\" type=\"STRING\" size=\"15\"/><Column id=\"OPTION_VALUE\" type=\"STRING\" size=\"15\"/><Column id=\"ADDITIONAL_PRICE\" type=\"INT\" size=\"10\"/><Column id=\"INPUT_ID\" type=\"STRING\"/><Column id=\"UPDATE_ID\" type=\"STRING\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -71,7 +71,7 @@
             obj.set_autofittype("col");
             obj.set_border("1px solid #ffffff");
             obj.set_borderRadius("8px");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"50\"/><Column size=\"200\"/><Column size=\"200\"/><Column size=\"150\"/></Columns><Rows><Row size=\"40\" band=\"head\"/><Row size=\"36\"/></Rows><Band id=\"head\"><Cell text=\"No\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/><Cell col=\"1\" text=\"옵션명\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/><Cell col=\"2\" text=\"옵션값\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/><Cell col=\"3\" text=\"추가금액\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/></Band><Band id=\"body\"><Cell text=\"expr:currow+1\" textAlign=\"center\"/><Cell col=\"1\" text=\"bind:OPTION_NAME\" edittype=\"text\" textAlign=\"center\"/><Cell col=\"2\" text=\"bind:OPTION_VALUE\" edittype=\"text\" textAlign=\"center\"/><Cell col=\"3\" text=\"bind:ADDITIONAL_PRICE\" edittype=\"text\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"50\"/><Column size=\"200\"/><Column size=\"200\"/><Column size=\"150\"/></Columns><Rows><Row size=\"40\" band=\"head\"/><Row size=\"36\"/></Rows><Band id=\"head\"><Cell text=\"No\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/><Cell col=\"1\" text=\"옵션명\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/><Cell col=\"2\" text=\"옵션값\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/><Cell col=\"3\" text=\"추가금액\" background=\"#ffffff\" font=\"bold 10pt/normal &quot;맑은 고딕&quot;\" border=\"1px solid #ffffff\"/></Band><Band id=\"body\"><Cell text=\"expr:currow+1\" textAlign=\"center\"/><Cell col=\"1\" text=\"bind:OPTION_NAME\" edittype=\"text\" textAlign=\"center\" textareamaxlength=\"20\" editmaxlength=\"15\"/><Cell col=\"2\" text=\"bind:OPTION_VALUE\" edittype=\"text\" textAlign=\"center\" editmaxlength=\"15\" textareamaxlength=\"15\"/><Cell col=\"3\" text=\"bind:ADDITIONAL_PRICE\" edittype=\"text\" editmaxlength=\"10\" textareamaxlength=\"10\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_addRow","30","660","100","36",null,null,null,null,null,null,this);
@@ -175,7 +175,7 @@
                 trace("현재 로그인 사용자 ID: " + sUserId);
                 return sUserId;
             } else {
-                trace("⚠ 사용자 ID를 가져올 수 없습니다. gds_adminInfo 상태 확인 필요");
+                trace("사용자 ID를 가져올 수 없습니다. gds_adminInfo 상태 확인 필요");
                 return null;
             }
         };
@@ -258,6 +258,7 @@
         // 행삭제
         this.btn_delRow_onclick = function()
         {
+
             var nRow = this.ds_optionReg.rowposition;
             if (nRow < 0) {
                 this.alert("삭제할 행을 선택하세요.");
@@ -267,76 +268,74 @@
         };
 
 
+
         // 저장
         this.btn_save_onclick = function()
         {
-        	var oArgs = this.getOwnerFrame().arguments;
-            if ( (oArgs && oArgs.MODE) !== "UPDATE" && this.ds_selectedProd.getRowCount() == 0) {
+            var oArgs = this.getOwnerFrame().arguments;
+            var mode = (oArgs && oArgs.MODE) ? oArgs.MODE : "INSERT"; // 등록 or 수정 구분
+
+            // 상품 선택 여부 검사 (등록 모드일 때만)
+            if (mode != "UPDATE" && this.ds_selectedProd.getRowCount() == 0) {
                 this.alert("상품을 먼저 선택하세요.");
                 return;
             }
+
             var prodId = this.ds_selectedProd.getRowCount() > 0
-        			   ? this.ds_selectedProd.getColumn(0, "PRODUCT_ID")
-        			   : this.ds_optionReg.getColumn(0, "PRODUCT_ID"); //수정모드 대비
+        	? this.ds_selectedProd.getColumn(0, "PRODUCT_ID")
+        	: this.ds_optionReg.getColumn(0, "PRODUCT_ID");
 
+            var sUserId = this.getUserId();
 
-            var app = nexacro.getApplication();
-        	var sUserId = this.getUserId();
-
-            for (var i=0; i<this.ds_optionReg.getRowCount(); i++) {
-                // ★ PRODUCT_ID 강제 세팅
+            // 데이터 세팅 및 검증
+            for (var i = 0; i < this.ds_optionReg.getRowCount(); i++) {
                 this.ds_optionReg.setColumn(i, "PRODUCT_ID", prodId);
 
-                // Validation
-                var name  = this.ds_optionReg.getColumn(i, "OPTION_NAME");
-                var val   = this.ds_optionReg.getColumn(i, "OPTION_VALUE");
-                if (!name || name.trim() == "") {
-                    this.alert("옵션명을 입력하세요. (행 " + (i+1) + ")");
-                    return;
-                }
-                if (!val || val.trim() == "") {
-                    this.alert("옵션값을 입력하세요. (행 " + (i+1) + ")");
-                    return;
-                }
+                var name = this.ds_optionReg.getColumn(i, "OPTION_NAME");
+                var val  = this.ds_optionReg.getColumn(i, "OPTION_VALUE");
 
                 var price = this.ds_optionReg.getColumn(i, "ADDITIONAL_PRICE");
-                if (price == null || price.toString().trim() == "" || isNaN(price)) {
-                    this.ds_optionReg.setColumn(i, "ADDITIONAL_PRICE", 0);
-                }
 
-                // 등록/수정자 세팅
-                if (this.ds_optionReg.getColumn(i, "OPTION_ID")) {
-                    this.ds_optionReg.setColumn(i, "UPDATE_ID", sUserId);
-                } else {
-                    this.ds_optionReg.setColumn(i, "INPUT_ID", sUserId);
-                }
+                if (!name || name.trim() == "") { this.alert("옵션명을 입력하세요."); return; }
+                if (!val || val.trim() == "") { this.alert("옵션값을 입력하세요."); return; }
+                if (!price || isNaN(price)) { this.ds_optionReg.setColumn(i, "ADDITIONAL_PRICE", 0); }
+
+                // 등록자 / 수정자 세팅
+                if (this.ds_optionReg.getColumn(i, "OPTION_ID"))
+        		this.ds_optionReg.setColumn(i, "UPDATE_ID", sUserId);
+                else
+        		this.ds_optionReg.setColumn(i, "INPUT_ID", sUserId);
             }
-        	trace("저장 시 가져온 UserId = " + sUserId);
 
-        	for (var i=0; i<this.ds_optionReg.getRowCount(); i++) {
+            // 모드별 메시지
+            var confirmMsg = (mode == "UPDATE")
+        	? "옵션을 수정하시겠습니까?"
+        	: "옵션을 등록하시겠습니까?";
 
-            trace("저장 전 체크 >> row=" + i
-                 + " PRODUCT_ID=" + this.ds_optionReg.getColumn(i,"PRODUCT_ID")
-                 + " INPUT_ID="   + this.ds_optionReg.getColumn(i,"INPUT_ID")
-                 + " UPDATE_ID="  + this.ds_optionReg.getColumn(i,"UPDATE_ID"));
-        	}
+            var successMsg = (mode == "UPDATE")
+        	? "옵션 수정이 완료되었습니다."
+        	: "옵션 등록이 완료되었습니다.";
 
+            // 컨펌창 띄우기
+            this.fn_confirmCustom(confirmMsg, function(ok){
+        			if (!ok) return;
 
+        			// 저장 트랜잭션
+        			this._successMsg = successMsg;
+        			this.transaction(
+        				"saveOptionByAdmin",
+        				"svc::saveOptionByAdmin.do?time=" + new Date().getTime(),
+        				"ds_optionReg=ds_optionReg:U",
+        				"",
+        				"",
+        				"fn_callback",
+        				true
+        			);
 
+        		}.bind(this));
 
-
-            if (!this.confirm("저장하시겠습니까?")) return;
-
-            this.transaction(
-                "saveOptionByAdmin",
-                "svc::saveOptionByAdmin.do?time=" + new Date().getTime(),
-                "ds_optionReg=ds_optionReg:U",
-                "",
-                "",
-                "fn_callback",
-                true
-            );
         };
+
 
 
 
@@ -353,23 +352,30 @@
         // 콜백
         this.fn_callback = function(svcID, errCode, errMsg)
         {
-            trace("=== fn_callback ===");
-            trace("ServiceID=" + svcID + ", ErrorCode=" + errCode + ", ErrorMsg=" + errMsg);
+
 
             if (errCode < 0) {
                 this.alert("에러: " + errMsg);
                 return;
             }
 
-            if (svcID == "saveOptionByAdmin") {
-                this.alert("저장이 완료되었습니다.");
-                this.btn_cancel_onclick();
+        	if (svcID == "saveOptionByAdmin") {
+        		var app = nexacro.getApplication();
+                var workFrame = app.mainframe.VFrameSet00.HFrameSet00.VFrameSet01.WorkFrame;
+
+                workFrame.arguments = {
+                    REFRESH: "Y",
+                    MESSAGE: this._successMsg  // 메시지 전달
+                };
+                workFrame.set_formurl("product::Form_ProductOption.xfdl");
             }
+
 
         	if (svcID == "selectOptionOneByAdmin") {
                 console.log(this.ds_optionReg.saveXML());
             }
         };
+
 
         });
         
@@ -377,6 +383,7 @@
         this.on_initEvent = function()
         {
             this.addEventHandler("onload",this.Form_ProductOptionReg_onload,this);
+            this.addEventHandler("ontimer",this.Form_ProductOptionReg_ontimer,this);
             this.btn_searchProd.addEventHandler("onclick",this.btn_searchProd_onclick,this);
             this.btn_addRow.addEventHandler("onclick",this.btn_addRow_onclick,this);
             this.btn_delRow.addEventHandler("onclick",this.btn_delRow_onclick,this);

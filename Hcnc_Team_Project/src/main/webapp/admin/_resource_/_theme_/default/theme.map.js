@@ -1658,11 +1658,6 @@
             							{
             								"self" :
             								{
-            									"enabled" :
-            									{
-            										"font" : nexacro.FontObject("12px \"Gulim\""),
-            										"color" : nexacro.ColorObject("#666666")
-            									},
             									"disabled" :
             									{
             										"color" : nexacro.ColorObject("#999999")

@@ -11,6 +11,7 @@
 		FROM   MEMBERS
 		WHERE  MEMBER_ID = #{id}
 		  AND  PASSWORD = #{password}
+		  AND  STATUS = 'Y'
 	</select>
 	<select id="selectIdCheckByUser" resultType="int">
 		SELECT COUNT(MEMBER_ID) AS COUNT
@@ -60,8 +61,53 @@
        LEFT JOIN COUPONS C ON O.ORDER_ID = C.ORDER_ID                                
        LEFT JOIN POINTS PT ON O.ORDER_ID = PT.ORDER_ID AND PT.CHANGE_TYPE = '사용'    
        WHERE 1=1
-         AND O.MEMBER_ID = #{id};
+         AND O.MEMBER_ID = #{id}
 	</select>
+    <select id="selectCouponListByUser" resultType="java.util.Map">
+        SELECT
+            COUPON_ID,
+            MEMBER_ID,
+            COUPON_CODE,
+            DISCOUNT_TYPE,
+            DISCOUNT_VALUE,
+            MIN_ORDER_PRICE,
+            ISSUED_DT,
+            EXPIRY_DT,
+            IS_USED,
+            USED_DT,
+            COUPON_TYPE,
+            ORDER_ID,
+            COUPON_NAME,
+            PROMOTION_ID
+        FROM
+            COUPONS
+        WHERE
+            MEMBER_ID = #{MEMBER_ID}
+    </select>
+    <select id="selectPointListByUser" resultType="java.util.Map">
+        SELECT
+            POINT_ID,
+            MEMBER_ID,
+            CHANGE_TYPE,
+            `POINT`,
+            DESCRIPTION,
+            INPUT_DT,
+            ORDER_ID
+        FROM    
+            POINTS
+        WHERE
+            MEMBER_ID = #{MEMBER_ID}
+    </select>
+    <select id="selectTotalPointByUser" resultType="int">
+        SELECT IFNULL(SUM(`POINT`), 0) AS total
+        FROM POINTS
+        WHERE MEMBER_ID = #{MEMBER_ID}
+    </select>
+    <select id="selectTotalSpendByUser" resultType="int">
+        SELECT IFNULL(SUM(FINAL_AMOUNT),0) AS total
+        FROM ORDERS
+        WHERE MEMBER_ID = #{MEMBER_ID}
+    </select>
 	<insert id="insertSignUpByUser" parameterType="java.util.Map">
 		INSERT INTO
 	MEMBERS (

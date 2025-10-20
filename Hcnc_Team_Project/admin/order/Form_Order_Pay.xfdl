@@ -4,23 +4,23 @@
     <Layouts>
       <Layout height="720" width="1280">
         <!-- 검색 영역 -->
-        <Div id="search_area" taborder="1" left="40" top="10" height="60" background="#ffffff" borderRadius="10px" right="40" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="search_area_onmousemove" onmouseleave="search_area_onmouseleave">
+        <Div id="search_area" taborder="0" left="40" top="10" height="60" background="#ffffff" borderRadius="10px" right="40" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="search_area_onmousemove" onmouseleave="search_area_onmouseleave">
           <Layouts>
             <Layout>
               <Static id="stc_ship" taborder="0" text="주문 상태" left="30" top="9" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Radio id="rad_pay" taborder="1" left="110" top="6" width="207" height="45" innerdataset="ds_statRad" codecolumn="NAME" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onitemchanged="search_area_rad_ship_onitemchanged" index="0" text="전체" value="전체"/>
-              <Edit id="Edit00" taborder="2" top="13" width="125" height="30" borderRadius="5px" onkeyup="search_area_Edit00_onkeyup" right="23.08%"/>
-              <Static id="stc_name" taborder="3" text="주문자" top="9" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="31.5%"/>
-              <Static id="stc_name00" taborder="4" text="연락처" top="9" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="11%"/>
-              <Edit id="Edit00_00" taborder="5" top="13" width="120" height="30" borderRadius="5px" right="3.33%" onchanged="search_area_Edit00_00_onchanged" onkeyup="search_area_Edit00_00_onkeyup"/>
-              <Static id="stc_ship00" taborder="6" text="결제 방법" left="415" top="8" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Radio id="rad_payMeth" taborder="7" left="495" top="5" width="167" height="45" innerdataset="ds_payMethod" codecolumn="NAME" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" index="0" text="전체" value="전체" onitemchanged="search_area_rad_payMeth_onitemchanged"/>
+              <Radio id="rad_pay" taborder="1" left="102" top="6" width="207" height="45" innerdataset="ds_statRad" codecolumn="NAME" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onitemchanged="search_area_rad_ship_onitemchanged" index="0" text="전체" value="전체"/>
+              <Edit id="Edit00" taborder="2" top="13" width="85" height="30" borderRadius="5px" onkeyup="search_area_Edit00_onkeyup" right="37.83%"/>
+              <Static id="stc_name" taborder="3" text="주문자" top="9" width="40" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="45.83%"/>
+              <Static id="stc_name00" taborder="4" text="연락처" top="9" width="40" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="30.42%"/>
+              <Edit id="Edit00_00" taborder="5" top="13" width="90" height="30" borderRadius="5px" right="21.92%" onchanged="search_area_Edit00_00_onchanged" onkeyup="search_area_Edit00_00_onkeyup"/>
+              <Static id="stc_ship00" taborder="6" text="결제 방법" left="344" top="8" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
+              <Radio id="rad_payMeth" taborder="7" left="424" top="5" width="167" height="45" innerdataset="ds_payMethod" codecolumn="NAME" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" index="0" text="전체" value="전체" onitemchanged="search_area_rad_payMeth_onitemchanged"/>
+              <Button id="btn_save" taborder="8" text="저장" top="13" height="30" onclick="search_area_btn_save_onclick" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" right="24" width="100"/>
             </Layout>
           </Layouts>
         </Div>
-        <Button id="btn_save" taborder="2" text="저장" top="81" height="30" onclick="search_area_btn_save_onclick" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" right="40" width="100"/>
         <!-- Grid를 감싸는 Div (그림자 적용용) -->
-        <Div id="grid_wrapper" taborder="3" left="40" top="121" right="40" bottom="40" background="#FFFFFF" borderRadius="10px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="grid_wrapper_onmousemove" onmouseleave="grid_wrapper_onmouseleave">
+        <Div id="grid_wrapper" taborder="1" left="40" top="121" right="40" bottom="40" background="#FFFFFF" borderRadius="10px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="grid_wrapper_onmousemove" onmouseleave="grid_wrapper_onmouseleave">
           <Layouts>
             <Layout>
               <!-- 결제 내역 그리드 -->
@@ -53,13 +53,13 @@
                     </Band>
                     <Band id="body">
                       <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="1" checkboxfalsevalue="0" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="1" text="bind:ORDER_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="2" text="bind:USER_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="3" text="bind:PHONE_NUMBER" textAlign="right" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="4" text="bind:PAYMENT_METHOD" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="5" text="bind:PAYMENT_AMOUNT" textAlign="right" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="6" text="bind:PAYMENT_STATUS" displaytype="combocontrol" edittype="combo" combodataset="ds_status" combocodecol="NAME" combodatacol="NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                      <Cell col="7" text="bind:PAYMENT_DT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="1" text="bind:ORDER_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black"/>
+                      <Cell col="2" text="bind:USER_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;" color="black"/>
+                      <Cell col="3" text="bind:PHONE_NUMBER" textAlign="right" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;" color="black"/>
+                      <Cell col="4" text="bind:PAYMENT_METHOD" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;" color="black"/>
+                      <Cell col="5" text="bind:PAYMENT_AMOUNT" textAlign="right" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;" color="black"/>
+                      <Cell col="6" text="bind:PAYMENT_STATUS" displaytype="combocontrol" edittype="combo" combodataset="ds_status" combocodecol="NAME" combodatacol="NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" cssclass="expr:(PAYMENT_STATUS=='입금대기'?'cell_wait':(PAYMENT_STATUS=='결제완료'?'cell_done':''))"/>
+                      <Cell col="7" text="bind:PAYMENT_DT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" color="black"/>
                     </Band>
                   </Format>
                 </Formats>
@@ -67,6 +67,7 @@
             </Layout>
           </Layouts>
         </Div>
+        <Static id="stc_ship00_00" taborder="2" text="* 결제상태 변경후 저장을 눌러주세요" top="12.92%" width="310" height="28" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" textAlign="left" color="#135dae" left="45"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[// 온로드

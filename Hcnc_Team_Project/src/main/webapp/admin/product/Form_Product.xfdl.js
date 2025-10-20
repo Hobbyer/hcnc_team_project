@@ -19,7 +19,7 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_searchCond", this);
-            obj._setContents("<ColumnInfo><Column id=\"SEARCH_TYPE\" type=\"STRING\" size=\"256\"/><Column id=\"SEARCH_TEXT\" type=\"STRING\" size=\"256\"/><Column id=\"IS_VISIBLE\" type=\"STRING\" size=\"256\"/><Column id=\"QUANTITY_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"START_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"END_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"MAIN_CATE_ID\" type=\"STRING\" size=\"256\"/><Column id=\"SUB_CATE_ID\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            obj._setContents("<ColumnInfo><Column id=\"SEARCH_TYPE\" type=\"STRING\" size=\"256\"/><Column id=\"SEARCH_TEXT\" type=\"STRING\" size=\"20\"/><Column id=\"IS_VISIBLE\" type=\"STRING\" size=\"256\"/><Column id=\"QUANTITY_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"START_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"END_DATE\" type=\"STRING\" size=\"256\"/><Column id=\"MAIN_CATE_ID\" type=\"STRING\" size=\"256\"/><Column id=\"SUB_CATE_ID\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
             this.addChild(obj.name, obj);
 
 
@@ -64,8 +64,9 @@
             this.addChild(obj.name, obj);
 
             obj = new Edit("edt_search","325","5","317","30",null,null,null,null,null,null,this.Div00_00.form);
+            obj.set_tooltiptext("최대 20자까지 입력 가능합니다.");
             obj.set_taborder("0");
-            obj.set_maxlength("50");
+            obj.set_maxlength("20");
             this.Div00_00.addChild(obj.name, obj);
 
             obj = new Div("Div00_00_00","24","120",null,"40","26",null,null,null,null,null,this);
@@ -135,7 +136,7 @@
             obj.set_borderRadius("10px");
             obj.set_autofittype("col");
             obj.set_binddataset("ds_out_proList");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"26\"/><Column size=\"24\"/><Column size=\"61\"/><Column size=\"107\"/><Column size=\"173\"/><Column size=\"52\"/><Column size=\"52\"/><Column size=\"52\"/><Column size=\"68\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"103\"/><Column size=\"41\"/><Column size=\"41\"/><Column size=\"88\"/></Columns><Rows><Row size=\"66\" band=\"head\"/><Row size=\"48\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"40\"/></Rows><Band id=\"head\"><Cell colspan=\"17\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" rowspan=\"2\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\" displaytype=\"checkboxcontrol\" edittype=\"checkbox\" text=\"전체\"/><Cell row=\"1\" col=\"1\" rowspan=\"2\" text=\"NO\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"2\" rowspan=\"2\" text=\"상품코드\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"3\" rowspan=\"2\" text=\"상품명\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"4\" rowspan=\"2\" text=\"설명\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"5\" rowspan=\"2\" text=\"원가\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"6\" rowspan=\"2\" text=\"상품가\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"7\" rowspan=\"2\" text=\"옵션가\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"8\" rowspan=\"2\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\" text=\"최종판매가\"/><Cell row=\"1\" col=\"9\" colspan=\"2\" text=\"상품분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"11\" colspan=\"2\" text=\"옵션\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"13\" rowspan=\"2\" text=\"등록일\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"14\" rowspan=\"2\" text=\"진열\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"15\" rowspan=\"2\" colspan=\"2\" text=\"재고수량/관리\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"9\" text=\"대분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"10\" text=\"중분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"11\" text=\"옵션\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"12\" text=\"세부사항\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/></Band><Band id=\"body\"><Cell displaytype=\"checkboxcontrol\" background=\"#ffffff\" textAlign=\"center\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" text=\"expr:currow + 1\" background=\"#ffffff\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"2\" background=\"#ffffff\" text=\"bind:PRODUCT_CODE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"3\" background=\"#ffffff\" text=\"bind:PRODUCT_NAME\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"4\" edittype=\"none\" background=\"#ffffff\" text=\"bind:PRODUCT_CONTENT\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"5\" background=\"#ffffff\" text=\"bind:COST_PRICE\" font=\"12px/normal &quot;Gulim&quot;\" edittype=\"none\"/><Cell col=\"6\" edittype=\"none\" background=\"#ffffff\" text=\"bind:PRODUCT_PRICE\" font=\"12px/normal &quot;Gulim&quot;\"/><Cell col=\"7\" edittype=\"none\" background=\"#ffffff\" text=\"bind:ADDITIONAL_PRICE\" font=\"12px/normal &quot;Gulim&quot;\"/><Cell col=\"8\" edittype=\"none\" background=\"#ffffff\" text=\"bind:TOTAL_PRICE\" font=\"12px/normal &quot;Gulim&quot;\"/><Cell col=\"9\" edittype=\"none\" background=\"#ffffff\" text=\"bind:MAIN_CATE_NM\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"10\" edittype=\"none\" background=\"#ffffff\" text=\"bind:SUB_CATE_NM\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"11\" background=\"#ffffff\" text=\"bind:OPTION_NAME\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"12\" edittype=\"none\" background=\"#ffffff\" text=\"bind:OPTION_VALUE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"13\" edittype=\"none\" background=\"#ffffff\" text=\"bind:INPUT_DT\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"date\"/><Cell col=\"14\" edittype=\"none\" background=\"#ffffff\" text=\"bind:IS_VISIBLE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"15\" edittype=\"mask\" background=\"#ffffff\" text=\"bind:QUANTITY\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"mask\" textareamaxlength=\"-1\" maskeditformat=\"####\"/><Cell col=\"16\" edittype=\"none\" text=\"재고변경\" font=\"12px/normal &quot;Gulim&quot;\" displaytype=\"buttoncontrol\" background=\"transparent\" cssclass=\"productCellBtnEdit\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"26\"/><Column size=\"24\"/><Column size=\"61\"/><Column size=\"107\"/><Column size=\"173\"/><Column size=\"52\"/><Column size=\"52\"/><Column size=\"52\"/><Column size=\"68\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"103\"/><Column size=\"41\"/><Column size=\"41\"/><Column size=\"88\"/></Columns><Rows><Row size=\"66\" band=\"head\"/><Row size=\"48\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"40\"/></Rows><Band id=\"head\"><Cell colspan=\"17\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" rowspan=\"2\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\" displaytype=\"checkboxcontrol\" text=\"0\" edittype=\"checkbox\"/><Cell row=\"1\" col=\"1\" rowspan=\"2\" text=\"NO\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"2\" rowspan=\"2\" text=\"상품코드\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"3\" rowspan=\"2\" text=\"상품명\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"4\" rowspan=\"2\" text=\"설명\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"5\" rowspan=\"2\" text=\"원가\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"6\" rowspan=\"2\" text=\"상품가\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"7\" rowspan=\"2\" text=\"옵션가\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"8\" rowspan=\"2\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\" text=\"최종판매가\"/><Cell row=\"1\" col=\"9\" colspan=\"2\" text=\"상품분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"11\" colspan=\"2\" text=\"옵션\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"13\" rowspan=\"2\" text=\"등록일\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"14\" rowspan=\"2\" text=\"진열\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"15\" rowspan=\"2\" colspan=\"2\" text=\"재고수량/관리\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"9\" text=\"대분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"10\" text=\"중분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"11\" text=\"옵션\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"12\" text=\"세부사항\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/></Band><Band id=\"body\"><Cell displaytype=\"checkboxcontrol\" background=\"#ffffff\" textAlign=\"center\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" text=\"expr:currow + 1\" background=\"#ffffff\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"2\" background=\"#ffffff\" text=\"bind:PRODUCT_CODE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"3\" background=\"#ffffff\" text=\"bind:PRODUCT_NAME\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"4\" edittype=\"none\" background=\"#ffffff\" text=\"bind:PRODUCT_CONTENT\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"5\" background=\"#ffffff\" text=\"bind:COST_PRICE\" font=\"12px/normal &quot;Gulim&quot;\" edittype=\"none\"/><Cell col=\"6\" edittype=\"none\" background=\"#ffffff\" text=\"bind:PRODUCT_PRICE\" font=\"12px/normal &quot;Gulim&quot;\"/><Cell col=\"7\" edittype=\"none\" background=\"#ffffff\" text=\"bind:ADDITIONAL_PRICE\" font=\"12px/normal &quot;Gulim&quot;\"/><Cell col=\"8\" edittype=\"none\" background=\"#ffffff\" text=\"bind:TOTAL_PRICE\" font=\"12px/normal &quot;Gulim&quot;\"/><Cell col=\"9\" edittype=\"none\" background=\"#ffffff\" text=\"bind:MAIN_CATE_NM\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"10\" edittype=\"none\" background=\"#ffffff\" text=\"bind:SUB_CATE_NM\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"11\" background=\"#ffffff\" text=\"bind:OPTION_NAME\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\"/><Cell col=\"12\" edittype=\"none\" background=\"#ffffff\" text=\"bind:OPTION_VALUE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"13\" edittype=\"none\" background=\"#ffffff\" text=\"bind:INPUT_DT\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"date\"/><Cell col=\"14\" edittype=\"none\" background=\"#ffffff\" text=\"bind:IS_VISIBLE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\"/><Cell col=\"15\" edittype=\"mask\" background=\"#ffffff\" text=\"bind:QUANTITY\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"mask\" textareamaxlength=\"-1\" maskeditformat=\"####\"/><Cell col=\"16\" edittype=\"none\" text=\"재고변경\" font=\"12px/normal &quot;Gulim&quot;\" displaytype=\"buttoncontrol\" background=\"transparent\" cssclass=\"productCellBtnEdit\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("sta_listTitle","50","296","80","61",null,null,null,null,null,null,this);
@@ -333,6 +334,8 @@
         this.Form_Product_onload = function(obj,e)
         {
         	this.setTimer(1, 10); //10ms 후 실행
+
+
         };
 
         this.Form_Product_ontimer = function(obj,e){
@@ -364,14 +367,22 @@
 
 
 
-        // Calendar 값 → 'yyyy-MM-dd' 또는 빈 문자열
-        this._dateOrEmpty = function(cal) {
+        // 수정본: 8자리(yyyymmdd)와 10자리(yyyy-MM-dd) 모두 지원
+        // 앞단 공용 함수 교체
+        this._dateOrEmpty = function (cal) {
             if (!cal) return "";
-            var v = cal.value;                 // 값이 없으면 null/"" 임
-            if (v === undefined || v === null || v === "") return "";
-            v = v.toString();
-            if (v.length !== 8) return "";     // yyyymmdd 형식만 허용
-            return v.substr(0,4) + "-" + v.substr(4,2) + "-" + v.substr(6,2);
+            var v = (cal.text || cal.value || "").toString().trim();
+
+            // 이미 yyyy-MM-dd면 그대로
+            if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+
+            // yyyymmdd → yyyy-MM-dd
+            if (/^\d{8}$/.test(v)) {
+                return v.substr(0,4) + "-" + v.substr(4,2) + "-" + v.substr(6,2);
+            }
+
+            // Date 문자열 등은 버림(조건 안 넣음)
+            return "";
         };
 
 
@@ -383,9 +394,9 @@
         			val = nexacro.trim(val);
 
         			if(col == "SEARCH_TEXT"){
-        					val = val.replace(/\s+/g, "");                   // 일반 공백 제거
-        					val = val.replace(/[\u200B-\u200D\uFEFF]/g,"");  // 특수공백 제거
-        					val = val.toLowerCase();                         // 소문자 변환
+        				val = val.replace(/\s+/g, "");                   // 일반 공백 제거
+        				val = val.replace(/[\u200B-\u200D\uFEFF]/g,"");  // 특수공백 제거
+        				val = val.toLowerCase();                         // 소문자 변환
         			}
         		}
         		ds.setColumn(0, col, val);
@@ -397,7 +408,7 @@
         this._normalizeSearchText = function(text) {
             if (!text) return "";
 
-        // 모든 공백 제거 후 소문자로 변환
+        	// 모든 공백 제거 후 소문자로 변환
             return text.replace(/\s+/g, "").toLowerCase();
         };
 
@@ -426,12 +437,47 @@
 
 
 
-         //조회버튼
+        //조회버튼
         this.btn_view_onclick = function(obj,e)
         {
+        	//this.fn_validateDateRange(); // 날짜 검증
         	this.fn_search();
-
         };
+
+
+
+        this.fn_validateDateRange = function()
+        {
+            var start = this._dateOrEmpty(this.cal_start); // "yyyy-MM-dd"
+        	var end   = this._dateOrEmpty(this.cal_end);   // "yyyy-MM-dd"
+
+        	var now = new Date();
+        	var today = now.getFullYear() + "-"
+        	+ String(now.getMonth() + 1).padStart(2, "0") + "-"
+        	+ String(now.getDate()).padStart(2, "0");
+
+
+            // 날짜 미선택
+            if (!start || !end) {
+                this.alert("시작일과 종료일을 모두 선택해주세요.");
+                return false;
+            }
+
+        	if (start && end) {
+        		if (new Date(start) > new Date(end)) { this.alert("시작일은 종료일보다 늦을 수 없습니다."); return false; }
+        		var diff = (new Date(end) - new Date(start)) / (1000*60*60*24);
+        		if (diff > 365) { this.alert("조회 기간은 최대 1년까지만 가능합니다."); return false; }
+        	}
+
+        	var today = (function(d){return d.toISOString().slice(0,10);} )(new Date());
+        	if (end && end > today) { this.alert("미래 날짜는 선택할 수 없습니다."); return false; }
+        	return true;
+        };
+
+
+
+
+
 
         // 검색창
         this.Div00_00_edt_search_onkeydown = function(obj,e)
@@ -446,7 +492,8 @@
         this.fn_search = function() {
             // 1) 조회조건 Dataset 구성
             this.fn_makeSearchCond();
-
+        	trace(this.ds_searchCond.getColumn(0,"START_DATE"));
+        	trace(this.ds_searchCond.getColumn(0,"END_DATE"));
             // 2) 트랜잭션 호출 (검색조건 Dataset 하나로 전달)
             this.transaction(
                 "selectProductListByAdmin",            // 서비스 ID (콜백 분기용)
@@ -484,14 +531,30 @@
 
 
         /**
-         * 상품 진열상태 변경 공통 함수
-         * @param {string} newState - "Y" = 진열, "N" = 숨김
-         */
+        * 상품 진열상태 변경 공통 함수
+        * @param {string} newState - "Y" = 진열, "N" = 숨김
+        */
         this.fn_updateVisibleProd = function(newState)
         {
             var selRows = [];
         	var alreadyCnt = 0; // 이미 같은 상태인 상품 개수
+        	var checkedCnt = 0; // 체크된개수
 
+        	//체크상품있는지 확인
+        	for(var i=0; i<this.ds_out_proList.getRowCount(); i++) {
+        		if(this.ds_out_proList.getColumn(i, "chk") == 1) {
+        			checkedCnt++;
+        		}
+        	}
+
+        	if(checkedCnt == 0){
+        		this.alert("선택된 상품이 없습니다. \n진열 상태를 변경할 상품을 선택해주세요.");
+        		return; //함수 종료
+        	}
+
+
+
+        	//체크 항목 있을때만 실행
             for (var i=0; i<this.ds_out_proList.getRowCount(); i++) {
                 if (this.ds_out_proList.getColumn(i, "chk") == 1) {
         			var curState = this.ds_out_proList.getColumn(i,"IS_VISIBLE");
@@ -518,41 +581,40 @@
                     + (newState == "Y" ? "진열" : "숨김") + " 상태입니다.\n나머지 상품만 변경합니다.");
             }
 
-            if (!this.confirm("총 " + selRows.length + "건을 "
-                + (newState == "Y" ? "진열" : "숨김") + " 상태로 변경하시겠습니까?\n같은 상품계열은 모두 같은 상태로 변경됩니다.")) {
-                return;
-            }
+        	// 기존: if (!this.confirm("...")) return;
+        	this.fn_confirmCustom(
+        		"총 " + selRows.length + "건을 "
+        		+ (newState == "Y" ? "진열" : "숨김")
+        		+ " 상태로 변경하시겠습니까?\n같은 상품계열은 모두 같은 상태로 변경됩니다.",
+        		function(ok){
+        			if (!ok) return;   // 취소
 
-            this.ds_in.clearData();
+        			this.ds_in.clearData();
+        			for (var j=0; j<selRows.length; j++) {
+        				var row = this.ds_in.addRow();
+        				this.ds_in.setColumn(row, "PRODUCT_ID", selRows[j]);
+        				this.ds_in.setColumn(row, "IS_VISIBLE", newState);
+        			}
 
-            for (var j=0; j<selRows.length; j++) {
-                var row = this.ds_in.addRow();
-                this.ds_in.setColumn(row, "PRODUCT_ID", selRows[j]);
-                this.ds_in.setColumn(row, "IS_VISIBLE", newState);
-            }
+        			this.transaction(
+        				"updateProductVisibleByAdmin",
+        				"svc::updateProductVisibleByAdmin.do",
+        				"ds_in=ds_in","", "", "fn_callback", true
+        			);
+        		}.bind(this)
+        	);
 
-            trace(this.ds_in.saveXML()); //  디버깅: 서버로 보내는 데이터 확인
-
-            this.transaction(
-                "updateProductVisibleByAdmin",
-                "svc::updateProductVisibleByAdmin.do",
-                "ds_in=ds_in",
-                "",
-                "",
-                "fn_callback",
-                true
-            );
         };
 
         // 버튼 이벤트 연결
         this.btn_hide_onclick = function(obj,e)
         {
-        	    this.fn_updateVisibleProd("N");
+        	this.fn_updateVisibleProd("N");
         };
 
         this.btn_show_onclick = function(obj,e)
         {
-        		this.fn_updateVisibleProd("Y");
+        	this.fn_updateVisibleProd("Y");
         };
 
 
@@ -562,8 +624,8 @@
         // 재고 이전값 저장
         this.grid_list_oncellclick = function (obj, e) {
             if (e.col == 16) {   // 15번 컬럼이 재고(QUANTITY) 16번은 버튼
-               var row = e.row;
-        	   this._updateQuantityByButton(row);
+        		var row = e.row;
+        		this._updateQuantityByButton(row);
             }
         };
 
@@ -573,7 +635,7 @@
         // Dataset 값 변경시 (재고변경감지)
         this.ds_out_proList_oncolumnchanged = function(obj,e)
         {
-        	if(e.columnid == "QUANTITIY"){
+        	if(e.columnid == "QUANTITY"){
         		var n = nexacro.toNumber(e.newvalue);
 
         		if (n > 9999) {
@@ -620,35 +682,28 @@
         	var optionValue = this.ds_out_proList.getColumn(row, "OPTION_VALUE");
         	var sUserId = this.getUserId();
 
-            if (!this.confirm("상품:" + productName + "옵션:"+ optionName+"/"+optionValue+"의 재고를 " + oldVal + "개로 저장하시겠습니까?")) {
-                return;
-            }
+            this.fn_confirmCustom(
+        		"상품: " + productName + "\n옵션: " + optionName + "/" + optionValue +
+        		"\n재고를 " + oldVal + "개로 저장하시겠습니까?",
+        		function(ok){
+        			if (!ok) return;
 
-            this.ds_qu.clearData();
-            var r = this.ds_qu.addRow();
-            this.ds_qu.setColumn(r, "PRODUCT_ID", productId);
-            this.ds_qu.setColumn(r, "OPTION_ID", optionId);
-            this.ds_qu.setColumn(r, "QUANTITY", oldVal);
-            this.ds_qu.setColumn(r, "INPUT_ID", sUserId);
-        	this.ds_qu.setColumn(r, "UPDATE_ID", sUserId);
+        			this.ds_qu.clearData();
+        			var r = this.ds_qu.addRow();
+        			this.ds_qu.setColumn(r, "PRODUCT_ID", productId);
+        			this.ds_qu.setColumn(r, "OPTION_ID", optionId);
+        			this.ds_qu.setColumn(r, "QUANTITY", oldVal);
+        			this.ds_qu.setColumn(r, "INPUT_ID", sUserId);
+        			this.ds_qu.setColumn(r, "UPDATE_ID", sUserId);
 
-        	// 등록/수정자 세팅
-        	if (this.ds_out_proList.getColumn(row, "INPUT_ID")) {
-        		this.ds_out_proList.setColumn(row, "UPDATE_ID", sUserId);
-        	} else {
-        		this.ds_out_proList.setColumn(row, "INPUT_ID", sUserId);
-        	}
+        			this.transaction(
+        				"updateInventory",
+        				"svc::updateInventory.do?time=" + new Date().getTime(),
+        				"ds_qu=ds_qu","", "", "fn_callback", true
+        			);
+        		}.bind(this)
+        	);
 
-
-            this.transaction(
-                "updateInventory",
-                "svc::updateInventory.do?time=" + new Date().getTime(),
-                "ds_qu=ds_qu",
-                "",
-                "",
-                "fn_callback",
-                true
-            );
         };
 
 
@@ -661,11 +716,124 @@
 
 
 
+        //콜백
+        this.fn_callback = function(strSvcID, nErrorCode, strErrorMag){
+            if (nErrorCode < 0) {
+                this.alert(strErrorMag);
+        		return;
+            }
+
+            switch(strSvcID){
+        	case "selectProductListByAdmin":
+        		var ea = this.ds_out_proList.getRowCount();
+        		this.stc_total.set_text("총 "+ea+"건");
+        		break;
+        	case "selectMainCategoryComboByAdmin":
+        		this.ds_mainCate.insertRow(0);
+        		this.ds_mainCate.setColumn(0,"MAIN_CATE_ID","");
+        		this.ds_mainCate.setColumn(0,"MAIN_CATE_NM","- 전체 -");
+        		break;
+        	case "selectSubCategoryComboByAdmin":
+        		this.ds_subCate.insertRow(0);
+        		this.ds_subCate.setColumn(0,"SUB_CATE_ID","");
+        		this.ds_subCate.setColumn(0,"SUB_CATE_NM","- 전체 -");
+        		break;
+
+        	case "updateProductVisibleByAdmin":
+        		// 1) 화면 데이터 갱신
+        		for (var i=0; i<this.ds_in.getRowCount(); i++) {
+        			var prodId   = this.ds_in.getColumn(i, "PRODUCT_ID");
+        			var newState = this.ds_in.getColumn(i, "IS_VISIBLE");
+
+        			for (var r=0; r<this.ds_out_proList.getRowCount(); r++) {
+        				if (this.ds_out_proList.getColumn(r, "PRODUCT_ID") == prodId) {
+        					this.ds_out_proList.setColumn(r, "IS_VISIBLE", newState);
+
+        					// 2) 하이라이트 플래그 ON
+        					this.ds_out_proList.setColumn(r, "HILIGHT", "Y");
+
+        					// 3) 1.2초 뒤 플래그 OFF (색상 원복)
+        					var tId = "hi_" + r;
+        					this.setTimer(tId, 1200);
+        				}
+        			}
+        		}
+
+        		this.alert("상품 진열상태가 변경되었습니다.");
+
+        		//  4) 하이라이트가 잠시 표시된 후 재조회 (1.2초 뒤)
+        		this.setTimer("refreshList", 1300);
+        		break;
 
 
 
+        		// 타이머에서 하이라이트 해제
+        		this.Form_Product_ontimer = function(obj, e)
+        		{
+        			var id = String(e.timerid);
+
+        			// 1) 하이라이트 해제 타이머
+        			if (id.indexOf("hi_") === 0) {
+        				var row = parseInt(id.split("_")[1], 10);
+        				if (row >= 0 && row < this.ds_out_proList.getRowCount()) {
+        					this.ds_out_proList.setColumn(row, "HILIGHT", ""); // OFF
+        				}
+        				this.killTimer(e.timerid);
+        			}
+
+        			// 2) 재조회 타이머
+        			if (id == "refreshList") {
+        				this.killTimer("refreshList");
+        				this.fn_search();  // ← 하이라이트 보여준 뒤 재조회
+        			}
+        		};
 
 
+        		//this.fn_search();
+
+        		break;
+
+        	case "updateInventory":
+        		this.alert("재고 변경이 완료되었습니다.")
+        		this.fn_search();
+        		break;
+
+
+        	}
+
+        };
+
+        // 그리드 전체 클릭 (멀티헤더 대응)
+        this.grid_list_onheadclick = function (obj, e)
+        {
+            var ds = this.ds_out_proList;
+            var chkCol = "chk";
+            var rowCount = ds.getRowCount();
+
+            // [1] 클릭한 헤더 셀이 체크박스 컬럼(0)일 때만 검사
+            if (e.col == 0)
+            {
+                //  '목록'(row=0 등) 영역 클릭 시 무시
+                var dispType = obj.getCellProperty("head", e.cell, "displaytype");
+                if (dispType != "checkboxcontrol") return;
+
+                // [2] 현재 헤더 체크 상태 읽기
+                var headVal = obj.getCellProperty("head", e.cell, "text");
+                var newVal = (headVal == "1" ? "0" : "1");
+
+                // [3] 헤더 표시 갱신
+                obj.setCellProperty("head", e.cell, "text", newVal);
+
+                // [4] 전체 행 데이터셋에 반영
+                for (var i = 0; i < rowCount; i++) {
+                    ds.setColumn(i, chkCol, newVal);
+                }
+            }
+            // [5] 데이터셋 전체 반영
+            for (var j = 0; j < rowCount; j++) {
+                ds.setColumn(j, chkCol, newVal);
+            }
+        };
 
 
 
@@ -676,17 +844,17 @@
 
 
         /****************************************************
-         * [상수] 엑셀 JSP URL
-         *  - 서버 주소/포트/컨텍스트 맞춰 주세요.
-         *  - 예) http://localhost:8080/admin/excelExport.jsp
-         ****************************************************/
+        * [상수] 엑셀 JSP URL
+        *  - 서버 주소/포트/컨텍스트 맞춰 주세요.
+        *  - 예) http://localhost:8080/admin/excelExport.jsp
+        ****************************************************/
         this.EXCEL_JSP_URL = "http://localhost:8080/admin/excelExport.jsp";
 
 
         /****************************************************
-         * ① FileDownload 컴포넌트를 준비하는 함수
-         *  - 없으면 생성해서 화면에 붙입니다.
-         ****************************************************/
+        * ① FileDownload 컴포넌트를 준비하는 함수
+        *  - 없으면 생성해서 화면에 붙입니다.
+        ****************************************************/
         this._ensureFileDownload = function () {
             // 이미 만들어둔 적 있으면 재사용
             if (this.filedown && this.filedown instanceof nexacro.FileDownload) return;
@@ -697,24 +865,24 @@
 
             // 성공/실패 로그 및 안내
             fd.addEventHandler("onsuccess", function (obj, e) {
-                trace("[Excel] 다운로드 성공");
-            }, this);
+        			trace("[Excel] 다운로드 성공");
+        		}, this);
 
             fd.addEventHandler("onerror", function (obj, e) {
-                // e.errormsg 에러메시지 확인
-                this.alert("엑셀 다운로드 실패: " + e.errormsg);
-            }, this);
+        			// e.errormsg 에러메시지 확인
+        			this.alert("엑셀 다운로드 실패: " + e.errormsg);
+        		}, this);
 
             this.filedown = fd;
         };
 
 
         /****************************************************
-         * ② Grid + Dataset → XML 문자열 생성 함수
-         *  - 이전에 쓰던 헤더/바디 XML 포맷을 그대로 생성.
-         *  - Grid 멀티헤더(행/열 병합) 정보를 모두 수집해서 <Header> 구성
-         *  - Body는 화면에 보이는 값(grid.getCellText) 기준으로 <Body> 구성
-         ****************************************************/
+        * ② Grid + Dataset → XML 문자열 생성 함수
+        *  - 이전에 쓰던 헤더/바디 XML 포맷을 그대로 생성.
+        *  - Grid 멀티헤더(행/열 병합) 정보를 모두 수집해서 <Header> 구성
+        *  - Body는 화면에 보이는 값(grid.getCellText) 기준으로 <Body> 구성
+        ****************************************************/
         this._buildGridXmlForExcel = function () {
             // 내 화면의 그리드/데이터셋 참조
             var grid = this.grid_list;                 // 그리드 객체
@@ -746,8 +914,8 @@
 
                 // CDATA로 감싸 특수문자 안전하게
                 xmlStr += "<Cell row='" + row + "' col='" + col +
-                          "' rowspan='" + rowspan + "' colspan='" + colspan +
-                          "'><![CDATA[" + text + "]]></Cell>";
+        		"' rowspan='" + rowspan + "' colspan='" + colspan +
+        		"'><![CDATA[" + text + "]]></Cell>";
             }
             xmlStr += "</Header>";
 
@@ -783,11 +951,11 @@
 
 
         /****************************************************
-         * ③ 엑셀 버튼 클릭 → (권장) 토큰 방식 다운로드
-         *  - 1) xmlData를 서버 세션에 저장(prepare)
-         *  - 2) token 받으면 FileDownload로 GET 다운로드
-         *  - 이렇게 해야 “다운로드 폴더”로 떨어집니다.
-         ****************************************************/
+        * ③ 엑셀 버튼 클릭 → (권장) 토큰 방식 다운로드
+        *  - 1) xmlData를 서버 세션에 저장(prepare)
+        *  - 2) token 받으면 FileDownload로 GET 다운로드
+        *  - 이렇게 해야 “다운로드 폴더”로 떨어집니다.
+        ****************************************************/
         this.btn_excel_onclick = function (obj, e) {
             // 0) FileDownload 준비
             this._ensureFileDownload();
@@ -905,10 +1073,12 @@
             this.grid_list.addEventHandler("onkillfocus",this.grid_list_onkillfocus,this);
             this.grid_list.addEventHandler("oncellclick",this.grid_list_oncellclick,this);
             this.grid_list.addEventHandler("oncelldblclick",this.grid_list_oncelldblclick,this);
+            this.grid_list.addEventHandler("onheadclick",this.grid_list_onheadclick,this);
             this.sta_listTitle.addEventHandler("onclick",this.sta_listTitle_onclick,this);
             this.sta_prodType.addEventHandler("onclick",this.sta_prodType_onclick,this);
             this.cmb_searchType.addEventHandler("onitemchanged",this.cmb_searchType_onitemchanged,this);
             this.cmb_cate1.addEventHandler("onitemchanged",this.cmb_cate1_onitemchanged,this);
+            this.cal_end.addEventHandler("onchanged",this.cal_end_onchanged,this);
             this.sta_listTitle00.addEventHandler("onclick",this.sta_listTitle_onclick,this);
             this.btn_reg.addEventHandler("onclick",this.btn_reg_onclick,this);
             this.btn_view.addEventHandler("onclick",this.btn_view_onclick,this);

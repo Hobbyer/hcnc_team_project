@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Pop_BoardInsert" width="691" height="628" titletext="게시글 작성" background="#F8F9FA" border="1px solid #E0E0E0" borderRadius="10px" onload="Pop_BoardInsert_onload" ontimer="Pop_BoardInsert_ontimer" onbeforeclose="Pop_BoardInsert_onbeforeclose">
+  <Form id="Pop_BoardInsert" width="691" height="628" titletext="게시글 작성" background="white" border="1px solid  #E0E0E0" borderRadius="10px" onload="Pop_BoardInsert_onload" ontimer="Pop_BoardInsert_ontimer" onbeforeclose="Pop_BoardInsert_onbeforeclose">
     <Layouts>
       <Layout height="628" width="691">
-        <Static id="sta_title" taborder="0" text="게시글 작성" left="30" top="-5" height="40" font="normal 18pt/normal &quot;Noto Sans KR Medium&quot;" color="#333333" width="0"/>
+        <Static id="sta_title" taborder="0" text="게시글 작성" left="30" top="-5" height="40" font="normal 18pt/normal &quot;Noto Sans KR Medium&quot;" color=" #333333" width="0"/>
         <!-- 게시판 구분 -->
-        <Static id="sta_boardType" taborder="1" text="게시판" left="40" top="20" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color="#555555"/>
-        <Combo id="cmb_boardType" taborder="2" left="100" top="25" width="210" height="30" borderRadius="5px" border="1px solid #CCCCCC" displaynulltext="게시판을 선택하세요" innerdataset="ds_boardType" codecolumn="NAME" datacolumn="NAME" onitemchanged="cmb_boardType_onitemchanged"/>
+        <Static id="sta_boardType" taborder="1" text="게시판" left="40" top="20" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color=" #555555"/>
+        <Combo id="cmb_boardType" taborder="2" left="100" top="25" width="210" height="30" borderRadius="5px" border="1px solid  #CCCCCC" displaynulltext="게시판을 선택하세요" innerdataset="ds_boardType" codecolumn="NAME" datacolumn="NAME" onitemchanged="cmb_boardType_onitemchanged"/>
         <!-- 제목 -->
-        <Static id="sta_postTitle" taborder="3" text="제목" left="40" top="70" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color="#555555"/>
-        <Edit id="edt_postTitle" taborder="4" left="100" top="75" right="31" height="30" borderRadius="5px" border="1px solid #CCCCCC"/>
+        <Static id="sta_postTitle" taborder="3" text="제목" left="40" top="70" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color=" #555555"/>
+        <Edit id="edt_postTitle" taborder="4" left="100" top="75" right="31" height="30" borderRadius="5px" border="1px solid  #CCCCCC"/>
         <!-- 내용 -->
-        <Static id="sta_postContent" taborder="5" text="내용" left="40" top="120" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color="#555555"/>
-        <WebBrowser id="web_postContent" taborder="6" left="40" top="165" right="31" height="385" borderRadius="5px" border="1px solid #CCCCCC" onloadcompleted="web_postContent_onloadcompleted"/>
+        <Static id="sta_postContent" taborder="5" text="내용" left="40" top="120" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color=" #555555"/>
+        <WebBrowser id="web_postContent" taborder="6" left="40" top="165" right="31" height="385" borderRadius="5px" border="1px solid  #CCCCCC" onloadcompleted="web_postContent_onloadcompleted"/>
         <!-- 버튼 -->
-        <Button id="btn_cancel" taborder="7" text="취소" width="100" height="40" bottom="18" right="141" onclick="btn_cancel_onclick" background="#E5E7EB" color="#555555" border="0px none" borderRadius="5px" cursor="pointer" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;"/>
-        <Button id="btn_save" taborder="8" text="작성 완료" width="100" height="40" bottom="18" right="31" onclick="btn_save_onclick" background="#5C6BC0" color="white" border="0px none" borderRadius="5px" cursor="pointer" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;"/>
-        <Static id="sta_user" taborder="9" text="작성자" left="470" top="20" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color="#555555" onclick="sta_boardType00_onclick"/>
-        <Edit id="edt_user" taborder="10" left="530" top="25" right="32" height="30" borderRadius="5px" border="1px solid #CCCCCC" readonly="true"/>
+        <Button id="btn_cancel" taborder="7" text="취소" width="100" height="40" bottom="18" right="141" onclick="btn_cancel_onclick" background=" #E5E7EB" color=" #555555" border="0px none" borderRadius="5px" cursor="pointer" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;"/>
+        <Button id="btn_save" taborder="8" text="작성 완료" width="100" height="40" bottom="18" right="31" onclick="btn_save_onclick" background=" #5C6BC0" color="white" border="0px none" borderRadius="5px" cursor="pointer" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;"/>
+        <Static id="sta_user" taborder="9" text="작성자" left="470" top="20" width="80" height="40" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" color=" #555555" onclick="sta_boardType00_onclick"/>
+        <Edit id="edt_user" taborder="10" left="530" top="25" right="32" height="30" borderRadius="5px" border="1px solid  #CCCCCC" readonly="true"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -52,12 +52,12 @@
     </Objects>
     <Bind>
       <BindItem id="item0" compid="edt_postTitle" propid="value" datasetid="ds_post" columnid="POST_TITLE"/>
-      <BindItem id="item1" compid="cmb_boardType" propid="value" datasetid="ds_post" columnid="BOARD_ID"/>
       <BindItem id="item2" compid="edt_user" propid="value" datasetid="ds_post" columnid="MEMBER_ID"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[// Form 로드시 실행
 this.Pop_BoardInsert_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	var isSaved = false;  // 초기화
     // 데이터셋 초기화
     this.ds_post.clearData();
 	//데이터셋 로우 추가
@@ -289,9 +289,9 @@ this.fnCallback = function(svcID, errorCode, errorMsg)
     }
     
     switch(svcID) {
-        case "InsertPostByAdmin":
+        case "insertPostByAdmin":
             alert("게시글이 성공적으로 작성되었습니다.");
-            
+            isSaved = true;
             // 부모 창에 결과 전달 (목록 새로고침)
             if(this.opener && this.opener.fnRefreshList) {
                 this.opener.fnRefreshList();
@@ -305,7 +305,7 @@ this.fnCallback = function(svcID, errorCode, errorMsg)
 // 폼 닫기 전 확인
 this.Pop_BoardInsert_onbeforeclose = function(obj:nexacro.Form,e:nexacro.CloseEventInfo)
 {
-    if(e.reason == "success") {
+    if(isSaved) {
         return;
     }
     
@@ -326,9 +326,9 @@ this.cmb_boardType_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChan
 	
 	  // 게시판 구분 검사
 	if(val == "공지사항"){
-        this.ds_search.setColumn(0, "BOARD_ID", "1");  // 전체는 ALL 같은 값으로 보냄 (쿼리에선 1,3,4로 조회함)
+        this.ds_post.setColumn(0, "BOARD_ID", "1");    // 전체는 ALL 같은 값으로 보냄 (쿼리에선 1,3,4로 조회함)
     } else if(val == "FAQ"){
-        this.ds_search.setColumn(0, "BOARD_ID", "3");    // 공지사항
+        this.ds_post.setColumn(0, "BOARD_ID", "3");    // 공지사항
     } 
 };
 ]]></Script>

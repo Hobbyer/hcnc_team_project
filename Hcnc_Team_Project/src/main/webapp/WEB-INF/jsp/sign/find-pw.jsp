@@ -79,7 +79,9 @@
       });
     });
   </script>
-  <body style="background-color: #f7f7f7">
+
+  <body>
+    <jsp:include page="../layout/header.jsp" />
     <style>
       input[type="number"]::-webkit-inner-spin-button,
       input[type="number"]::-webkit-outer-spin-button {
@@ -184,7 +186,7 @@
       }
     </style>
 
-    <div class="container">
+    <div class="container" style="background-color: #f7f7f7">
       <div class="inner" style="margin-top: 20px">
         <div class="loginbox">
           <div class="login-header">회원정보 찾기</div>
@@ -326,5 +328,7 @@
         </div>
       </div>
     </div>
+    <div style="height: 20px"></div>
+    <jsp:include page="../layout/footer.jsp" />
   </body>
 </html>

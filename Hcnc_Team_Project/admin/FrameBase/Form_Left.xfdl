@@ -13,7 +13,7 @@
                 <Row size="41"/>
               </Rows>
               <Band id="body">
-                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LEVEL" cssclass="bind:CSSCLASS" border="0px"/>
+                <Cell text="bind:MENU_NM" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:MENU_LEVEL" cssclass="expr:(MENU_LEVEL==0?'parent':(MENU_LEVEL==1?'child':''))" border="0px"/>
               </Band>
             </Format>
           </Formats>
@@ -40,10 +40,10 @@ this.fnGetLeftMenu = function()
         var sMenuId = this.ds_left.getColumn(i, "MENU_ID");
         if (sMenuId.length == 2) {
             this.ds_left.setColumn(i, "MENU_LEVEL", 0);   // 루트
-            this.ds_left.setColumn(i, "CSSCLASS", "menuRoot"+i);
-        
+            this.ds_left.setColumn(i, "CSSCLASS", "parent");
         } else if (sMenuId.length == 4) {
             this.ds_left.setColumn(i, "MENU_LEVEL", 1);   // 자식
+			this.ds_left.setColumn(i, "CSSCLASS", "child");
         }
     }
 };

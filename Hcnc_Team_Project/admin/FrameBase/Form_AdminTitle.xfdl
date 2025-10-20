@@ -7,7 +7,7 @@
         <!-- ⭐ h3 제목 크기 조정 -->
         <Static id="sta_h3" taborder="0" text="h3 title area" left="27" top="17" height="34" onclick="static_board_onclick" font="normal 16pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="121"/>
         <!-- ⭐ 위치 표시 제거 또는 작게 -->
-        <Static id="sta_location" taborder="1" text="⌂ &gt; 회원 &gt; 회원관리" left="45" top="49" height="20" onclick="static_board_onclick" font="normal 8pt/normal &quot;Noto Sans KR DemiLight&quot;" color="#666666" right="102"/>
+        <Static id="sta_location" taborder="1" left="45" top="49" height="20" onclick="static_board_onclick" font="normal 8pt/normal &quot;Noto Sans KR DemiLight&quot;" color="#666666" right="102"/>
         <Div id="Div00" taborder="2" left="-40" top="0" right="-80" bottom="0" boxShadow="inset 0px 2px 2px 2px rgba(229,229,229,0.15)"/>
       </Layout>
     </Layouts>

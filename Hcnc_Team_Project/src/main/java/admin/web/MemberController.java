@@ -835,6 +835,26 @@ public class MemberController {
 		return result;
 	}
 
+
+	/**
+	 * 임시 비밀번호 이메일 본문 생성 By. PJ 10.02
+	 */
+	private String buildPasswordEmailBody(String memberId, String tempPassword) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("안녕하세요. DDD.D 관리자 페이지입니다.\n\n");
+		sb.append("임시 비밀번호 발급 요청에 따라 새로운 비밀번호를 발급해드립니다.\n\n");
+		sb.append("━━━━━━━━━━━━━━━━━━━━━━\n");
+		sb.append("아이디: ").append(memberId).append("\n");
+		sb.append("임시 비밀번호: ").append(tempPassword).append("\n");
+		sb.append("유효기간: 1분\n");
+		sb.append("━━━━━━━━━━━━━━━━━━━━━━\n\n");
+		sb.append("※ 보안을 위해 로그인 후 반드시 비밀번호를 변경해주세요.\n");
+		sb.append("※ 본인이 요청하지 않은 경우 즉시 관리자에게 문의하세요.\n\n");
+		sb.append("감사합니다.\n");
+		sb.append("DDD.D 관리팀");
+		return sb.toString();
+	};
+
 	/**
 	 * 임시 비밀번호 생성 (10자리) //by.Pj 10.01
 	 */
@@ -869,25 +889,6 @@ public class MemberController {
 		}
 
 		return new String(arr);
-	}
-
-	/**
-	 * 임시 비밀번호 이메일 본문 생성 By. PJ 10.02
-	 */
-	private String buildPasswordEmailBody(String memberId, String tempPassword) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("안녕하세요. DDD.D 관리자 페이지입니다.\n\n");
-		sb.append("임시 비밀번호 발급 요청에 따라 새로운 비밀번호를 발급해드립니다.\n\n");
-		sb.append("━━━━━━━━━━━━━━━━━━━━━━\n");
-		sb.append("아이디: ").append(memberId).append("\n");
-		sb.append("임시 비밀번호: ").append(tempPassword).append("\n");
-		sb.append("유효기간: 1분\n");
-		sb.append("━━━━━━━━━━━━━━━━━━━━━━\n\n");
-		sb.append("※ 보안을 위해 로그인 후 반드시 비밀번호를 변경해주세요.\n");
-		sb.append("※ 본인이 요청하지 않은 경우 즉시 관리자에게 문의하세요.\n\n");
-		sb.append("감사합니다.\n");
-		sb.append("DDD.D 관리팀");
-		return sb.toString();
 	}
 
 }

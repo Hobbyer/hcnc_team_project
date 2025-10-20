@@ -63,7 +63,7 @@
 
             obj = new Static("stc_ship00",null,"10","460","36","12%",null,null,null,null,null,this.search_area.form);
             obj.set_taborder("2");
-            obj.set_text("택배비, 무료배송조건, 추가사유, 추가금 수정후 저장버튼을 눌러주세요 ->");
+            obj.set_text("* 택배비, 무료배송조건, 추가사유, 추가금 수정후 저장버튼을 눌러주세요 ->");
             obj.set_font("normal 9pt/normal \"Noto Sans KR Medium\"");
             obj.set_textAlign("right");
             this.search_area.addChild(obj.name, obj);

@@ -117,8 +117,18 @@ public class BannerService {
             if (dsFile != null && !dsFile.isEmpty()) {
                 String fileUrl = (String) dsFile.get(0).get("IMG_PATH");
                 
-                // preview에서 banner로 파일 이동
-                uploadFile.moveFile(fileUrl, ImageType.BANNER);
+                // preview에서 banner로 파일 이동 : 조건추거
+                if (fileUrl != null && fileUrl.contains("/preview/")) {
+                    uploadFile.moveFile(fileUrl, ImageType.BANNER);
+                    
+                    String fileName = uploadFile.extractFileName(fileUrl);
+                    String finalPath = "http://192.168.0.150:5000/dood/banner/" + fileName;
+                    
+                    // dsBUpdate에 IMG_PATH 설정
+                    dsBUpdate.put("IMG_PATH", finalPath);
+                    dsBUpdate.put("IMG_ORIGIN_NAME", dsFile.get(0).get("IMG_ORIGIN_NAME"));
+                    dsBUpdate.put("IMG_ATTACHED_NAME", fileName);
+                }
                 
                 String fileName = uploadFile.extractFileName(fileUrl);
                 String finalPath = "http://192.168.0.150:5000/dood/banner/" + fileName;

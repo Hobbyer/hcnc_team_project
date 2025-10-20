@@ -531,11 +531,6 @@ input::-ms-clear,input::-ms-reveal
 {
 	font : 12px "Gulim";
 }
-.GridCellControl .celltreeitem .treeitemtext
-{
-	font : 12px "Gulim";
-	color : #666666;
-}
 .GridCellControl .celltreeline
 {
 	border : 1px dotted #909090;

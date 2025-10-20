@@ -3,7 +3,7 @@
   <Form id="Form_MemberDetail" width="1350" height="700" titletext="New Form" onload="Form_MemberDetail_onload" background="#F4F7FE">
     <Layouts>
       <Layout height="700" width="1350">
-        <Div id="detail_box" taborder="0" text="" left="15" top="18" width="1325" height="662" borderRadius="8px" background="#fff" boxShadow="0 2px 6px rgba(0,0,0,0.05)">
+        <Div id="detail_box" taborder="0" text="" left="40" top="18" height="662" borderRadius="8px" background="#fff" boxShadow="0 2px 6px rgba(0,0,0,0.05)" width="1270">
           <Layouts>
             <Layout>
               <Static id="m" taborder="0" text="아이디" left="84" top="85" width="40" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
@@ -16,7 +16,7 @@
               <Static id="Static00_00_00_00_00_00_00" taborder="7" text="성별" left="507" top="85" width="28" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
               <Static id="Static00_00_00_00_00_00_00_00" taborder="8" text="등급" left="507" top="161" width="28" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
               <Static id="Static00_00_00_00_00_00_00_00_00" taborder="9" text="회원타입" left="478" top="237" width="57" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Button id="close_btn" taborder="10" text="뒤로가기" left="715" top="566" width="110" height="46" background=" #9ca3af" borderRadius="4px" color="#fff" font="13px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_close_btn_onclick"/>
+              <Button id="close_btn" taborder="10" text="뒤로가기" left="705" top="566" width="119" height="46" background="#f5f5f5" borderRadius="8px" color="#666666" font="13px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_close_btn_onclick" border="1px solid #e0e0e0" padding="14px 32px 14px 32px"/>
               <Static id="m00" taborder="11" text="로그인 타입" left="468" top="313" width="77" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
               <Static id="m00_00" taborder="12" text="첫 로그인 날짜" left="455" top="389" width="90" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
               <Static id="m00_00_00" taborder="13" text="마지막 로그인 날짜" left="423" top="464" width="125" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
@@ -24,24 +24,24 @@
               <Static id="m00_00_00_00_00" taborder="15" text="누적 금액" left="905" top="161" width="61" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
               <Static id="m00_00_00_00_00_00" taborder="16" text="가입 날짜" left="904" top="237" width="61" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
               <Static id="m00_00_00_00_00_00_00" taborder="17" text="최종 수정 날짜" left="880" top="316" width="91" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Radio id="gender_radio" taborder="18" left="564" top="86" width="231" height="24" onitemchanged="detail_box_gender_radio_onitemchanged" innerdataset="ds_gender" codecolumn="GENDER" datacolumn="CODE" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Radio id="type_radio" taborder="19" left="564" top="239" width="267" height="27" innerdataset="ds_type" codecolumn="MEMBER_TYPE" datacolumn="CODE" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Radio id="status_radio" taborder="20" left="988" top="88" width="271" height="24" innerdataset="ds_status" codecolumn="STATUS" datacolumn="CODE" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Edit id="detail_loginType00" taborder="21" left="565" top="304" width="233" height="46" border="1px solid black" borderRadius="8px"/>
-              <Edit id="detail_price_amount00" taborder="22" left="993" top="156" width="263" height="43" border="1px solid black" borderRadius="8px"/>
-              <Calendar id="dstail_input_dt00" taborder="23" left="991" top="224" width="265" height="48" border="1px solid black" borderRadius="8px"/>
-              <Calendar id="dstail_update_dt" taborder="24" left="991" top="302" width="263" height="48" border="1px solid black" borderRadius="8px"/>
-              <Combo id="grade_combo00" taborder="25" text="Combo00" left="565" top="151" width="234" height="47" innerdataset="ds_grade" codecolumn="GRADE_CODE" datacolumn="GRADE_NAME" border="1px solid black" borderRadius="8px"/>
-              <Edit id="detail_email00" taborder="26" left="155" top="308" width="231" height="42" border="1px solid black" borderRadius="8px"/>
-              <Edit id="dstail_name00" taborder="27" left="155" top="232" width="231" height="42" onchanged="insert_box_insert_name_onchanged" border="1px solid black" borderRadius="8px"/>
-              <Edit id="detail_id00" taborder="28" left="154" top="81" width="232" height="41" border="1px solid black" borderRadius="8px"/>
+              <Radio id="gender_radio" taborder="18" left="564" top="79" width="231" height="43" onitemchanged="detail_box_gender_radio_onitemchanged" innerdataset="ds_gender" codecolumn="GENDER" datacolumn="CODE" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;" background="#f8f9fa" border="1px solid #e5e7eb" borderRadius="8px" padding="8px 16px 8px 16px" wordSpacing="20px"/>
+              <Radio id="type_radio" taborder="19" left="566" top="230" width="233" height="43" innerdataset="ds_type" codecolumn="MEMBER_TYPE" datacolumn="CODE" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;" background="#f8f9fa" border="1px solid #e5e7eb" borderRadius="8px" padding="8px 16px 8px 16px" wordSpacing="20px"/>
+              <Radio id="status_radio" taborder="20" left="994" top="82" width="260" height="44" innerdataset="ds_status" codecolumn="STATUS" datacolumn="CODE" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;" background="#f8f9fa" border="1px solid #e5e7eb" borderRadius="8px" padding="8px 16px 8px 16px" wordSpacing="20px"/>
+              <Edit id="detail_loginType00" taborder="21" left="565" top="304" width="233" height="46" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Edit id="detail_price_amount00" taborder="22" left="993" top="156" width="263" height="43" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Calendar id="dstail_input_dt00" taborder="23" left="991" top="224" width="265" height="48" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Calendar id="dstail_update_dt" taborder="24" left="991" top="302" width="263" height="48" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Combo id="grade_combo00" taborder="25" text="Combo00" left="565" top="151" width="234" height="47" innerdataset="ds_grade" codecolumn="GRADE_CODE" datacolumn="GRADE_NAME" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Edit id="detail_email00" taborder="26" left="155" top="308" width="231" height="42" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Edit id="dstail_name00" taborder="27" left="155" top="232" width="231" height="42" onchanged="insert_box_insert_name_onchanged" border="1px solid #e0e0e0" borderRadius="8px" font="14px/normal &quot;맑은 고딕&quot;" color="#333333" background="#fafafa" padding="12px 16px 12px 16px"/>
+              <Edit id="detail_id00" taborder="28" left="154" top="81" width="232" height="41" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" padding="12px 16px 12px 16px" color="#333333" font="14px/normal &quot;맑은 고딕&quot;"/>
               <Static id="m01" taborder="29" text="비밀번호" left="68" top="162" width="56" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Edit id="detail_password" taborder="30" left="155" top="156" width="231" height="42" password="true" border="1px solid black" borderRadius="8px"/>
-              <Button id="update_btn" taborder="31" text="수정하기" left="565" top="566" width="110" height="46" onclick="detail_box_Button00_onclick" background="#2563eb" borderRadius="4px" color="#fff" font="13px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Calendar id="detail_birth" taborder="32" left="155" top="460" width="230" height="42" border="1px solid black" borderRadius="8px"/>
-              <Calendar id="detail_first_login_dt" taborder="33" left="567" top="379" width="231" height="46" border="1px solid black" borderRadius="8px"/>
-              <Calendar id="detail_last_login_dt" taborder="34" left="566" top="457" width="232" height="44" border="1px solid black" borderRadius="8px"/>
-              <MaskEdit id="detail_phoneNumber00" taborder="35" left="154" top="384" width="231" height="42" border="1px solid black" borderRadius="8px" readonly="true" format="###-####-####" type="string"/>
+              <Edit id="detail_password" taborder="30" left="155" top="156" width="231" height="42" password="true" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Button id="update_btn" taborder="31" text="수정하기" left="565" top="566" width="120" height="46" onclick="detail_box_Button00_onclick" background="#667ee" borderRadius="8px" color="#ffffff" font="13px/normal &quot;Noto Sans KR Black&quot;" padding="14px 32px 14px 32px"/>
+              <Calendar id="detail_birth" taborder="32" left="155" top="460" width="230" height="42" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Calendar id="detail_first_login_dt" taborder="33" left="567" top="379" width="231" height="46" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" padding="12px 16px 12px 16px" font="14px/normal &quot;맑은 고딕&quot;"/>
+              <Calendar id="detail_last_login_dt" taborder="34" left="566" top="457" width="232" height="44" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <MaskEdit id="detail_phoneNumber00" taborder="35" left="154" top="384" width="231" height="42" border="1px solid #e0e0e0" borderRadius="8px" readonly="true" format="###-####-####" type="string" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
             </Layout>
           </Layouts>
           <InitValue>
@@ -187,7 +187,34 @@ this.Form_MemberDetail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInf
 	this.fn_memberDetail(memberId);
 	this.fn_gradeSearch();
 	
+	// 🎨 읽기 전용 필드 스타일 설정
+    this.fn_setReadonlyStyle();
+	
+	// 🆕 추가: 수정하기 버튼 초기 색상
+	this.detail_box.form.update_btn.set_background("#667eea");
+	this.detail_box.form.update_btn.set_color("#ffffff");
 };
+
+// =====  읽기 전용 필드 스타일 =====
+this.fn_setReadonlyStyle = function()
+{
+    // 수정 불가능한 필드들 (아이디, 가입날짜, 로그인타입 등)
+    var readonlyFields = [
+        this.detail_box.form.detail_id,
+        this.detail_box.form.detail_join_dt,
+        this.detail_box.form.detail_total_amount,
+        this.detail_box.form.detail_login_type
+    ];
+    
+    for(var i=0; i<readonlyFields.length; i++) {
+        if(readonlyFields[i]) {
+            readonlyFields[i].set_background("#f0f0f0");
+            readonlyFields[i].set_color("#999999");
+            readonlyFields[i].set_enable(false);
+        }
+    }
+};
+
 
 //상세 조회 함수
 this.fn_memberDetail = function(memberId){
@@ -300,6 +327,31 @@ this.fn_memeberUpdate = function(memberId){
 	this.transaction(strSvcID,setURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
 }
 
+//등급에서 전체 제외하고 등급 목록 
+this.fn_filterGradeList = function()
+{
+    var filteredData = [];
+    
+    for(var i=0; i<this.ds_grade.getRowCount(); i++){
+        var gradeCode = this.ds_grade.getColumn(i, "GRADE_CODE");
+        
+        if(gradeCode != "") {
+            filteredData.push({
+                GRADE_CODE: gradeCode,
+                GRADE_NAME: this.ds_grade.getColumn(i, "GRADE_NAME")
+            });
+        }
+    }
+    
+    this.ds_grade.clearData();
+    
+    for(var i=0; i<filteredData.length; i++){
+        var nRow = this.ds_grade.addRow();
+        this.ds_grade.setColumn(nRow, "GRADE_CODE", filteredData[i].GRADE_CODE);
+        this.ds_grade.setColumn(nRow, "GRADE_NAME", filteredData[i].GRADE_NAME);
+    }
+};
+
 
 // 콜백
 this.fn_callBack = function(svcID, errorCode, errorMSG){
@@ -315,6 +367,7 @@ this.fn_callBack = function(svcID, errorCode, errorMSG){
 		
 	case "selectMemberGradeList" :
 		console.log(this.ds_grade.saveXML())
+		this.fn_filterGradeList();
 		break;
 		
 	case "memberUpdate" :
@@ -331,54 +384,262 @@ this.fn_callBack = function(svcID, errorCode, errorMSG){
 	}
 }
 
-// Div 안의 모든 컴포넌트 readonly 해제 => 반복문 돌리기
-// this.fn_setEditable = function(editable)
-// {
-//     var comps = this.detail_box.form.components;
-//     for (var i=0; i<comps.length; i++) {
-//         var c = comps[i];
-//         // Edit, Calendar, Combo, Radio만 대상
-//         if (c instanceof Edit || c instanceof Calendar || c instanceof Combo || c instanceof Radio) {
-//             c.set_readonly(!editable);
-//         }
-//     }
-// };
-
-
-
-// 수정 가능한 필드만 풀기
-// 수정 가능한 필드만 풀기
+//수정 모드로 변하기 
+// ============================================================
+// 함수명: fn_setEditable
+// 목적: 화면의 입력 필드들을 "수정 가능 모드" 또는 "읽기 전용 모드"로 전환
+// 매개변수: editable (true = 수정 가능, false = 읽기 전용)
+// ============================================================
 this.fn_setEditable = function(editable)
 {
- 
-     // 이름
-    this.detail_box.form.dstail_name00.set_readonly(!editable);
-    // 이메일
-    this.detail_box.form.detail_email00.set_readonly(!editable);
-    // 휴대전화
-    this.detail_box.form.detail_phoneNumber00.set_readonly(!editable);
-    // 등급 (combo)
-    this.detail_box.form.grade_combo00.set_readonly(!editable);
-    // 회원타입 (radio)
-    this.detail_box.form.type_radio.set_readonly(!editable);
-    // 회원상태 (radio)
-    this.detail_box.form.status_radio.set_readonly(!editable);
-    // 비밀번호
-    this.detail_box.form.detail_password.set_readonly(!editable);
-    // 성별
-    this.detail_box.form.gender_radio.set_readonly(!editable);
+    // ============================================================
+    // 1단계: 수정 가능한 필드 목록 정의
+    // ============================================================
     
-    // ===== 수정 가능한 Calendar 컴포넌트들 =====
-    // 생일
-    this.detail_box.form.detail_birth.set_readonly(!editable);
-    // 첫 로그인 날짜
-    this.detail_box.form.detail_first_login_dt.set_readonly(!editable);
-    // 마지막 로그인 날짜
-    this.detail_box.form.detail_last_login_dt.set_readonly(!editable);
+    // 💡 개념: 배열(Array)이란?
+    // - 여러 개의 값을 하나의 변수에 담는 자료구조
+    // - [값1, 값2, 값3] 형태로 작성
+    // - 반복문으로 한번에 처리 가능
     
+    var editableFields = [
+        // 각 요소는 화면의 입력 필드를 가리키는 객체
+        this.detail_box.form.dstail_name00,              // 이름 입력 필드
+        this.detail_box.form.detail_email00,             // 이메일 입력 필드
+        this.detail_box.form.detail_phoneNumber00,       // 휴대전화 입력 필드
+        this.detail_box.form.detail_password,            // 비밀번호 입력 필드
+        this.detail_box.form.detail_birth,               // 생일 캘린더 필드
+        this.detail_box.form.detail_first_login_dt,      // 첫 로그인 날짜 필드
+        this.detail_box.form.detail_last_login_dt        // 마지막 로그인 날짜 필드
+    ];
+    
+    // 💡 왜 배열로 만들까?
+    // → 같은 작업(readonly 설정, 스타일 변경)을 반복할 수 있어서 코드가 간결해짐!
+    
+    
+    // ============================================================
+    // 2단계: 반복문으로 Edit/Calendar 필드 readonly 설정
+    // ============================================================
+    
+    // 💡 개념: for문이란?
+    // - 같은 작업을 여러 번 반복하는 문법
+    // - for(시작; 조건; 증가) { 반복할 코드 }
+    
+    for(var i=0; i<editableFields.length; i++) {
+        // i는 0부터 시작해서 1씩 증가
+        // editableFields.length는 배열의 길이 (여기서는 7개)
+        // i가 0, 1, 2, 3, 4, 5, 6일 때 7번 반복
+        
+        // 💡 개념: if문으로 null 체크
+        // - 필드가 존재하는지 확인 (없으면 에러 발생 방지)
+        if(editableFields[i]) {
+            // editableFields[i]는 배열의 i번째 요소
+            // i=0일 때 → dstail_name00
+            // i=1일 때 → detail_email00
+            // ...
+            
+            // 💡 개념: set_readonly()
+            // - true: 읽기 전용 (수정 불가)
+            // - false: 수정 가능
+            
+            // 💡 개념: !editable의 의미
+            // - !는 NOT 연산자 (반대로 만듦)
+            // - editable이 true면 → !editable은 false
+            // - editable이 false면 → !editable은 true
+            
+            // 예시:
+            // 사용자가 "수정하기" 버튼 클릭 → editable = true
+            // → !editable = false → readonly를 false로 설정 → 수정 가능!
+            editableFields[i].set_readonly(!editable);
+        }
+    }
+    
+    
+    // ============================================================
+    // 3단계: 콤보박스(등급) readonly 설정
+    // ============================================================
+    
+    // 💡 왜 따로 처리할까?
+    // - 콤보박스는 Edit/Calendar와 다른 컴포넌트 타입
+    // - 배열에 섞어서 넣으면 복잡해서 따로 처리
+    
+    if(this.detail_box.form.grade_combo00) {
+        // 콤보박스가 존재하면
+        this.detail_box.form.grade_combo00.set_readonly(!editable);
+    }
+    
+    
+    // ============================================================
+    // 4단계: 라디오 버튼들 readonly 설정
+    // ============================================================
+    
+    // 💡 라디오 버튼이란?
+    // - 여러 선택지 중 하나만 선택하는 UI (성별: 남자/여자)
+    
+    // 회원타입 라디오 (회원/관리자)
+    if(this.detail_box.form.type_radio) {
+        this.detail_box.form.type_radio.set_readonly(!editable);
+    }
+    
+    // 회원상태 라디오 (이용중/탈퇴/휴면)
+    if(this.detail_box.form.status_radio) {
+        this.detail_box.form.status_radio.set_readonly(!editable);
+    }
+    
+    // 성별 라디오 (남자/여자)
+    if(this.detail_box.form.gender_radio) {
+        this.detail_box.form.gender_radio.set_readonly(!editable);
+    }
+    
+    
+    // ============================================================
+    // 5단계: 시각적 피드백 (스타일 변경)
+    // ============================================================
+    
+    // 💡 개념: 조건문 if-else
+    // - if(조건) { 조건이 참일 때 실행 }
+    // - else { 조건이 거짓일 때 실행 }
+    
+    if(editable) {
+        // ========================================================
+        // Case 1: 수정 모드 (editable = true)
+        // - 사용자가 "수정하기" 버튼을 눌렀을 때
+        // ========================================================
+        
+        // -------------------------------------------------------
+        // 5-1. Edit/Calendar 필드 스타일 (수정 가능 상태)
+        // -------------------------------------------------------
+        for(var i=0; i<editableFields.length; i++) {
+            if(editableFields[i]) {
+                // 💡 배경색을 흰색으로 변경
+                // - #ffffff는 흰색을 의미하는 16진수 색상 코드
+                // - 수정 가능하다는 것을 시각적으로 표현
+                editableFields[i].set_background("#ffffff");
+                
+                // 💡 테두리를 파란색으로 변경
+                // - 1px: 테두리 두께 1픽셀
+                // - solid: 실선 (점선이 아닌)
+                // - #667eea: 파란색 색상 코드
+                // - "지금 수정할 수 있어요!"라는 시각적 신호
+                editableFields[i].set_border("1px solid #667eea");
+            }
+        }
+        
+        // -------------------------------------------------------
+        // 5-2. 콤보박스 스타일 (수정 가능 상태)
+        // -------------------------------------------------------
+        if(this.detail_box.form.grade_combo00) {
+            this.detail_box.form.grade_combo00.set_background("#ffffff");
+            this.detail_box.form.grade_combo00.set_border("1px solid #667eea");
+        }
+        
+        // -------------------------------------------------------
+        // 5-3. 라디오 버튼 스타일 (수정 가능 상태)
+        // -------------------------------------------------------
+        
+        // 💡 라디오는 연한 파란색 배경
+        // - #eef2ff는 아주 연한 파란색 (파란 계열이라는 힌트)
+        // - 흰색(#ffffff)보다 살짝 색깔이 있어서 라디오임을 표현
+        
+        if(this.detail_box.form.type_radio) {
+            this.detail_box.form.type_radio.set_background("#eef2ff");
+            this.detail_box.form.type_radio.set_border("1px solid #667eea");
+        }
+        
+        if(this.detail_box.form.status_radio) {
+            this.detail_box.form.status_radio.set_background("#eef2ff");
+            this.detail_box.form.status_radio.set_border("1px solid #667eea");
+        }
+        
+        if(this.detail_box.form.gender_radio) {
+            this.detail_box.form.gender_radio.set_background("#eef2ff");
+            this.detail_box.form.gender_radio.set_border("1px solid #667eea");
+        }
+        
+    } else {
+        // ========================================================
+        // Case 2: 읽기 모드 (editable = false)
+        // - 페이지를 처음 열었을 때 또는 저장 후
+        // ========================================================
+        
+        // -------------------------------------------------------
+        // 5-4. Edit/Calendar 필드 스타일 (읽기 전용 상태)
+        // -------------------------------------------------------
+        for(var i=0; i<editableFields.length; i++) {
+            if(editableFields[i]) {
+                // 💡 배경색을 연한 회색으로 변경
+                // - #fafafa는 아주 연한 회색
+                // - "지금은 수정할 수 없어요"라는 시각적 신호
+                editableFields[i].set_background("#fafafa");
+                
+                // 💡 테두리를 회색으로 변경
+                // - #e0e0e0는 밝은 회색
+                // - 부드럽고 조용한 느낌 (활성 상태 아님)
+                editableFields[i].set_border("1px solid #e0e0e0");
+            }
+        }
+        
+        // -------------------------------------------------------
+        // 5-5. 콤보박스 스타일 (읽기 전용 상태)
+        // -------------------------------------------------------
+        if(this.detail_box.form.grade_combo00) {
+            this.detail_box.form.grade_combo00.set_background("#fafafa");
+            this.detail_box.form.grade_combo00.set_border("1px solid #e0e0e0");
+        }
+        
+        // -------------------------------------------------------
+        // 5-6. 라디오 버튼 스타일 (읽기 전용 상태)
+        // -------------------------------------------------------
+        
+        // 💡 라디오는 조금 더 진한 회색 배경
+        // - #f8f9fa는 #fafafa보다 살짝 진한 회색
+        // - #e5e7eb는 테두리 색 (중간 회색)
+        
+        if(this.detail_box.form.type_radio) {
+            this.detail_box.form.type_radio.set_background("#f8f9fa");
+            this.detail_box.form.type_radio.set_border("1px solid #e5e7eb");
+        }
+        
+        if(this.detail_box.form.status_radio) {
+            this.detail_box.form.status_radio.set_background("#f8f9fa");
+            this.detail_box.form.status_radio.set_border("1px solid #e5e7eb");
+        }
+        
+        if(this.detail_box.form.gender_radio) {
+            this.detail_box.form.gender_radio.set_background("#f8f9fa");
+            this.detail_box.form.gender_radio.set_border("1px solid #e5e7eb");
+        }
+    }
+    
+    // ============================================================
+    // 함수 종료
+    // ============================================================
+    
+    // 💡 이 함수의 흐름 정리:
+    // 1. 수정 가능한 필드들을 배열에 담기
+    // 2. 반복문으로 모든 필드의 readonly 설정
+    // 3. 콤보박스, 라디오 버튼도 readonly 설정
+    // 4. if-else로 모드에 따라 색상 변경
+    //    - 수정 모드(true): 흰색 배경 + 파란 테두리
+    //    - 읽기 모드(false): 회색 배경 + 회색 테두리
 };
 
-
+// =====수정하기 버튼 함수 =====
+this.detail_box_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    if (obj.text == "수정하기") {
+        this.fn_setEditable(true);
+        obj.set_text("저장하기");
+        // 🎨 버튼 색상 변경
+        obj.set_background("#10b981"); // 초록색
+        
+    } else {
+        this.fn_memeberUpdate();
+        this.fn_setEditable(false);
+        obj.set_text("수정하기");
+        // 🎨 버튼 색상 복귀
+        obj.set_background("#667eea"); // 파란색
+    }
+};
 
 //뒤로가기 버튼 
 this.insert_box_close_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
@@ -386,18 +647,6 @@ this.insert_box_close_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 	this.getOwnerFrame().set_formurl("member::Form_MemberList.xfdl");
 };
 
-//수정하기 버튼
-this.detail_box_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	  if (obj.text == "수정하기") {
-        this.fn_setEditable(true);
-        obj.set_text("저장하기");
-    } else {
-        this.fn_memeberUpdate();
-        this.fn_setEditable(false);
-        obj.set_text("수정하기");  // ← 저장 후 원래 상태로 복귀
-    }
-};
 
 ]]></Script>
   </Form>

@@ -12,6 +12,8 @@
             this.set_name("Form_MemberCouponInsert");
             this.set_titletext("New Form");
             this.set_background("#F4F7FE");
+            this.set_color("#ffffff");
+            this.set_borderRadius("10px");
             if (Form == this.constructor)
             {
                 this._setFormPosition(560,540);
@@ -33,7 +35,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("grade_search_box00","10","10","538","510",null,null,null,null,null,null,this);
+            obj = new Static("grade_search_box00","10","10","538","520",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("white");
             obj.set_text("");
@@ -45,103 +47,190 @@
             obj.set_text("쿠폰 지급");
             obj.set_textAlign("center");
             obj.set_font("20px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static01","50","70","63","32",null,null,null,null,null,null,this);
+            obj = new Static("Static01","127","70","63","32",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("쿠폰 이름");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
+            obj.set_padding("0px 0px 8px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02","50","128","56","24",null,null,null,null,null,null,this);
+            obj = new Static("Static02","126","136","56","24",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_text("할인 유형");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
+            obj.set_padding("0px 0px 8px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static03","47","181","67","25",null,null,null,null,null,null,this);
+            obj = new Static("Static03","125","200","57","25",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("할인 정도");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
+            obj.set_padding("0px 0px 8px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static04","20","236","144","29",null,null,null,null,null,null,this);
+            obj = new Static("Static04","38","256","144","29",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("쿠폰 사용 가능 최소 금액");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
+            obj.set_padding("0px 0px 8px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static06","42","308","72","24",null,null,null,null,null,null,this);
+            obj = new Static("Static06","111","318","72","24",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("쿠폰 만료일");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
+            obj.set_padding("0px 0px 8px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static07","50","369","60","21",null,null,null,null,null,null,this);
+            obj = new Static("Static07","120","379","60","21",null,null,null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_text("쿠폰 유형");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#444444");
+            obj.set_padding("0px 0px 8px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("Edit00","177","70","251","32",null,null,null,null,null,null,this);
+            obj = new Edit("Edit00","203","60","260","40",null,null,null,null,null,null,this);
             obj.set_taborder("8");
-            obj.set_border("1px solid black");
-            obj.set_borderRadius("8px");
+            obj.set_border("2px solid #e0e0e0");
+            obj.set_borderRadius("10px");
+            obj.set_background("#fafafa");
+            obj.set_padding("14px 20px 14px 20px");
+            obj.set_font("14px/normal \"맑은 고딕\"");
+            obj.set_color("#333333");
             this.addChild(obj.name, obj);
 
-            obj = new Radio("Radio00","180","124","246","32",null,null,null,null,null,null,this);
+            obj = new Radio("Radio00","203","120","260","47",null,null,null,null,null,null,this);
             obj.set_taborder("9");
             obj.set_innerdataset("ds_type");
             obj.set_codecolumn("DISCOUNT_TYPE");
             obj.set_datacolumn("CODE");
             obj.set_direction("vertical");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#f8f9fa");
+            obj.set_borderRadius("10px");
+            obj.set_padding("12px 20px 12px 20px");
+            obj.set_color("#555555");
+            obj.set_border("2px solid #e0e0e0");
             this.addChild(obj.name, obj);
 
-            obj = new Calendar("Calendar00","171","304","254","33",null,null,null,null,null,null,this);
+            obj = new Calendar("Calendar00","202","308","262","39",null,null,null,null,null,null,this);
             obj.set_taborder("10");
-            obj.set_border("1px solid black");
-            obj.set_borderRadius("8px");
+            obj.set_border("2px solid #e0e0e0");
+            obj.set_borderRadius("10px");
+            obj.set_background("#fafafa");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("Edit03","174","364","250","30",null,null,null,null,null,null,this);
+            obj = new Edit("Edit03","203","369","260","40",null,null,null,null,null,null,this);
             obj.set_taborder("11");
-            obj.set_border("1px solid black");
-            obj.set_borderRadius("8px");
+            obj.set_border("2px solid #e0e0e0");
+            obj.set_borderRadius("10px");
+            obj.set_background("#fafafa");
+            obj.set_padding("14px 20px 14px 20px");
+            obj.set_color("#333333");
+            obj.set_font("14px/normal \"맑은 고딕\"");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","190","450","158","38",null,null,null,null,null,null,this);
+            obj = new Button("Button00","205","450","148","45",null,null,null,null,null,null,this);
             obj.set_taborder("12");
             obj.set_text("지급하기");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
-            obj.set_background("#2563eb");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#667eea");
             obj.set_borderRadius("4px");
             obj.set_color("white");
             this.addChild(obj.name, obj);
 
-            obj = new Spin("Spin00","175","177","250","32",null,null,null,null,null,null,this);
+            obj = new Spin("Spin00","203","191","260","39",null,null,null,null,null,null,this);
             obj.set_taborder("13");
-            obj.set_border("1px solid black");
-            obj.set_borderRadius("8px");
+            obj.set_border("2px solid #e0e0e0");
+            obj.set_borderRadius("10px");
+            obj.set_background("#fafafa");
+            obj.set_color("#333333");
             obj.set_min("0");
             obj.set_max("2147483647");
             obj.set_value("");
             this.addChild(obj.name, obj);
 
-            obj = new Spin("Spin01","175","238","251","32",null,null,null,null,null,null,this);
+            obj = new Spin("Spin01","203","250","260","37",null,null,null,null,null,null,this);
             obj.set_taborder("14");
-            obj.set_border("1px solid black");
-            obj.set_borderRadius("8px");
+            obj.set_border("2px solid #e0e0e0");
+            obj.set_borderRadius("10px");
+            obj.set_background("#fafafa");
+            obj.set_color("#333333");
             obj.set_min("0");
             obj.set_max("2147483647");
             obj.set_value("");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00_00","454","488","66","25",null,null,null,null,null,null,this);
+            obj = new Static("Static00_00","440","488","90","25",null,null,null,null,null,null,this);
             obj.set_taborder("15");
             obj.set_text("ESC[닫기]");
+            obj.set_color("#ef4444");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_textAlign("center");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static02_00","418","418","46","18",null,null,null,null,null,null,this);
+            obj.set_taborder("16");
+            obj.set_text("필수입력");
+            obj.set_color("#444444");
+            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00_01_00","407","418","11","17",null,null,null,null,null,null,this);
+            obj.set_taborder("17");
+            obj.set_text("*");
             obj.set_color("RED");
-            obj.set_font("bold 12px/normal \"Gulim\"");
+            obj.set_textAlign("center");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00_01_00_00","183","136","11","17",null,null,null,null,null,null,this);
+            obj.set_taborder("18");
+            obj.set_text("*");
+            obj.set_color("RED");
+            obj.set_textAlign("center");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00_01_00_00_00","181","200","11","17",null,null,null,null,null,null,this);
+            obj.set_taborder("19");
+            obj.set_text("*");
+            obj.set_color("RED");
+            obj.set_textAlign("center");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00_01_00_00_00_00","184","73","11","17",null,null,null,null,null,null,this);
+            obj.set_taborder("20");
+            obj.set_text("*");
+            obj.set_color("RED");
+            obj.set_textAlign("center");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00_01_00_00_00_01","179","320","11","17",null,null,null,null,null,null,this);
+            obj.set_taborder("21");
+            obj.set_text("*");
+            obj.set_color("RED");
+            obj.set_textAlign("center");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00_01_00_00_00_01_00","178","382","11","17",null,null,null,null,null,null,this);
+            obj.set_taborder("22");
+            obj.set_text("*");
+            obj.set_color("RED");
+            obj.set_textAlign("center");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this

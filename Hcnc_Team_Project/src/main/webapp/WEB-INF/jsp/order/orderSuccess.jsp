@@ -291,7 +291,7 @@
                 
                 <!-- 버튼 -->
                 <div class="btn-group">
-                    <button class="btn btn-primary" onclick="location.href='/mypage/orders.do'">주문내역 보기</button>
+                    <button class="btn btn-primary" onclick="location.href='/orderHistory.do'">주문내역 보기</button>
                     <button class="btn btn-secondary" onclick="location.href='/'">쇼핑 계속하기</button>
                 </div>
             </div>

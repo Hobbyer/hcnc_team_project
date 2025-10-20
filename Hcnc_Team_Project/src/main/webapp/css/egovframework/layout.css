@@ -1,18 +1,10 @@
 @charset "utf-8";
 /* 공통 레이아웃 */
-a {
-  text-decoration: none;
-}
-.inner {
-  width: 1280px;
-  min-width: 1024px;
-  margin: 0 auto;
-  padding: 0;
-}
-.container {
-  justify-content: center;
-  width: 100%;
-}
+
+a{text-decoration: none;}
+.inner {  width: 1280px; margin: 0 auto;  padding: 0;}
+.container {  justify-content: center;  width: 100%;}
+
 
 header {
   z-index: 30;
@@ -53,9 +45,27 @@ header .flex.fd-column {
   padding: 6px 0;
 }
 .header_top_area {
-  background: #fff;
+
+  background: #ffffff;
+
   border-bottom: 1px solid #eaeaea;
   padding: 4px 0 4px;
+}
+
+.header_top_area .header_menu_list li a{color:#333;}
+.header_top_area .header_menu_list li a:hover{color:#f62e2e;}
+.header_menu_list li::before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 14px;
+  background: #aaa;
+  margin: 0 10px; /* 좌우 간격 */
+  vertical-align: middle; /* 세로 정렬 */
+}
+
+.header_menu_list li:first-child::before {
+  display: none;
 }
 
 .header_main_area {
@@ -380,4 +390,32 @@ footer .copyright {
 
 .popuparea .popup-close:hover {
   background: #555;
+}
+
+@media (max-width: 1280px) {
+  .inner {
+    width: 1080px;
+  }
+}
+
+/* 1080px 이하: 960px */
+@media (max-width: 1080px) {
+  .inner {
+    width: 960px;
+  }
+}
+
+/* 960px 이하: 100% (좌우 패딩) */
+@media (max-width: 960px) {
+  .inner {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* 모바일: 패딩 축소 */
+@media (max-width: 760px) {
+  .inner {
+    padding: 0 15px;
+  }
 }

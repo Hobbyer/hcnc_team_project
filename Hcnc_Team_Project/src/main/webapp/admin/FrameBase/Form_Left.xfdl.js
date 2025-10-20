@@ -32,7 +32,7 @@
             obj.set_treeuseimage("false");
             obj.set_autofittype("col");
             obj.set_border("0px");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"206\"/></Columns><Rows><Row size=\"41\"/></Rows><Band id=\"body\"><Cell text=\"bind:MENU_NM\" displaytype=\"treeitemcontrol\" edittype=\"tree\" treelevel=\"bind:MENU_LEVEL\" cssclass=\"bind:CSSCLASS\" border=\"0px\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"206\"/></Columns><Rows><Row size=\"41\"/></Rows><Band id=\"body\"><Cell text=\"bind:MENU_NM\" displaytype=\"treeitemcontrol\" edittype=\"tree\" treelevel=\"bind:MENU_LEVEL\" cssclass=\"expr:(MENU_LEVEL==0?&apos;parent&apos;:(MENU_LEVEL==1?&apos;child&apos;:&apos;&apos;))\" border=\"0px\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Div("Div00","-40","0",null,"3","-60",null,null,null,null,null,this);
@@ -77,10 +77,10 @@
                 var sMenuId = this.ds_left.getColumn(i, "MENU_ID");
                 if (sMenuId.length == 2) {
                     this.ds_left.setColumn(i, "MENU_LEVEL", 0);   // 루트
-                    this.ds_left.setColumn(i, "CSSCLASS", "menuRoot"+i);
-
+                    this.ds_left.setColumn(i, "CSSCLASS", "parent");
                 } else if (sMenuId.length == 4) {
                     this.ds_left.setColumn(i, "MENU_LEVEL", 1);   // 자식
+        			this.ds_left.setColumn(i, "CSSCLASS", "child");
                 }
             }
         };

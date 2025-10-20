@@ -65,6 +65,8 @@
 
             obj = new Edit("edt_search","325","5","317","30",null,null,null,null,null,null,this.Div00_00.form);
             obj.set_taborder("0");
+            obj.set_tooltiptext("최대 20자까지 입력 가능합니다.");
+            obj.set_maxlength("20");
             this.Div00_00.addChild(obj.name, obj);
 
             obj = new Div("Div00_00_00","24","120",null,"40","26",null,null,null,null,null,this);
@@ -135,7 +137,13 @@
             obj.set_autofittype("col");
             obj.set_binddataset("ds_out_proList");
             obj.set_readonly("true");
-            obj.set_selecttype("multirow");
+            obj.set_selecttype("row");
+            obj.set_cellclickbound("cell");
+            obj.set_enable("true");
+            obj.set_enableevent("true");
+            obj.set_mouseovertype("cell");
+            obj.set_usesoftkeyboard("true");
+            obj.set_useselcolor("false");
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"28\"/><Column size=\"61\"/><Column size=\"185\"/><Column size=\"91\"/><Column size=\"100\"/><Column size=\"100\"/><Column size=\"100\"/><Column size=\"100\"/><Column size=\"48\"/><Column size=\"73\"/><Column size=\"73\"/><Column size=\"103\"/><Column size=\"142\"/></Columns><Rows><Row size=\"66\" band=\"head\"/><Row size=\"48\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"40\"/></Rows><Band id=\"head\"><Cell colspan=\"13\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" rowspan=\"2\" text=\"NO\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"1\" rowspan=\"2\" text=\"상품코드\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"2\" rowspan=\"2\" text=\"상품명\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"3\" rowspan=\"2\" text=\"상품 총 재고\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"4\" colspan=\"2\" text=\"상품분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"6\" colspan=\"2\" text=\"옵션\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"8\" rowspan=\"2\" text=\"옵션&#13;&#10;진열\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\" wordWrap=\"both\"/><Cell row=\"1\" col=\"9\" rowspan=\"2\" text=\"재고\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"10\" rowspan=\"2\" text=\"입•출고량\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"11\" rowspan=\"2\" text=\"타입\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"1\" col=\"12\" rowspan=\"2\" text=\"등록일\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"4\" text=\"대분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"5\" text=\"중분류\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"6\" text=\"옵션\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell row=\"2\" col=\"7\" text=\"세부사항\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" background=\"#ffffff\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\" displaytype=\"normal\"/><Cell col=\"1\" background=\"#ffffff\" text=\"bind:PRODUCT_CODE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\" displaytype=\"normal\"/><Cell col=\"2\" background=\"#ffffff\" text=\"bind:PRODUCT_NAME\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\" displaytype=\"normal\"/><Cell col=\"3\" background=\"#ffffff\" text=\"bind:TOTAL_QUANTITY\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"right\" edittype=\"none\" displaytype=\"normal\"/><Cell col=\"4\" edittype=\"none\" background=\"#ffffff\" text=\"bind:MAIN_CATE_NM\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"normal\"/><Cell col=\"5\" edittype=\"none\" background=\"#ffffff\" text=\"bind:SUB_CATE_NM\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"normal\"/><Cell col=\"6\" background=\"#ffffff\" text=\"bind:OPTION_NAME\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" edittype=\"none\" displaytype=\"normal\"/><Cell col=\"7\" edittype=\"none\" background=\"#ffffff\" text=\"bind:OPTION_VALUE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"normal\"/><Cell col=\"8\" edittype=\"none\" background=\"#ffffff\" text=\"bind:IS_VISIBLE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"normal\"/><Cell col=\"9\" edittype=\"none\" background=\"#ffffff\" text=\"bind:CURRENT_QUANTITY\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"right\" displaytype=\"normal\"/><Cell col=\"10\" edittype=\"none\" background=\"#ffffff\" text=\"bind:MOVE_QUANTITY\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"right\" displaytype=\"normal\"/><Cell col=\"11\" edittype=\"none\" text=\"bind:MOVE_TYPE\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"normal\" cssclass=\"expr:(MOVE_TYPE==&apos;Inbound&apos; ? &apos;cls_inbound&apos;                 : (MOVE_TYPE==&apos;Outbound&apos; ? &apos;cls_outbound&apos;                 : (MOVE_TYPE==&apos;Add option&apos; ? &apos;cls_addopt&apos; : &apos;&apos;)))\"/><Cell col=\"12\" edittype=\"none\" background=\"#ffffff\" text=\"bind:INPUT_DT\" font=\"12px/normal &quot;Gulim&quot;\" textAlign=\"center\" displaytype=\"date\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
@@ -244,9 +252,9 @@
             obj.set_borderRadius("0px 10px 10px 0px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("sta_listTitle00",null,"290","134","61","210",null,null,null,null,null,this);
-            obj.set_text("Inbound : 입고\r\nOutbound : 출고\r\nAdd option : 옵션추가");
-            obj.set_font("bold 8pt/normal \"맑은 고딕\"");
+            obj = new Static("sta_listTitle00",null,"290","400","61","130",null,null,null,null,null,this);
+            obj.set_text("Inbound : 입고  /  Outbound : 출고  /  Add option : 옵션추가");
+            obj.set_font("9pt/normal \"맑은 고딕\",\"Arial\"");
             obj.set_taborder("18");
             obj.set_color("#383838");
             obj.set_border("0px none,0px none,5px solid #ffa70f,0px solid #ffa70f");
@@ -332,14 +340,22 @@
 
 
 
-        // Calendar 값 → 'yyyy-MM-dd' 또는 빈 문자열
-        this._dateOrEmpty = function(cal) {
+        // 수정본: 8자리(yyyymmdd)와 10자리(yyyy-MM-dd) 모두 지원
+        // 앞단 공용 함수 교체
+        this._dateOrEmpty = function (cal) {
             if (!cal) return "";
-            var v = cal.value;                 // 값이 없으면 null/"" 임
-            if (v === undefined || v === null || v === "") return "";
-            v = v.toString();
-            if (v.length !== 8) return "";     // yyyymmdd 형식만 허용
-            return v.substr(0,4) + "-" + v.substr(4,2) + "-" + v.substr(6,2);
+            var v = (cal.text || cal.value || "").toString().trim();
+
+            // 이미 yyyy-MM-dd면 그대로
+            if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return v;
+
+            // yyyymmdd → yyyy-MM-dd
+            if (/^\d{8}$/.test(v)) {
+                return v.substr(0,4) + "-" + v.substr(4,2) + "-" + v.substr(6,2);
+            }
+
+            // Date 문자열 등은 버림(조건 안 넣음)
+            return "";
         };
 
 
@@ -347,7 +363,16 @@
         this._setCond = function(ds, col, val) {
             // null/undefined만 제외하고 값 세팅
             if (val !== undefined && val !== null) {
-                ds.setColumn(0, col, val);
+        		if (typeof val == "string"){
+        			val = nexacro.trim(val);
+
+        			if(col == "SEARCH_TEXT"){
+        				val = val.replace(/\s+/g, "");                   // 일반 공백 제거
+        				val = val.replace(/[\u200B-\u200D\uFEFF]/g,"");  // 특수공백 제거
+        				val = val.toLowerCase();                         // 소문자 변환
+        			}
+        		}
+        		ds.setColumn(0, col, val);
             }
         };
 
@@ -375,6 +400,13 @@
         };
 
 
+        // 검색창
+        this.Div00_00_edt_search_onkeydown = function(obj,e)
+        {
+        	if(e.keycode == 13){
+        		this.btn_view_onclick();
+        	}
+        };
 
 
 
@@ -455,9 +487,6 @@
         		this.ds_subCate.setColumn(0,"SUB_CATE_ID","");
         		this.ds_subCate.setColumn(0,"SUB_CATE_NM","- 전체 -");
         		break;
-
-
-
 
             }
         };
@@ -667,6 +696,7 @@
 
 
 
+
         });
         
         // Regist UI Components Event
@@ -674,6 +704,8 @@
         {
             this.addEventHandler("ontimer",this.Form_ProductStockMovements_ontimer,this);
             this.addEventHandler("onload",this.Form_ProductStockMovements_onload,this);
+            this.Div00_00.form.edt_search.addEventHandler("onchanged",this.Div00_00_edt_search_onchanged,this);
+            this.Div00_00.form.edt_search.addEventHandler("onkeydown",this.Div00_00_edt_search_onkeydown,this);
             this.Div00_00_00_00_00.form.Radio00_00.addEventHandler("onitemchanged",this.Div00_00_00_00_00_Radio00_00_onitemchanged,this);
             this.sta_listTitle.addEventHandler("onclick",this.sta_listTitle_onclick,this);
             this.sta_prodType.addEventHandler("onclick",this.sta_prodType_onclick,this);

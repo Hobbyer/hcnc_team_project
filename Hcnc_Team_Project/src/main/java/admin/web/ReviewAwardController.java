@@ -20,20 +20,33 @@ public class ReviewAwardController {
     // 리뷰 리스트 조회
     @RequestMapping(value="/selectProductReviewListByAdmin.do")
     public NexacroResult selectProductReviewListByAdmin(
-            @ParamVariable(name="SEARCH_TYPE", required=false) String searchType,
-            @ParamVariable(name="searchValue", required=false) String searchValue,
-            @ParamVariable(name="pointYn", required=false) String pointYn) {
-        
+    		@ParamDataSet(name = "ds_search", required = false) Map<String, Object> param) {
+    	NexacroResult result = new NexacroResult();
+		try {
+			System.out.println("받은 param: " + param);
+			List<Map<String, Object>> list = reviewAwardService.selectProductReviewListByAdmin(param);
+			result.addDataSet("ds_review_list", list);
+			System.out.println("조회된 결과 수: " + list.size());
+		}catch (Exception e){
+			System.out.println("에러 발생!");
+	        e.printStackTrace();
+	        result.setErrorCode(-1);
+	        result.setErrorMsg("리뷰목록 조회 중 오류");
+		}
+		return result;
+    }
+    
+    @RequestMapping(value="/selectReviewImageByAdmin.do")
+    public NexacroResult selectReviewImages(
+    		@ParamVariable(name="REVIEW_ID") String reviewId) {
         NexacroResult result = new NexacroResult();
-        
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("SEARCH_TYPE", searchType);
-        params.put("searchValue", searchValue);
-        params.put("pointYn", pointYn);
-        
-        List<Map<String, Object>> list = reviewAwardService.selectProductReviewListByAdmin(params);
-        result.addDataSet("ds_review_list", list);
-        
+        try {
+            List<Map<String, Object>> list = reviewAwardService.selectReviewImageByAdmin(reviewId);
+            result.addDataSet("ds_review_image", list);
+        } catch (Exception e) {
+            result.setErrorCode(-1);
+            result.setErrorMsg("리뷰 이미지 조회 중 오류");
+        }
         return result;
     }
     

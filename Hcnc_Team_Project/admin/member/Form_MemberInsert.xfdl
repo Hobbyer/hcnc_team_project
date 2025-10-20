@@ -3,32 +3,39 @@
   <Form id="Form_MemberInsert" width="1270" height="490" titletext="New Form" onload="Form_MemberInsert_onload" background="#F4F7FE">
     <Layouts>
       <Layout height="490" width="1270">
-        <Div id="insert_box" taborder="0" text="" left="13" top="10" width="1247" height="460" borderRadius="8px" background="#fff" boxShadow="0 2px 6px rgba(0,0,0,0.05)">
+        <Div id="insert_box" taborder="0" text="" left="40" top="10" height="460" borderRadius="8px" background="#fff" boxShadow="0 2px 6px rgba(0,0,0,0.05)" width="1190">
           <Layouts>
             <Layout>
-              <Static id="m" taborder="0" text="아이디" left="17" top="86" width="48" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="m2" taborder="1" text="이름" left="17" top="161" width="30" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="Static00_00_00" taborder="2" text="비밀번호" left="17" top="236" width="60" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="Static00_00_00_00" taborder="3" text="이메일" left="17" top="311" width="50" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Edit id="insert_id" taborder="4" left="88" top="80" width="289" height="44" border="1px solid black" borderRadius="8px" displaynulltext="영문, 숫자 포함 16자"/>
-              <Static id="Static01" taborder="5" text="회원 및 관리자 등록" left="12" top="10" width="170" height="38" textAlign="center" font="20px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_Static01_onclick"/>
-              <Static id="Static00_00_00_00_00" taborder="6" text="휴대전화" left="431" top="86" width="59" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="Static00_00_00_00_00_00" taborder="7" text="생일" left="458" top="160" width="29" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="Static00_00_00_00_00_00_00" taborder="8" text="성별" left="452" top="311" width="38" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="Static00_00_00_00_00_00_00_00" taborder="9" text="등급" left="456" top="236" width="31" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Static id="Static00_00_00_00_00_00_00_00_00" taborder="10" text="회원타입" left="870" top="86" width="57" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Edit id="insert_name" taborder="11" left="87" top="154" width="290" height="44" onchanged="insert_box_insert_name_onchanged" border="1px solid black" borderRadius="8px"/>
-              <Edit id="insert_password" taborder="12" left="87" top="228" width="290" height="44" border="1px solid black" borderRadius="8px" displaynulltext="영문+숫자 포함 8~20자" password="true"/>
-              <Edit id="insert_password00" taborder="13" left="87" top="302" width="290" height="44" border="1px solid black" borderRadius="8px" displaynulltext="example@email.com"/>
-              <Combo id="Combo00" taborder="14" text="Combo00" left="511" top="230" width="286" height="46" innerdataset="ds_grade" codecolumn="GRADE_CODE" datacolumn="GRADE_NAME" border="1px solid black" borderRadius="8px" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Calendar id="Calendar01" taborder="15" left="511" top="155" width="288" height="44" border="1px solid black" borderRadius="8px"/>
-              <Button id="close_btn" taborder="16" text="취소" left="663" top="400" width="129" height="41" background=" #9ca3af" borderRadius="4px" color="#fff" font="13px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_close_btn_onclick"/>
-              <Radio id="gender_radio" taborder="17" left="511" top="307" width="259" height="34" innerdataset="ds_gender" codecolumn="GENDER" datacolumn="CODE" font="16px/normal &quot;Noto Sans KR Black&quot;" direction="vertical"/>
-              <Radio id="type_radio" taborder="18" left="967" top="86" width="260" height="28" innerdataset="ds_type" codecolumn="MEMBER_TYPE" datacolumn="CODE" font="16px/normal &quot;Noto Sans KR Black&quot;" direction="vertical" onitemchanged="insert_box_type_radio_onitemchanged"/>
-              <Button id="insert_btn" taborder="19" text="등록하기" left="478" top="399" width="132" height="41" background="#2563eb" borderRadius="4px" color="#fff" font="13px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_insert_btn_onclick"/>
-              <Static id="Static00_00_00_00_00_00_00_00_00_00" taborder="20" text="로그인 타입" left="855" top="161" width="72" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;"/>
-              <Radio id="Radio00" taborder="21" left="967" top="160" width="261" height="30" innerdataset="ds_loginType" codecolumn="LOGIN_TYPE" datacolumn="NAME" direction="vertical" font="16px/normal &quot;Noto Sans KR Black&quot;"/>
-              <MaskEdit id="insert_password00_00" taborder="22" left="511" top="80" width="288" height="44" border="1px solid black" borderRadius="8px" format="###-####-####" type="string"/>
+              <Static id="m" taborder="0" text="아이디" left="17" top="86" width="48" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="m2" taborder="1" text="이름" left="17" top="161" width="30" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="Static00_00_00" taborder="2" text="비밀번호" left="11" top="236" width="60" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="Static00_00_00_00" taborder="3" text="이메일" left="17" top="311" width="50" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Edit id="insert_id" taborder="4" left="88" top="80" width="289" height="44" border="1px solid #e0e0e0" borderRadius="8px" displaynulltext="영문, 숫자 포함 16자" background="#fafafa" padding="12px 16px 12px 16px" font="14px/normal &quot;맑은 고딕&quot;" color="#333333"/>
+              <Static id="Static01" taborder="5" text="회원 및 관리자 등록" left="11" top="2" width="170" height="38" textAlign="center" font="20px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_Static01_onclick"/>
+              <Static id="Static00_00_00_00_00" taborder="6" text="휴대전화" left="421" top="86" width="59" height="28" font="15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="Static00_00_00_00_00_00" taborder="7" text="생일" left="448" top="160" width="29" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="Static00_00_00_00_00_00_00" taborder="8" text="성별" left="867" top="236" width="29" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="Static00_00_00_00_00_00_00_00" taborder="9" text="등급" left="446" top="236" width="31" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Static id="Static00_00_00_00_00_00_00_00_00" taborder="10" text="회원타입" left="840" top="86" width="57" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Edit id="insert_name" taborder="11" left="87" top="154" width="290" height="44" onchanged="insert_box_insert_name_onchanged" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px" color="#333333"/>
+              <Edit id="insert_password" taborder="12" left="87" top="228" width="290" height="44" border="1px solid #e0e0e0" borderRadius="8px" displaynulltext="영문+숫자 포함 8~20자" password="true" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Edit id="insert_password00" taborder="13" left="87" top="302" width="290" height="44" border="1px solid #e0e0e0" borderRadius="8px" displaynulltext="example@email.com" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Combo id="Combo00" taborder="14" text="Combo00" left="501" top="230" width="286" height="46" innerdataset="ds_grade" codecolumn="GRADE_CODE" datacolumn="GRADE_NAME" border="1px solid #e0e0e0" borderRadius="8px" font="14px/normal &quot;Noto Sans KR Black&quot;" background="#fafafa" padding="12px 16px 12px 16px"/>
+              <Calendar id="Calendar01" taborder="15" left="501" top="155" width="288" height="44" border="1px solid #e0e0e0" borderRadius="8px" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Button id="close_btn" taborder="16" text="취소" left="634" top="390" width="127" height="50" background="#f5f5f5" borderRadius="8px" color="#666666" font="14px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_close_btn_onclick" border="1px solid #e0e0e0" padding="14px 32px 14px 32px" cursor="pointer"/>
+              <Radio id="gender_radio" taborder="17" left="917" top="236" width="259" height="34" innerdataset="ds_gender" codecolumn="GENDER" datacolumn="CODE" font="14px/normal &quot;Noto Sans KR Black&quot;" direction="vertical" background="#f8f9fa" borderRadius="8px" padding="8px 16px 8px 16px" wordSpacing="24px"/>
+              <Radio id="type_radio" taborder="18" left="917" top="86" width="260" height="34" innerdataset="ds_type" codecolumn="MEMBER_TYPE" datacolumn="CODE" font="14px/normal &quot;Noto Sans KR Black&quot;" direction="vertical" onitemchanged="insert_box_type_radio_onitemchanged" background="#f8f9fa" borderRadius="8px" padding="8px 16px 8px 16px" wordSpacing="24px"/>
+              <Button id="insert_btn" taborder="19" text="등록하기" left="500" top="390" width="117" height="50" background="#667eea" borderRadius="8px" color="#ffffff" font="14px/normal &quot;Noto Sans KR Black&quot;" onclick="insert_box_insert_btn_onclick" border="0px solid #667eea" padding="14px 32px 14px 32px" cursor="pointer"/>
+              <Static id="Static00_00_00_00_00_00_00_00_00_00" taborder="20" text="로그인 타입" left="825" top="161" width="72" height="28" font="bold 15px/normal &quot;Noto Sans KR Black&quot;" color="#444444"/>
+              <Radio id="Radio00" taborder="21" left="916" top="161" width="261" height="34" innerdataset="ds_loginType" codecolumn="LOGIN_TYPE" datacolumn="NAME" direction="vertical" font="14px/normal &quot;Noto Sans KR Black&quot;" borderRadius="8px" padding="8px 16px 8px 16px" wordSpacing="24px" background="#f8f9fa"/>
+              <MaskEdit id="insert_password00_00" taborder="22" left="501" top="80" width="288" height="44" border="1px solid #e0e0e0" borderRadius="8px" format="###-####-####" type="string" background="#fafafa" color="#333333" font="14px/normal &quot;맑은 고딕&quot;" padding="12px 16px 12px 16px"/>
+              <Static id="Static00" taborder="23" text="*" left="60" top="92" width="11" height="17" color="RED" textAlign="center" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
+              <Static id="Static00_00" taborder="24" text="*" left="46" top="167" width="11" height="17" color="RED" textAlign="center" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
+              <Static id="Static00_00_01" taborder="25" text="*" left="67" top="242" width="11" height="17" color="RED" textAlign="center" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
+              <Static id="Static00_00_01_00" taborder="26" text="*" left="17" top="48" width="11" height="17" color="RED" textAlign="center" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
+              <Static id="Static00_00_01_00_00" taborder="27" text="*" left="482" top="94" width="11" height="17" color="RED" textAlign="center" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
+              <Static id="Static00_00_01_00_01" taborder="28" text="*" left="477" top="242" width="11" height="17" color="RED" textAlign="center" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
+              <Static id="Static02" taborder="29" text="필수입력" left="28" top="48" width="46" height="18" color="#444444" font="12px/normal &quot;Noto Sans KR Black&quot;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -169,6 +176,31 @@ this.insert_box_insert_btn_onclick = function(obj:nexacro.Button,e:nexacro.Click
 	this.transaction(strSvcID,setURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
 };
 
+// '전체' 제외하고 등급 목록  
+this.fn_filterGradeList = function()
+{
+    var filteredData = [];
+    
+    for(var i=0; i<this.ds_grade.getRowCount(); i++){
+        var gradeCode = this.ds_grade.getColumn(i, "GRADE_CODE");
+        
+        if(gradeCode != "") {
+            filteredData.push({
+                GRADE_CODE: gradeCode,
+                GRADE_NAME: this.ds_grade.getColumn(i, "GRADE_NAME")
+            });
+        }
+    }
+    
+    this.ds_grade.clearData();
+    
+    for(var i=0; i<filteredData.length; i++){
+        var nRow = this.ds_grade.addRow();
+        this.ds_grade.setColumn(nRow, "GRADE_CODE", filteredData[i].GRADE_CODE);
+        this.ds_grade.setColumn(nRow, "GRADE_NAME", filteredData[i].GRADE_NAME);
+    }
+};
+
 // 공통 콜백
 this.fn_callBack = function(svcID, errorCode, errorMSG){
 	
@@ -184,6 +216,7 @@ this.fn_callBack = function(svcID, errorCode, errorMSG){
 			
 		case "selectMemberGradeList" :
 			console.log(this.ds_grade.saveXML());
+			this.fn_filterGradeList();
 			break;
 			
 		case "insertMember" : 

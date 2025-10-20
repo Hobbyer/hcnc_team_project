@@ -12,6 +12,9 @@
             this.set_name("Form_Board_Qna");
             this.set_titletext("New Form");
             this.set_background("#F4F7FE");
+            this.set_scrolltype("none");
+            this.set_scrollbartype("none");
+            this.set_scrollbarsize("0");
             if (Form == this.constructor)
             {
                 this._setFormPosition(1280,720);
@@ -38,40 +41,32 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Div("search_area","40","0",null,"60","40",null,null,null,null,null,this);
+            obj = new Div("search_area","40","10",null,"60","40",null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("#ffffff");
             obj.set_borderRadius("10px");
             obj.set_text("");
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
             this.addChild(obj.name, obj);
 
-            obj = new Static("stc_name","447","13","50","36",null,null,null,null,null,null,this.search_area.form);
+            obj = new Static("stc_name","37.25%","13","50","36",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("2");
             obj.set_text("작성자");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Edit("Edit00","503","17","125","30",null,null,null,null,null,null,this.search_area.form);
+            obj = new Edit("Edit00","41.92%","17","125","30",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("3");
             obj.set_borderRadius("5px");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Button("Button00","610","17","30","30",null,null,null,null,null,null,this.search_area.form);
-            obj.set_taborder("4");
-            obj.set_text("⌕");
-            obj.set_background("#135dae");
-            obj.set_borderRadius("5px");
-            obj.set_color("white");
-            obj.set_cursor("pointer");
-            this.search_area.addChild(obj.name, obj);
-
-            obj = new Static("stc_ship","30","13","80","36",null,null,null,null,null,null,this.search_area.form);
+            obj = new Static("stc_ship","2.5%","13","80","36",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("0");
             obj.set_text("답변 유무");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Radio("rad_type","130","13","220","36",null,null,null,null,null,null,this.search_area.form);
+            obj = new Radio("rad_type","9.17%","13","220","36",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("1");
             obj.set_innerdataset("ds_boardType");
             obj.set_codecolumn("CODE");
@@ -83,34 +78,67 @@
             obj.set_index("0");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Static("stc_name00","806","13","80","36",null,null,null,null,null,null,this.search_area.form);
+            obj = new Calendar("Calendar00_01",null,"16","120","30","16.08%",null,null,null,null,null,this.search_area.form);
+            obj.set_taborder("4");
+            this.search_area.addChild(obj.name, obj);
+
+            obj = new Static("stc_name00",null,"13","50","36","26.58%",null,null,null,null,null,this.search_area.form);
             obj.set_taborder("5");
             obj.set_text("작성일");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Grid("grid_list","40","90",null,null,"40","40",null,null,null,null,this);
+            obj = new Static("txt_th00_00_00",null,"12","20","36","13.08%",null,null,null,null,null,this.search_area.form);
+            obj.set_taborder("6");
+            obj.set_text("-");
+            obj.set_font("normal 11pt/normal \"Noto Sans KR\"");
+            this.search_area.addChild(obj.name, obj);
+
+            obj = new Calendar("Calendar00_00_00",null,"16","110","30","2.83%",null,null,null,null,null,this.search_area.form);
+            obj.set_taborder("7");
+            this.search_area.addChild(obj.name, obj);
+
+            obj = new Div("grid_wrapper","40","100",null,null,"40","40",null,null,null,null,this);
+            obj.set_taborder("1");
+            obj.set_background("#FFFFFF");
+            obj.set_borderRadius("10px");
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grid_header","0","0",null,"40","10",null,null,null,null,null,this.grid_wrapper.form);
+            obj.set_taborder("0");
+            obj.set_binddataset("ds_board");
+            obj.set_autofittype("col");
+            obj.set_background("#FFFFFF");
+            obj.set_border("0px none");
+            obj.set_selecttype("row");
+            obj.set_readonly("true");
+            obj.set_enableevent("false");
+            obj.set_scrolltype("none");
+            obj.set_scrollbartype("none");
+            obj.set_scrollpixel("none");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"26\"/><Column size=\"47\"/><Column size=\"160\"/><Column size=\"74\"/><Column size=\"78\"/></Columns><Rows><Row size=\"40\"/></Rows><Band id=\"body\"><Cell text=\"NO\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\" textAlign=\"center\"/><Cell col=\"1\" text=\"작성자\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\" textAlign=\"center\"/><Cell col=\"2\" text=\"게시글 제목\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\" textAlign=\"center\"/><Cell col=\"3\" text=\"답변상태\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\" textAlign=\"center\"/><Cell col=\"4\" text=\"작성일\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\" textAlign=\"center\"/></Band></Format></Formats>");
+            this.grid_wrapper.addChild(obj.name, obj);
+
+            obj = new Grid("grid_list","0","40",null,null,"0","0",null,null,null,null,this.grid_wrapper.form);
             obj.set_taborder("1");
             obj.set_binddataset("ds_board");
             obj.set_autofittype("col");
             obj.set_background("#FFFFFF");
             obj.set_border("0px none");
-            obj.set_borderRadius("10px");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"26\"/><Column size=\"47\"/><Column size=\"160\"/><Column size=\"74\"/><Column size=\"78\"/></Columns><Rows><Row size=\"40\" band=\"head\"/><Row size=\"34\"/></Rows><Band id=\"head\"><Cell text=\"NO\" displaytype=\"normal\" edittype=\"none\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\"/><Cell col=\"1\" text=\"작성자\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\"/><Cell col=\"2\" text=\"게시글 제목\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\"/><Cell col=\"3\" text=\"답변상태\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\"/><Cell col=\"4\" text=\"작성일\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" background=\"white\" border=\"0px none,0px none,1px solid #eeeeee\"/></Band><Band id=\"body\"><Cell displaytype=\"normal\" edittype=\"none\" checkboxtruevalue=\"1\" checkboxfalsevalue=\"0\" textAlign=\"center\" border=\"0px none,0px none,0.5px solid #eeeeee\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:USER_NAME\" textAlign=\"center\" border=\"0px none,0px none,0.5px solid #eeeeee\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\"/><Cell col=\"2\" text=\"bind:POST_TITLE\" textAlign=\"center\" border=\"0px none,0px none,0.5px solid #eeeeee\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" edittype=\"none\"/><Cell col=\"3\" text=\"bind:POST_STATUS\" displaytype=\"normal\" edittype=\"none\" textAlign=\"center\" border=\"0px none,0px none,0.5px solid #eeeeee\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" cursor=\"pointer\"/><Cell col=\"4\" text=\"bind:INPUT_DT\" textAlign=\"center\" border=\"0px none,0px none,0.5px solid #eeeeee\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" edittype=\"none\"/></Band></Format></Formats>");
-            this.addChild(obj.name, obj);
+            obj.set_borderRadius("0px 0px 10px 10px");
+            obj.set_scrollbartype("auto");
+            obj.set_scrollbarsize("10");
+            obj.set_scrollbartrackbarsize("40");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"26\"/><Column size=\"47\"/><Column size=\"160\"/><Column size=\"74\"/><Column size=\"78\"/></Columns><Rows><Row size=\"34\"/></Rows><Band id=\"body\"><Cell displaytype=\"normal\" edittype=\"none\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" expr=\"currow+1\"/><Cell col=\"1\" text=\"bind:USER_NAME\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\"/><Cell col=\"2\" text=\"bind:POST_TITLE\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" edittype=\"none\"/><Cell col=\"3\" text=\"bind:POST_STATUS\" displaytype=\"normal\" edittype=\"none\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR Medium&quot;\" cursor=\"pointer\" cssclass=\"expr:(POST_STATUS==&apos;답변대기&apos;?&apos;cell_wait&apos;:(POST_STATUS==&apos;답변완료&apos;?&apos;cell_done&apos;:&apos;&apos;))\"/><Cell col=\"4\" text=\"bind:INPUT_DT\" textAlign=\"center\" border=\"0px,0px,2px solid rgba(229,229,229,0.15)\" font=\"normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;\" edittype=\"none\"/></Band></Format></Formats>");
+            this.grid_wrapper.addChild(obj.name, obj);
 
-            obj = new Calendar("Calendar00_01","907","16","120","30",null,null,null,null,null,null,this);
+            obj = new Static("stc_ship00_00","50","10.28%","200","28",null,null,null,null,null,null,this);
             obj.set_taborder("2");
-            this.addChild(obj.name, obj);
-
-            obj = new Static("txt_th00_00_00","1052","12","80","36",null,null,null,null,null,null,this);
-            obj.set_taborder("3");
-            obj.set_text("-");
-            obj.set_font("normal 11pt/normal \"Noto Sans KR\"");
-            this.addChild(obj.name, obj);
-
-            obj = new Calendar("Calendar00_00_00","1075","16","120","30",null,null,null,null,null,null,this);
-            obj.set_taborder("4");
+            obj.set_text("* 답변상태를 누르면 답변할 수 있습니다.");
+            obj.set_font("normal 9pt/normal \"Noto Sans KR Medium\"");
+            obj.set_textAlign("left");
+            obj.set_color("#135dae");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
@@ -122,11 +150,11 @@
             this.addChild(obj.name, obj);
             obj.bind();
 
-            obj = new BindItem("item1","Calendar00_01","value","ds_search","START_DATE");
+            obj = new BindItem("item1","search_area.form.Calendar00_01","value","ds_search","START_DATE");
             this.addChild(obj.name, obj);
             obj.bind();
 
-            obj = new BindItem("item2","Calendar00_00_00","value","ds_search","END_DATE");
+            obj = new BindItem("item2","search_area.form.Calendar00_00_00","value","ds_search","END_DATE");
             this.addChild(obj.name, obj);
             obj.bind();
             
@@ -288,23 +316,52 @@
 
             }
         };
+
+
+        // 검색 영역 hover 효과
+        this.search_area_onmousemove = function(obj, e)
+        {
+            obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
+        };
+
+        this.search_area_onmouseleave = function(obj, e)
+        {
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+        };
+
+        // Grid wrapper hover 효과
+        this.grid_wrapper_onmousemove = function(obj, e)
+        {
+            obj.set_boxShadow("0px 0px 4px 3px rgba(200,200,200,0.30)");
+        };
+
+        this.grid_wrapper_onmouseleave = function(obj, e)
+        {
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+        };
+
+
+
         });
         
         // Regist UI Components Event
         this.on_initEvent = function()
         {
             this.addEventHandler("onload",this.Form_Board_Qna_onload,this);
+            this.search_area.addEventHandler("onmousemove",this.search_area_onmousemove,this);
+            this.search_area.addEventHandler("onmouseleave",this.search_area_onmouseleave,this);
             this.search_area.form.stc_name.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
             this.search_area.form.Edit00.addEventHandler("onkeyup",this.search_area_Edit00_onkeyup,this);
-            this.search_area.form.Button00.addEventHandler("onclick",this.search_area_Button00_onclick,this);
             this.search_area.form.stc_ship.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
             this.search_area.form.rad_type.addEventHandler("onitemchanged",this.search_area_rad_type_onitemchanged,this);
+            this.search_area.form.Calendar00_01.addEventHandler("onchanged",this.Calendar00_01_onchanged,this);
             this.search_area.form.stc_name00.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
-            this.grid_list.addEventHandler("onheadclick",this.grid_list_onheadclick,this);
-            this.grid_list.addEventHandler("oncellclick",this.grid_list_oncellclick,this);
-            this.Calendar00_01.addEventHandler("onchanged",this.Calendar00_01_onchanged,this);
-            this.txt_th00_00_00.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
-            this.Calendar00_00_00.addEventHandler("onchanged",this.Calendar00_00_00_onchanged,this);
+            this.search_area.form.txt_th00_00_00.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
+            this.search_area.form.Calendar00_00_00.addEventHandler("onchanged",this.Calendar00_00_00_onchanged,this);
+            this.grid_wrapper.addEventHandler("onmousemove",this.grid_wrapper_onmousemove,this);
+            this.grid_wrapper.addEventHandler("onmouseleave",this.grid_wrapper_onmouseleave,this);
+            this.grid_wrapper.form.grid_list.addEventHandler("oncellclick",this.grid_list_oncellclick,this);
+            this.stc_ship00_00.addEventHandler("onclick",this.search_area_txt_th_onclick,this);
         };
         this.loadIncludeScript("Form_Board_Qna.xfdl");
         this.loadPreloadList();

@@ -117,4 +117,29 @@ public class UserMypageController {
 		
 		return mv;
 	}
+    
+    @RequestMapping(value="/point.do",method = RequestMethod.GET)
+	public ModelAndView myPagePoint(HttpServletRequest request) {
+    	ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession(false);
+		try {
+			Map<String, Object> users = (Map<String, Object>) session.getAttribute("userInfo");
+			String id = (String) users.get("MEMBER_ID");
+			String userName = (String) users.get("USER_NAME");
+			int pointTotal = userMemberService.selectTotalPointByUser(id);
+			int spendTotal = userMemberService.selectTotalSpendByUser(id);
+			List<Map<String, Object>> pointList = userMemberService.selectPointListByUser(id);
+			List<Map<String, Object>> couponList = userMemberService.selectCouponListByUser(id);
+			mv.addObject("pointTotal", pointTotal);
+			mv.addObject("userName", userName);
+			mv.addObject("spendTotal", spendTotal);
+			mv.addObject("pointList", pointList);
+			mv.addObject("couponList", couponList);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+    	mv.setViewName("point/pointList");
+    	return mv;
+    }
 }

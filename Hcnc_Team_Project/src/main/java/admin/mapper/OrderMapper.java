@@ -40,7 +40,19 @@ public interface OrderMapper {
 	void updatePostPriceListByAdmin(Map<String, Object> row);
 
 	// 주문코멘트를 발송 완료로 바꿀거임
-	void updateOrderCommentByAdmin(Map<String, Object> row); 
+	void updateOrderCommentByAdmin(Map<String, Object> row);
+
+	// 대쉬보드에 나올 신규 주문 건수
+	int selectNewOrderCountByAdmin();
+
+	// 결제대기 건수
+	int selectPendingPaymentCountByAdmin();
+
+	// 배송대기 건수
+	int selectPendingShipCountByAdmin();
+
+	// 리스트 조회
+	List<Map<String, Object>> selectDashStatByAdmin(); 
 	
 
 }

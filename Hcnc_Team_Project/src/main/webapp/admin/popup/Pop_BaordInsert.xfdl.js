@@ -11,8 +11,8 @@
         {
             this.set_name("Pop_BoardInsert");
             this.set_titletext("게시글 작성");
-            this.set_background("#F8F9FA");
-            this.set_border("1px solid #E0E0E0");
+            this.set_background("white");
+            this.set_border("1px solid  #E0E0E0");
             this.set_borderRadius("10px");
             if (Form == this.constructor)
             {
@@ -34,20 +34,20 @@
             obj.set_taborder("0");
             obj.set_text("게시글 작성");
             obj.set_font("normal 18pt/normal \"Noto Sans KR Medium\"");
-            obj.set_color("#333333");
+            obj.set_color(" #333333");
             this.addChild(obj.name, obj);
 
             obj = new Static("sta_boardType","40","20","80","40",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_text("게시판");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
-            obj.set_color("#555555");
+            obj.set_color(" #555555");
             this.addChild(obj.name, obj);
 
             obj = new Combo("cmb_boardType","100","25","210","30",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_borderRadius("5px");
-            obj.set_border("1px solid #CCCCCC");
+            obj.set_border("1px solid  #CCCCCC");
             obj.set_displaynulltext("게시판을 선택하세요");
             obj.set_innerdataset("ds_boardType");
             obj.set_codecolumn("NAME");
@@ -58,33 +58,33 @@
             obj.set_taborder("3");
             obj.set_text("제목");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
-            obj.set_color("#555555");
+            obj.set_color(" #555555");
             this.addChild(obj.name, obj);
 
             obj = new Edit("edt_postTitle","100","75",null,"30","31",null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_borderRadius("5px");
-            obj.set_border("1px solid #CCCCCC");
+            obj.set_border("1px solid  #CCCCCC");
             this.addChild(obj.name, obj);
 
             obj = new Static("sta_postContent","40","120","80","40",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("내용");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
-            obj.set_color("#555555");
+            obj.set_color(" #555555");
             this.addChild(obj.name, obj);
 
             obj = new WebBrowser("web_postContent","40","165",null,"385","31",null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.getSetter("borderRadius").set("5px");
-            obj.set_border("1px solid #CCCCCC");
+            obj.set_border("1px solid  #CCCCCC");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_cancel",null,null,"100","40","141","18",null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_text("취소");
-            obj.set_background("#E5E7EB");
-            obj.set_color("#555555");
+            obj.set_background(" #E5E7EB");
+            obj.set_color(" #555555");
             obj.set_border("0px none");
             obj.set_borderRadius("5px");
             obj.set_cursor("pointer");
@@ -94,7 +94,7 @@
             obj = new Button("btn_save",null,null,"100","40","31","18",null,null,null,null,this);
             obj.set_taborder("8");
             obj.set_text("작성 완료");
-            obj.set_background("#5C6BC0");
+            obj.set_background(" #5C6BC0");
             obj.set_color("white");
             obj.set_border("0px none");
             obj.set_borderRadius("5px");
@@ -106,13 +106,13 @@
             obj.set_taborder("9");
             obj.set_text("작성자");
             obj.set_font("normal 11pt/normal \"Noto Sans KR Medium\"");
-            obj.set_color("#555555");
+            obj.set_color(" #555555");
             this.addChild(obj.name, obj);
 
             obj = new Edit("edt_user","530","25",null,"30","32",null,null,null,null,null,this);
             obj.set_taborder("10");
             obj.set_borderRadius("5px");
-            obj.set_border("1px solid #CCCCCC");
+            obj.set_border("1px solid  #CCCCCC");
             obj.set_readonly("true");
             this.addChild(obj.name, obj);
             // Layout Functions
@@ -122,10 +122,6 @@
             
             // BindItem Information
             obj = new BindItem("item0","edt_postTitle","value","ds_post","POST_TITLE");
-            this.addChild(obj.name, obj);
-            obj.bind();
-
-            obj = new BindItem("item1","cmb_boardType","value","ds_post","BOARD_ID");
             this.addChild(obj.name, obj);
             obj.bind();
 
@@ -147,6 +143,7 @@
         // Form 로드시 실행
         this.Pop_BoardInsert_onload = function(obj,e)
         {
+        	var isSaved = false;  // 초기화
             // 데이터셋 초기화
             this.ds_post.clearData();
         	//데이터셋 로우 추가
@@ -378,9 +375,9 @@
             }
 
             switch(svcID) {
-                case "InsertPostByAdmin":
+                case "insertPostByAdmin":
                     alert("게시글이 성공적으로 작성되었습니다.");
-
+                    isSaved = true;
                     // 부모 창에 결과 전달 (목록 새로고침)
                     if(this.opener && this.opener.fnRefreshList) {
                         this.opener.fnRefreshList();
@@ -394,7 +391,7 @@
         // 폼 닫기 전 확인
         this.Pop_BoardInsert_onbeforeclose = function(obj,e)
         {
-            if(e.reason == "success") {
+            if(isSaved) {
                 return;
             }
 
@@ -415,9 +412,9 @@
 
         	  // 게시판 구분 검사
         	if(val == "공지사항"){
-                this.ds_search.setColumn(0, "BOARD_ID", "1");  // 전체는 ALL 같은 값으로 보냄 (쿼리에선 1,3,4로 조회함)
+                this.ds_post.setColumn(0, "BOARD_ID", "1");    // 전체는 ALL 같은 값으로 보냄 (쿼리에선 1,3,4로 조회함)
             } else if(val == "FAQ"){
-                this.ds_search.setColumn(0, "BOARD_ID", "3");    // 공지사항
+                this.ds_post.setColumn(0, "BOARD_ID", "3");    // 공지사항
             }
         };
 

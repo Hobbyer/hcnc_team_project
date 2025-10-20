@@ -79,13 +79,12 @@ public class UserProductService {
 	}
 
 	public HashMap<String, Object> insertCartItemByUser(Map<String, Object> param, List<Long> optionIds) {
-		// TODO Auto-generated method stub
 		HashMap<String, Object> resultData = new HashMap<String, Object>();
 		int result = 0;
+		// 1. CART_ID 조회
+		Long  cartIdSelect = userProductMapper.selectCartIdByUser(param);
 		try {
-			// 1. CART_ID 조회
-			Long  cartIdSelect = userProductMapper.selectCartIdByUser(param);
-			if(cartIdSelect != null) {
+			if(cartIdSelect != null && param.get("tempId") == null) {
 				param.put("cartId", cartIdSelect);
 			} else {
 				userProductMapper.insertCartsByUser(param);
@@ -130,6 +129,7 @@ public class UserProductService {
 		} catch(DuplicateKeyException e) {
 			result = 2;
 			resultData.put("result", result);
+			resultData.put("cartId", cartIdSelect);
 		}
 		return resultData;
 	}
@@ -169,20 +169,9 @@ public class UserProductService {
 		// TODO Auto-generated method stub
 		return userProductMapper.selectProductDescriptionByUser(param);
 	}
-
-
-	public List<Map<String, Object>> selectTypeProductListByUser() {
-		// TODO Auto-generated method stub
-		return userProductMapper.selectTypeProductListByUser();//메인에서 NEW BEST불러가는용
-	}
-
-	public List<Map<String, Object>> selectHotProductListByUser() {
-		// TODO Auto-generated method stub
-		return userProductMapper.selectHotProductListByUser(); // 인기상품불러가능용
-	}
 	
+	// 서브 상세리스트 > 메인출력용 분리 사유: 캐싱
 	// 신상품 리스트 조회
-	@Cacheable("newProducts")
 	public List<Map<String, Object>> selectNewProductList(int page, int pageSize, String sortType, String mainCateId, String subCateId) {
 	    int offset = (page - 1) * pageSize;
 	    
@@ -193,22 +182,100 @@ public class UserProductService {
 	    params.put("mainCateId", mainCateId);
 	    params.put("subCateId", subCateId);
 	    
-	    return userProductMapper.selectNewProListByUser(params);
+	    List<Map<String, Object>> newProducts = userProductMapper.selectNewProListByUser(params);
+	    
+	    // 부족하면 일반상품 최신순으로 채우기
+	    if (newProducts.size() < pageSize) {
+	        int needCount = pageSize - newProducts.size();
+	        params.put("offset", 0);
+	        params.put("pageSize", needCount);
+	        List<Map<String, Object>> normalProducts = userProductMapper.selectNormalProListByRecent(params);
+	        newProducts.addAll(normalProducts);
+	        
+	        // 합친 후 다시 정렬
+	        if (sortType != null) {
+	            switch (sortType) {
+	                case "name":
+	                    newProducts.sort((a, b) -> {
+	                        String nameA = (String) a.get("PRODUCT_NAME");
+	                        String nameB = (String) b.get("PRODUCT_NAME");
+	                        return nameA.compareTo(nameB);
+	                    });
+	                    break;
+	                case "lowPrice":
+	                    newProducts.sort((a, b) -> {
+	                        Number priceA = (Number) (a.get("SALED_PRICE") != null ? a.get("SALED_PRICE") : a.get("PRODUCT_PRICE"));
+	                        Number priceB = (Number) (b.get("SALED_PRICE") != null ? b.get("SALED_PRICE") : b.get("PRODUCT_PRICE"));
+	                        return Double.compare(priceA.doubleValue(), priceB.doubleValue());
+	                    });
+	                    break;
+	                case "highPrice":
+	                    newProducts.sort((a, b) -> {
+	                        Number priceA = (Number) (a.get("SALED_PRICE") != null ? a.get("SALED_PRICE") : a.get("PRODUCT_PRICE"));
+	                        Number priceB = (Number) (b.get("SALED_PRICE") != null ? b.get("SALED_PRICE") : b.get("PRODUCT_PRICE"));
+	                        return Double.compare(priceB.doubleValue(), priceA.doubleValue());
+	                    });
+	                    break;
+	            }
+	        }
+	    }
+	    
+	    return newProducts;
 	}
 
-	// 신상품 총 개수 조회
-	@Cacheable("newProductsCnt")
-	public int selectNewProductCount(String sortType, String mainCateId, String subCateId) {
+	// 인기상품 리스트 조회
+	public List<Map<String, Object>> selectHotProductList(int page, int pageSize, String sortType, String mainCateId, String subCateId) {
+	    int offset = (page - 1) * pageSize;
+	    
 	    Map<String, Object> params = new HashMap<>();
+	    params.put("offset", offset);
+	    params.put("pageSize", pageSize);
 	    params.put("sortType", sortType);
 	    params.put("mainCateId", mainCateId);
 	    params.put("subCateId", subCateId);
 	    
-	    return userProductMapper.selectNewProCountByUser(params);
+	    List<Map<String, Object>> hotProducts = userProductMapper.selectHotProListByUser(params);
+	    
+	    // 부족하면 조회수 높은 상품으로 채우기
+	    if (hotProducts.size() < pageSize) {
+	        int needCount = pageSize - hotProducts.size();
+	        params.put("offset", 0);
+	        params.put("pageSize", needCount);
+	        List<Map<String, Object>> normalProducts = userProductMapper.selectNormalProListByViewCnt(params);
+	        hotProducts.addAll(normalProducts);
+	        
+	        // 합친 후 다시 정렬
+	        if (sortType != null) {
+	            switch (sortType) {
+	                case "name":
+	                    hotProducts.sort((a, b) -> {
+	                        String nameA = (String) a.get("PRODUCT_NAME");
+	                        String nameB = (String) b.get("PRODUCT_NAME");
+	                        return nameA.compareTo(nameB);
+	                    });
+	                    break;
+	                case "lowPrice":
+	                    hotProducts.sort((a, b) -> {
+	                        Number priceA = (Number) (a.get("SALED_PRICE") != null ? a.get("SALED_PRICE") : a.get("PRODUCT_PRICE"));
+	                        Number priceB = (Number) (b.get("SALED_PRICE") != null ? b.get("SALED_PRICE") : b.get("PRODUCT_PRICE"));
+	                        return Double.compare(priceA.doubleValue(), priceB.doubleValue());
+	                    });
+	                    break;
+	                case "highPrice":
+	                    hotProducts.sort((a, b) -> {
+	                        Number priceA = (Number) (a.get("SALED_PRICE") != null ? a.get("SALED_PRICE") : a.get("PRODUCT_PRICE"));
+	                        Number priceB = (Number) (b.get("SALED_PRICE") != null ? b.get("SALED_PRICE") : b.get("PRODUCT_PRICE"));
+	                        return Double.compare(priceB.doubleValue(), priceA.doubleValue());
+	                    });
+	                    break;
+	            }
+	        }
+	    }
+	    
+	    return hotProducts;
 	}
 
 	// 추천상품 리스트 조회
-	@Cacheable("recommendProducts")
 	public List<Map<String, Object>> selectRecommendProductList(int page, int pageSize, String sortType, String mainCateId, String subCateId) {
 	    int offset = (page - 1) * pageSize;
 	    
@@ -220,43 +287,6 @@ public class UserProductService {
 	    params.put("subCateId", subCateId);
 	    
 	    return userProductMapper.selectRecommendProListByUser(params);
-	}
-
-	// 추천상품 총 개수 조회
-	@Cacheable("recommendProductsCnt")
-	public int selectRecommendProductCount(String sortType, String mainCateId, String subCateId) {
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("sortType", sortType);
-	    params.put("mainCateId", mainCateId);
-	    params.put("subCateId", subCateId);
-	    
-	    return userProductMapper.selectRecommendProCountByUser(params);
-	}
-
-	// 인기상품 리스트 조회
-	@Cacheable("hotProducts")
-	public List<Map<String, Object>> selectHotProductList(int page, int pageSize, String sortType, String mainCateId, String subCateId) {
-	    int offset = (page - 1) * pageSize;
-	    
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("offset", offset);
-	    params.put("pageSize", pageSize);
-	    params.put("sortType", sortType);
-	    params.put("mainCateId", mainCateId);
-	    params.put("subCateId", subCateId);
-	    
-	    return userProductMapper.selectHotProListByUser(params);
-	}
-
-	// 인기상품 총 개수 조회
-	@Cacheable("hotProductsCnt")
-	public int selectHotProductCount(String sortType, String mainCateId, String subCateId) {
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("sortType", sortType);
-	    params.put("mainCateId", mainCateId);
-	    params.put("subCateId", subCateId);
-	    
-	    return userProductMapper.selectHotProCountByUser(params);
 	}
 
 	// 카테고리별 리스트 조회
@@ -273,15 +303,6 @@ public class UserProductService {
 	    return userProductMapper.selectCategoryProductsListByUser(params);
 	}
 
-	// 카테고리별 총 개수 조회
-	public int selectCategoryProductCount(String sortType, String mainCateId, String subCateId) {
-	    Map<String, Object> params = new HashMap<>();
-	    params.put("sortType", sortType);
-	    params.put("mainCateId", mainCateId);
-	    params.put("subCateId", subCateId);
-	    
-	    return userProductMapper.selectCategoryProductsCountByUser(params);
-	}
 	
 
 }

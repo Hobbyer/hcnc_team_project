@@ -48,6 +48,8 @@
 	        O.OPTION_NAME,
 	        O.OPTION_VALUE,
 	        O.ADDITIONAL_PRICE,
+					PI.IMAGE_ID,
+					PI.IMAGE_URL,
 	        CASE WHEN EXISTS (
 	            SELECT 1 
 	            FROM WISH W2 
@@ -64,6 +66,8 @@
 	        	ON CI.CART_ITEM_ID = CIO.CART_ITEM_ID
 	        LEFT JOIN OPTIONS O 
 	        	ON CIO.OPTION_ID = O.OPTION_ID
+					LEFT JOIN PRODUCT_IMG PI
+						ON CI.PRODUCT_ID = PI.PRODUCT_ID AND PI.SORT_NUMBER = 0
 	    WHERE C.CART_ID = #{cartId}
 	    ORDER BY CI.INPUT_DT DESC
 	</select>

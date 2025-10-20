@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user.mapper.UserMapper">
 	<select id="selectProductListSearchByUser" resultType="java.util.Map">
-		SELECT p.PRODUCT_ID AS PRODUCT_ID
+		 SELECT p.PRODUCT_ID AS PRODUCT_ID
 	         , p.PRODUCT_NAME
 	         , p.PRODUCT_CODE
 	         , p.PRODUCT_PRICE
@@ -14,6 +14,7 @@
 	         , COALESCE(r.REVIEW_COUNT, 0) AS REVIEW_COUNT
 	         , COALESCE(r.AVG_RATING, 0) AS AVG_RATING
 	         , COALESCE(inv.TOTAL_QUANTITY, 0) AS STOCK_QUANTITY
+	         , sc.IS_ACTIVE 
 	    FROM PRODUCTS p
 	    LEFT JOIN PRODUCT_IMG pImg 
            ON p.PRODUCT_ID = pImg.PRODUCT_ID 
@@ -32,7 +33,10 @@
 		    FROM INVENTORIES
 		    GROUP BY PRODUCT_ID
 		) inv ON p.PRODUCT_ID = inv.PRODUCT_ID
+		LEFT JOIN SUB_CATEGORIES sc 
+			ON p.SUB_CATE_ID = sc.SUB_CATE_ID  
 	    WHERE p.IS_VISIBLE = 'Y'
+	      AND sc.IS_ACTIVE = 'Y'
  	      AND p.PRODUCT_NAME LIKE CONCAT('%', #{keyword}, '%')
 	</select>
 </mapper>

@@ -21,8 +21,8 @@ main .flex.f-wrap{flex-wrap: wrap;}
 /*메인공용*/
 main section{padding:100px 0;}
 .swiper {width: 100%; overflow: hidden;}
-.swiper.swiper-half{width: 49%;}
-.swiper.swiper-half .swiper-left{margin-left:1%;}
+.swiper.swiper-half{width: 49%; padding:10px;}
+.swiper.swiper-half .swiper-left{margin-left:1%; }
 .swiper.swiper-half .swiper-right{margin-right:1%;}
 .swiper .swiper-wrapper {display: flex;}
 .swiper .swiper-slide { width: auto;}
@@ -56,9 +56,10 @@ main section.main-quick{padding-top:60px; padding-bottom:0;}
 
 /* 기본 상품 아이템 */
 .prd_area .prdList{padding:15px 10px; overflow:hidden;}
-.prd_area .prdItem { list-style: none;  margin-bottom: 20px;}
-.prd_area .prdItem.nodata{width:100% !important; }
-.prd_area .prdItem.nodata .nodata{width:100%; padding:50px 0; text-align:center; font-size:18px; color:#999;}
+.prd_area .prdList .prdItem { list-style: none;  margin:0 0 20px;}
+/*main .prd_area .labels-area{display:none;}*/
+.prd_area .prdList .prdItem.nodata{width:100% !important; }
+.prd_area .prdList .prdItem.nodata .nodata{width:100%; padding:50px 0; text-align:center; font-size:18px; color:#999;}
 
 .btn-view-more-wrap{padding:40px 0;}
 .btn-view-more{border:2px solid #333; padding:10px 40px;}

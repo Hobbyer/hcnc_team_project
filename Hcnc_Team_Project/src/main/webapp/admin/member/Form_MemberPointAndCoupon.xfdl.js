@@ -28,7 +28,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("point_search_box","20","17","1240","93",null,null,null,null,null,null,this);
+            obj = new Static("point_search_box","40","17","1200","93",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("white");
             obj.set_text("");
@@ -47,7 +47,7 @@
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("pointAndCoupon","20","130","1240","566",null,null,null,null,null,null,this);
+            obj = new Grid("pointAndCoupon","40","130","1200",null,null,"20",null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_background("#FFFFFF");
             obj.set_border("0px none");
@@ -60,18 +60,23 @@
             obj = new Button("select_btn","990","44","100","41",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("조회하기");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_color("white");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_color("#ffffff");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("cancel_btn","1110","43","100","41",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("초기화");
-            obj.set_background(" #9ca3af");
-            obj.set_borderRadius("4px");
+            obj.set_background(" #f5f5f5");
+            obj.set_borderRadius("8px");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_color("#666666");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new MaskEdit("MaskEdit00","720","47","200","33",null,null,null,null,null,null,this);

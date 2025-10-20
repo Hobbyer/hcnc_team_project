@@ -558,10 +558,14 @@
         this.fnUpdateBanner = function() {
             var strSvcID = "updateBanner";
             var strURL = "svc::updateBannerByAdmin.do";
-            var strInDatasets = "ds_bwrite=ds_bwrite ds_file=ds_file";
+            var strInDatasets = "ds_bwrite=ds_bwrite";
             var strOutDatasets = ""; // update는 결과 데이터를 받아올 필요 없음
             var strArg = "";
             var strCallback = "fnCallback";
+            // 파일이 수정됬을때만 업데이트되도록
+            if (this.uploadCompleted && this.ds_file.rowcount > 0) {
+                strInDatasets += " ds_file=ds_file";
+            }
 
             this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArg, strCallback);
         };
@@ -575,6 +579,10 @@
             switch(svc) {
                 case "selectBannerDetail":
         			trace("배너 상세 조회 완료");
+
+        			if(this.ds_bwrite.getRowCount() > 0) {
+                        this.ds_bwrite.setRowType(0, Dataset.ROWTYPE_NORMAL);
+                    }
 
         			var sortNumber = this.ds_bwrite.getColumn(0, "SORT_NUMBER");
         			this.check_top.set_value(sortNumber == "1" || sortNumber == 1);

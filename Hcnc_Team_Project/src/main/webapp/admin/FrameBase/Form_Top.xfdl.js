@@ -30,10 +30,12 @@
             obj.set_font("normal 12pt/normal \"Pretendard SemiBold\"");
             this.addChild(obj.name, obj);
 
-            obj = new ImageViewer("h1_logo","20","3","190","45",null,null,null,null,null,null,this);
+            obj = new ImageViewer("h1_logo","22","9","138","33",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_image("url(\'imagerc::h1_logo.png\')");
             obj.set_border("0px none");
+            obj.set_stretch("fixaspectratio");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_logout",null,"11","80","31","10",null,null,null,null,null,this);

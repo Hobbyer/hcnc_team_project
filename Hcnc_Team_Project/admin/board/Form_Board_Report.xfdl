@@ -1,78 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Board_Notice" width="1280" height="720" titletext="New Form" color="blue" background="#F4F7FE" onload="Form_Board_Notice_onload" font="normal 11pt/normal &quot;Noto Sans KR&quot;">
+  <Form id="Form_Board_Notice" width="1280" height="720" titletext="New Form" color="blue" background="#F4F7FE" onload="Form_Board_Notice_onload" font="normal 11pt/normal &quot;Noto Sans KR&quot;" scrolltype="none" scrollbartype="none" scrollbarsize="0">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Div id="search_area" taborder="0" left="40" top="0" height="60" background="#ffffff" borderRadius="10px" text="" right="40">
+        <!-- 검색 영역 -->
+        <Div id="search_area" taborder="0" left="40" top="10" height="60" background="#ffffff" borderRadius="10px" text="" right="40" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="search_area_onmousemove" onmouseleave="search_area_onmouseleave">
           <Layouts>
             <Layout>
-              <Static id="stc_name" taborder="2" text="작성자" left="991" top="13" width="50" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Edit id="Edit00" taborder="3" top="16" width="125" height="30" onkeyup="search_area_Edit00_onkeyup" borderRadius="5px" right="30"/>
-              <Button id="Button00" taborder="4" text="⌕" top="16" height="30" background="#135dae" borderRadius="5px" color="white" cursor="pointer" width="30" right="30" onclick="search_area_Button00_onclick"/>
-              <Static id="stc_postType" taborder="0" text="게시글 유형" left="30" top="13" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Radio id="rad_type" taborder="1" left="130" top="13" width="220" height="36" innerdataset="ds_postType" codecolumn="NAME" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" index="0" text="전체" value="전체" onitemchanged="search_area_rad_type_onitemchanged"/>
-              <Static id="stc_report" taborder="5" text="신고 상태" left="429" top="12" width="70" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Combo id="Combo00" taborder="6" text="전체" left="496" top="16" width="104" height="30" innerdataset="ds_report" codecolumn="NAME" datacolumn="NAME" borderRadius="5px" index="0" value="전체" onitemchanged="search_area_Combo00_onitemchanged"/>
-              <Static id="stc_report00" taborder="7" text="신고 유형" left="702" top="12" width="70" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
-              <Combo id="Combo00_00" taborder="8" text="" left="769" top="15" width="104" height="30" innerdataset="ds_reportType" codecolumn="REPORT_TYPE" datacolumn="REPORT_TYPE" borderRadius="5px" index="0" value="" onitemchanged="search_area_Combo00_00_onitemchanged"/>
+              <Static id="stc_name" taborder="2" text="작성자" top="13" width="50" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="29.08%"/>
+              <Edit id="Edit00" taborder="3" top="14" width="105" height="30" onkeyup="search_area_Edit00_onkeyup" borderRadius="5px" right="20%"/>
+              <Static id="stc_postType" taborder="0" text="게시글 유형" left="2.5%" top="13" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
+              <Radio id="rad_type" taborder="1" left="10.83%" top="13" width="190" height="36" innerdataset="ds_postType" codecolumn="NAME" datacolumn="NAME" direction="vertical" font="normal 9pt/normal &quot;Noto Sans KR&quot;" index="0" text="전체" value="전체" onitemchanged="search_area_rad_type_onitemchanged"/>
+              <Static id="stc_report" taborder="4" text="신고 상태" left="29.92%" top="12" width="70" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
+              <Combo id="Combo00" taborder="5" text="전체" left="35.5%" top="14" width="104" height="30" innerdataset="ds_report" codecolumn="NAME" datacolumn="NAME" borderRadius="5px" index="0" value="전체" onitemchanged="search_area_Combo00_onitemchanged"/>
+              <Static id="stc_report00" taborder="6" text="신고 유형" top="12" width="70" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" right="45.67%"/>
+              <Combo id="Combo00_00" taborder="7" text="" top="14" width="104" height="30" innerdataset="ds_reportType" codecolumn="REPORT_TYPE" datacolumn="REPORT_TYPE" borderRadius="5px" index="0" value="" onitemchanged="search_area_Combo00_00_onitemchanged" right="37.25%"/>
+              <Button id="btn_save" taborder="8" text="저장" top="14" height="30" onclick="search_area_btn_save_onclick" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" right="30" width="100"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="grid_list" taborder="1" left="40" top="116" right="40" bottom="40" binddataset="ds_list" autofittype="col" background="#FFFFFF" border="0px none" borderRadius="10px" onheadclick="grid_list_onheadclick" oncellclick="grid_list_oncellclick">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="26"/>
-                <Column size="47"/>
-                <Column size="52"/>
-                <Column size="51"/>
-                <Column size="236"/>
-                <Column size="66"/>
-                <Column size="100"/>
-                <Column size="54"/>
-                <Column size="67"/>
-              </Columns>
-              <Rows>
-                <Row size="40" band="head"/>
-                <Row size="34"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="chk" displaytype="checkboxcontrol" edittype="checkbox" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="1" text="게시분류" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="2" text="리뷰ID" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="3" text="댓글ID" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="4" text="신고내용" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="5" text="작성자" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="6" text="작성자ID" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="7" text="신고 유형" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="8" text="신고 상태" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="1" checkboxfalsevalue="0" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="1" text="bind:TARGET_TYPE" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="2" text="bind:REVIEW_ID" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none" cursor="pointer"/>
-                <Cell col="3" text="bind:COMMENT_ID" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none" cursor="pointer"/>
-                <Cell col="4" text="bind:REPORT_CONTENT" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="5" text="bind:USER_NAME" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="6" text="bind:BOARD_WRITER" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="7" text="bind:REPORT_TYPE" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="8" text="bind:REPORT_STATUS" textAlign="center" border="0px none,0px none,0.5px solid #eeeeee" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="combo" displaytype="combocontrol" combodataset="ds_reportGrid" combodatacol="NAME" combocodecol="NAME"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Button id="btn_save" taborder="2" text="저장" top="70" height="30" onclick="search_area_btn_save_onclick" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" right="40" width="100"/>
-        <Static id="stc_postType" taborder="3" text="각 ID를 클릭해주세요" left="190" top="95" width="107" height="16" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onclick="search_area_txt_th_onclick" color="red"/>
+        <!-- Grid를 감싸는 Div (그림자 적용용) -->
+        <Div id="grid_wrapper" taborder="1" left="40" top="100" right="40" bottom="48" background="#FFFFFF" borderRadius="10px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="grid_wrapper_onmousemove" onmouseleave="grid_wrapper_onmouseleave">
+          <Layouts>
+            <Layout>
+              <!-- 헤더 Grid (고정) -->
+              <Grid id="grid_header" taborder="0" left="0" top="0" right="10" height="40" binddataset="ds_list" autofittype="col" background="#FFFFFF" border="0px none" selecttype="row" readonly="true" enableevent="false" scrolltype="none" scrollbartype="none">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="26"/>
+                      <Column size="47"/>
+                      <Column size="52"/>
+                      <Column size="51"/>
+                      <Column size="236"/>
+                      <Column size="66"/>
+                      <Column size="100"/>
+                      <Column size="54"/>
+                      <Column size="67"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="40"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="chk" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="1" text="게시분류" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="2" text="리뷰ID" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="3" text="댓글ID" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="4" text="신고내용" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="5" text="작성자" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="6" text="작성자ID" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="7" text="신고 유형" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="8" text="신고 상태" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <!-- Body Grid (스크롤) -->
+              <Grid id="grid_list" taborder="1" left="0" top="40" right="0" bottom="0" binddataset="ds_list" autofittype="col" background="#FFFFFF" border="0px none" borderRadius="0px 0px 10px 10px" onheadclick="grid_list_onheadclick" oncellclick="grid_list_oncellclick" scrollbartype="auto" scrollbarsize="10" scrollbartrackbarsize="40">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="26"/>
+                      <Column size="47"/>
+                      <Column size="52"/>
+                      <Column size="51"/>
+                      <Column size="236"/>
+                      <Column size="66"/>
+                      <Column size="100"/>
+                      <Column size="54"/>
+                      <Column size="67"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="34"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="1" checkboxfalsevalue="0" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="1" text="bind:TARGET_TYPE" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="2" text="bind:REVIEW_ID" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none" cursor="pointer"/>
+                      <Cell col="3" text="bind:COMMENT_ID" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none" cursor="pointer"/>
+                      <Cell col="4" text="bind:REPORT_CONTENT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="5" text="bind:USER_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="6" text="bind:BOARD_WRITER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="7" text="bind:REPORT_TYPE" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="8" text="bind:REPORT_STATUS" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="combo" displaytype="combocontrol" combodataset="ds_reportGrid" combodatacol="NAME" combocodecol="NAME" cssclass="expr:(REPORT_STATUS=='신고접수'?'cell_pending':(REPORT_STATUS=='신고처리'?'cell_done':(REPORT_STATUS=='신고취소'?'cell_wait':'')))"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="stc_postType" taborder="2" text="* 각 ID를 클릭해주세요" left="51" top="81" width="150" height="16" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onclick="search_area_txt_th_onclick" color="#135dae"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//페이지 온로드시
 this.Form_Board_Notice_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.fnselectReportByAdmin();
-    this.grid_list.setCellProperty("head", 0, "text", "0");	
-
+    this.grid_wrapper.form.grid_list.setCellProperty("head", 0, "text", "0");
 	this.search_area_Combo00_00.set_value("전체");
 };
+
+
+// 검색 영역 hover 효과
+this.search_area_onmousemove = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 3px 3px rgba(200,200,200,0.30)");
+};
+
+this.search_area_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+};
+
+// Grid wrapper hover 효과
+this.grid_wrapper_onmousemove = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 4px 3px rgba(200,200,200,0.30)");
+};
+
+this.grid_wrapper_onmouseleave = function(obj:nexacro.Div, e:nexacro.MouseEventInfo)
+{
+    obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
+};
+
 
 // 리포트 리스트 조회 트랜젝션
 this.fnselectReportByAdmin = function(){

@@ -48,11 +48,12 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Div("search_area","40","0",null,"60","40",null,null,null,null,null,this);
+            obj = new Div("search_area","40","10",null,"60","40",null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("#ffffff");
             obj.set_borderRadius("10px");
             obj.set_text("");
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
             this.addChild(obj.name, obj);
 
             obj = new Static("txt_cnt","110","15","80","36",null,null,null,null,null,null,this.search_area.form);
@@ -60,7 +61,7 @@
             obj.set_font("normal 10pt/normal \"Noto Sans KR\"");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Static("txt_th01","29","14","80","36",null,null,null,null,null,null,this.search_area.form);
+            obj = new Static("txt_th01","29","13","80","36",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("1");
             obj.set_text("주문 내역");
             obj.set_font("normal 13pt/normal \"Noto Sans KR Black\"");
@@ -84,25 +85,15 @@
             obj.set_color("#4b4b4b");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Static("txt_th01_00_00","630","13","80","36",null,null,null,null,null,null,this.search_area.form);
+            obj = new Static("txt_th01_00_00","52.5%","13","80","36",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("4");
             obj.set_text("상세 설정");
             obj.set_font("normal 10pt/normal \"Noto Sans KR\"");
             obj.set_color("#4b4b4b");
             this.search_area.addChild(obj.name, obj);
 
-            obj = new Combo("Combo00_00","700","16","120","30",null,null,null,null,null,null,this.search_area.form);
+            obj = new Calendar("Calendar00","58.33%","16","120","30",null,null,null,null,null,null,this.search_area.form);
             obj.set_taborder("5");
-            obj.set_innerdataset("ds_payment");
-            obj.set_codecolumn("NAME");
-            obj.set_datacolumn("NAME");
-            obj.set_text("일별");
-            obj.set_value("일별");
-            obj.set_index("0");
-            this.search_area.addChild(obj.name, obj);
-
-            obj = new Calendar("Calendar00","700","16","120","30",null,null,null,null,null,null,this.search_area.form);
-            obj.set_taborder("6");
             this.search_area.addChild(obj.name, obj);
 
             obj = new Div("Div00","40","90","47%",null,null,"50",null,null,null,null,this);
@@ -110,6 +101,7 @@
             obj.set_text(" ");
             obj.set_background("white");
             obj.set_borderRadius("10px");
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
             this.addChild(obj.name, obj);
 
             obj = new BasicChart("BasicChart00","0","57",null,null,"0","0",null,null,null,null,this.Div00.form);
@@ -310,6 +302,7 @@
             obj.set_text("Div00");
             obj.set_background("white");
             obj.set_borderRadius("10px");
+            obj.set_boxShadow("0px 0px 2px 2px rgba(229,229,229,0.15)");
             this.addChild(obj.name, obj);
 
             obj = new Div("Div00","0","53","100%","35",null,null,null,null,null,null,this.Div00_00.form);
@@ -318,34 +311,34 @@
             this.Div00_00.addChild(obj.name, obj);
 
             obj = new Static("txt_th01","29","10","80","36",null,null,null,null,null,null,this.Div00_00.form);
-            obj.set_taborder("1");
+            obj.set_taborder("0");
             obj.set_text("상세 내역");
             obj.set_font("normal 13pt/normal \"Noto Sans KR Black\"");
             obj.set_color("#4b4b4b");
             this.Div00_00.addChild(obj.name, obj);
 
-            obj = new Static("txt_th01_00","360","21","199","16",null,null,null,null,null,null,this.Div00_00.form);
-            obj.set_taborder("2");
-            obj.set_text("상세 내역을 보려면 포인터를 클릭하세요");
-            obj.set_font("normal 9pt/normal \"Noto Sans KR Light\"");
-            obj.set_color("#4b4b4b");
-            obj.set_textAlign("right");
-            this.Div00_00.addChild(obj.name, obj);
-
             obj = new Static("txt_th01_01","106","11","80","36",null,null,null,null,null,null,this.Div00_00.form);
-            obj.set_taborder("3");
+            obj.set_taborder("2");
             obj.set_font("normal 9pt/normal \"Noto Sans KR\"");
             obj.set_color("#4b4b4b");
             this.Div00_00.addChild(obj.name, obj);
 
             obj = new Grid("grid_list",null,"63","100.00%",null,"0","0",null,null,null,null,this.Div00_00.form);
-            obj.set_taborder("4");
+            obj.set_taborder("3");
             obj.set_background("#FFFFFF");
             obj.set_border("0px none");
             obj.set_borderRadius("10px");
             obj.set_autofittype("col");
             obj.set_binddataset("ds_detailstat");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"107\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"44\" band=\"head\"/><Row size=\"33\"/></Rows><Band id=\"head\"><Cell text=\"주문번호\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"1\" text=\"주문ID\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"2\" text=\"주문자\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"3\" text=\"결제금액\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"4\" text=\"주문일\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/></Band><Band id=\"body\"><Cell text=\"bind:ORDER_NUMBER\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/><Cell col=\"1\" text=\"bind:MEMBER_ID\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/><Cell col=\"2\" text=\"bind:USER_NAME\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/><Cell col=\"3\" text=\"bind:FINAL_AMOUNT\" textAlign=\"right\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Medium&quot;\"/><Cell col=\"4\" text=\"bind:ORDER_DT\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"107\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"44\" band=\"head\"/><Row size=\"33\"/></Rows><Band id=\"head\"><Cell text=\"주문번호\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"1\" text=\"주문ID\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"2\" text=\"주문자\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"3\" text=\"결제금액\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/><Cell col=\"4\" text=\"주문일\" background=\"white\" font=\"normal 11pt/normal &quot;Noto Sans KR Medium&quot;\" border=\"0px,0px,1px solid #eeeeee\" color=\"black\"/></Band><Band id=\"body\"><Cell text=\"bind:ORDER_NUMBER\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/><Cell col=\"1\" text=\"bind:MEMBER_ID\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/><Cell col=\"2\" text=\"bind:USER_NAME\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/><Cell col=\"3\" text=\"bind:FINAL_AMOUNT\" textAlign=\"right\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Black&quot;\" color=\"#135dae\"/><Cell col=\"4\" text=\"bind:ORDER_DT\" textAlign=\"center\" border=\"0px\" font=\"normal 10pt/normal &quot;Noto Sans KR Light&quot;\"/></Band></Format></Formats>");
+            this.Div00_00.addChild(obj.name, obj);
+
+            obj = new Static("txt_th01_00","350","21",null,"16","20",null,null,null,null,null,this.Div00_00.form);
+            obj.set_taborder("4");
+            obj.set_text("상세 내역을 보려면 포인터를 클릭하세요");
+            obj.set_font("normal 9pt/normal \"Noto Sans KR Light\"");
+            obj.set_color("#4b4b4b");
+            obj.set_textAlign("right");
             this.Div00_00.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
@@ -426,10 +419,12 @@
         				case "결제수단별":
         				this.search_area.form.Calendar00.set_visible(false);
         				this.search_area.form.Calendar00.set_value("");
+        				this.search_area.form.txt_th01_00_00.set_text("");
         				break;
 
         				default :
         				this.search_area.form.Calendar00.set_visible(true);
+        				this.search_area.form.txt_th01_00_00.set_text("상세 설정");
         				break;
         			}
         			this.ds_search.setColumn(0,"SEARCH_DATA","")
@@ -568,14 +563,13 @@
             this.search_area.form.Combo00.addEventHandler("onitemchanged",this.search_area_Combo00_onitemchanged,this);
             this.search_area.form.txt_th01_00.addEventHandler("onclick",this.txt_th_onclick,this);
             this.search_area.form.txt_th01_00_00.addEventHandler("onclick",this.txt_th_onclick,this);
-            this.search_area.form.Combo00_00.addEventHandler("onitemchanged",this.search_area_Combo00_00_onitemchanged,this);
             this.search_area.form.Calendar00.addEventHandler("onchanged",this.search_area_Calendar00_onchanged,this);
             this.Div00.form.BasicChart00.addEventHandler("onseriesclick",this.Div00_BasicChart00_onseriesclick,this);
             this.Div00.form.txt_th01.addEventHandler("onclick",this.txt_th_onclick,this);
             this.Div00.form.Div01.form.txt_th01_00.addEventHandler("onclick",this.txt_th_onclick,this);
             this.Div00_00.form.txt_th01.addEventHandler("onclick",this.txt_th_onclick,this);
-            this.Div00_00.form.txt_th01_00.addEventHandler("onclick",this.txt_th_onclick,this);
             this.Div00_00.form.txt_th01_01.addEventHandler("onclick",this.txt_th_onclick,this);
+            this.Div00_00.form.txt_th01_00.addEventHandler("onclick",this.txt_th_onclick,this);
         };
         this.loadIncludeScript("Form_stat_main.xfdl");
         this.loadPreloadList();

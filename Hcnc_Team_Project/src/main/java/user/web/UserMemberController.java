@@ -134,6 +134,7 @@ public class UserMemberController {
 		String subject = "DOO.D 이메일 인증번호";
 		String text = "DOO.D 이메일 인증번호: ";
 		int code = RandomCode();
+		System.out.println(code);
 		saveAuthCode(to, code);
 		mailService.sendMail(to, subject, text + code); 
 		mv.addObject("status", 200);
@@ -411,6 +412,7 @@ public class UserMemberController {
 				String id = (String) userInfo.get("MEMBER_ID");
 				int count = userMemberService.updateWithDrawByUser(id);
 				if(count == 1) {
+					session.invalidate();
 					mv.addObject("status",200);
 				} else {
 					mv.addObject("status",400);	

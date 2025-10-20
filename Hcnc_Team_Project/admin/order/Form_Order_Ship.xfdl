@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Order_Ship" width="1280" height="720" titletext="결제 내역" background="#F4F7FE" onload="Form_Order_Ship_onload">
+  <Form id="Form_Order_Ship" width="1280" height="720" titletext="결제 내역" background="#F4F7FE" onload="Form_Order_Ship_onload" scrolltype="none" scrollbartype="none" scrollbarsize="0">
     <Layouts>
       <Layout height="720" width="1280">
         <!-- 검색 영역 -->
-        <!-- 결제 내역 그리드 -->
-        <Div id="search_area" taborder="1" left="40" top="10" height="60" background="#ffffff" borderRadius="10px" text="" right="40">
+        <Div id="search_area" taborder="1" left="40" top="10" height="60" background="#ffffff" borderRadius="10px" text="" right="40" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="search_area_onmousemove" onmouseleave="search_area_onmouseleave">
           <Layouts>
             <Layout>
               <Static id="stc_name" taborder="2" text="주문자" left="31.83%" top="9" width="60" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
@@ -19,50 +18,78 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="grid_list" taborder="0" left="40" top="100" right="40" bottom="40" binddataset="ds_ship" autofittype="col" background="#FFFFFF" border="0px none" borderRadius="10px" onheadclick="grid_list_onheadclick" oncellclick="grid_list_oncellclick">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="26"/>
-                <Column size="47"/>
-                <Column size="52"/>
-                <Column size="113"/>
-                <Column size="75"/>
-                <Column size="125"/>
-                <Column size="60"/>
-                <Column size="53"/>
-                <Column size="78"/>
-              </Columns>
-              <Rows>
-                <Row size="40" band="head"/>
-                <Row size="34"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="chk" displaytype="checkboxcontrol" edittype="checkbox" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="1" text="주문번호" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="2" text="주문자" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="3" text="주문 상품" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="4" text="연락처" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="5" text="주소" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="6" text="택배사" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="7" text="배송 상태" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-                <Cell col="8" text="송장 번호" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="1" checkboxfalsevalue="0" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="1" text="bind:ORDER_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="2" text="bind:USER_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="3" text="bind:PRODUCT_SHORT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none" cursor="pointer"/>
-                <Cell col="4" text="bind:PHONE_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="5" text="bind:ADDRESS" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
-                <Cell col="6" text="bind:COURIER_ID" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="combo" displaytype="combocontrol" combodataset="ds_courier" combodatacol="NAME" combocodecol="CODE"/>
-                <Cell col="7" text="bind:SHIPMENT_STATUS" displaytype="combocontrol" edittype="combo" combodataset="ds_status" combocodecol="NAME" combodatacol="NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
-                <Cell col="8" text="bind:TRACKING_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="text"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
         <Static id="stc_ship00_00" taborder="2" text="* 주문 상품을 클릭하면 주문한 상품을 상세히 볼 수 있습니다." top="10.00%" width="310" height="28" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" textAlign="left" color="#135dae" left="45"/>
+        <!-- Grid를 감싸는 Div -->
+        <Div id="grid_wrapper" taborder="0" left="40" top="100" right="40" bottom="40" background="#FFFFFF" borderRadius="10px" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)" onmousemove="grid_wrapper_onmousemove" onmouseleave="grid_wrapper_onmouseleave">
+          <Layouts>
+            <Layout>
+              <!-- 헤더 Grid (고정) -->
+              <Grid id="grid_header" taborder="0" left="0" top="0" right="10" height="40" binddataset="ds_ship" autofittype="col" background="#FFFFFF" border="0px none" selecttype="row" readonly="true" enableevent="false" scrolltype="none" scrollbartype="none">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="26"/>
+                      <Column size="47"/>
+                      <Column size="52"/>
+                      <Column size="113"/>
+                      <Column size="75"/>
+                      <Column size="125"/>
+                      <Column size="60"/>
+                      <Column size="53"/>
+                      <Column size="78"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="40"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="chk" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="1" text="주문번호" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="2" text="주문자" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="3" text="주문 상품" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="4" text="연락처" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="5" text="주소" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="6" text="택배사" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="7" text="배송 상태" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                      <Cell col="8" text="송장 번호" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" background="white" border="0px none,0px none,1px solid #eeeeee" textAlign="center"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <!-- Body Grid (스크롤) -->
+              <Grid id="grid_list" taborder="1" left="0" top="40" right="0" bottom="0" binddataset="ds_ship" autofittype="col" background="#FFFFFF" border="0px none" borderRadius="0px 0px 10px 10px" onheadclick="grid_list_onheadclick" oncellclick="grid_list_oncellclick" scrollbartype="auto" scrollbarsize="10" scrollbartrackbarsize="40">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="26"/>
+                      <Column size="47"/>
+                      <Column size="52"/>
+                      <Column size="113"/>
+                      <Column size="75"/>
+                      <Column size="125"/>
+                      <Column size="60"/>
+                      <Column size="53"/>
+                      <Column size="78"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="34"/>
+                    </Rows>
+                    <Band id="body">
+                      <Cell text="bind:CHK" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="1" checkboxfalsevalue="0" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="1" text="bind:ORDER_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;"/>
+                      <Cell col="2" text="bind:USER_NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="3" text="bind:PRODUCT_SHORT" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none" cursor="pointer"/>
+                      <Cell col="4" text="bind:PHONE_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="5" text="bind:ADDRESS" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="none"/>
+                      <Cell col="6" text="bind:COURIER_ID" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="combo" displaytype="combocontrol" combodataset="ds_courier" combodatacol="NAME" combocodecol="CODE"/>
+                      <Cell col="7" text="bind:SHIPMENT_STATUS" displaytype="combocontrol" edittype="combo" combodataset="ds_status" combocodecol="NAME" combodatacol="NAME" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" cssclass="expr:(SHIPMENT_STATUS=='발송대기'?'cell_wait':(SHIPMENT_STATUS=='발송완료'?'cell_done':''))"/>
+                      <Cell col="8" text="bind:TRACKING_NUMBER" textAlign="center" border="0px,0px,2px solid rgba(229,229,229,0.15)" font="normal 10pt/normal &quot;Noto Sans KR DemiLight&quot;" edittype="text"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.Form_Order_Ship_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -225,7 +252,7 @@ this.grid_list_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventI
 		
 		
         var objChildFrame = new ChildFrame(); // 하나의 새 폼 만들고
-		objChildFrame.init("itemPop", absX, absY, 400, 300, null, null, "popup::Pop_ProductDetail.xfdl"); // init
+		objChildFrame.init("itemPop", 250, 150, 400, 300, null, null, "popup::Pop_ProductDetail.xfdl"); // init
 		objChildFrame.showModal(this.getOwnerFrame(), popupArgs, this, "fn_popupCallback"); // 모달 띄어주기
     }
 };

@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style>
 	.recent-products-container {
 	    position: sticky;
-	    top: 20px;  /* 스크롤 시 상단에서 20px 떨어진 위치에 고정 */
-	    /* right: 0; */
+	    top: 20px !important;  /* 스크롤 시 상단에서 20px 떨어진 위치에 고정 */
 	    width: 120px !important;
     	min-width: 120px !important;
     	max-width: 120px !important;

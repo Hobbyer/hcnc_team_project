@@ -5,39 +5,49 @@
       <Layout height="630" width="560">
         <Static id="sta_h4" taborder="0" text="리뷰 상세내역" left="30" top="20" width="492" height="40" onclick="static_board_onclick" font="normal 16pt/normal &quot;Noto Sans KR Black&quot;" color="black"/>
         <Static id="stc_bg" taborder="1" left="30" top="70" background="#ffffff" right="30" bottom="30"/>
-        <Static id="sta_txt" taborder="2" text="리뷰번호" left="55" top="122" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Static id="sta_txt00" taborder="3" text="리뷰정보" left="135" top="122" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
-        <Static id="sta_txt01" taborder="4" text="상품코드" left="55" top="164" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Static id="sta_txt00_00" taborder="5" text="리뷰정보" left="135" top="164" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
-        <Static id="sta_txt01_00" taborder="6" text="상품명" left="55" top="206" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Static id="sta_txt00_00_00" taborder="7" text="리뷰정보" left="135" top="206" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
-        <Static id="sta_txt01_01" taborder="8" text="회원ID" left="55" top="248" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Static id="sta_txt00_00_01" taborder="9" text="리뷰정보" left="135" top="248" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="320"/>
-        <Static id="sta_txt01_01_00" taborder="10" text="별점" left="275" top="246" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="195"/>
-        <Static id="sta_txt00_00_01_00" taborder="11" text="리뷰정보" left="355" top="246" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="80"/>
-        <Static id="sta_txt00_00_01_00_00" taborder="12" text="리뷰정보" left="135" top="80" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="330"/>
-        <Static id="sta_txt01_01_00_00" taborder="13" text="지급상태" left="55" top="80" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Static id="sta_txt01_01_00_00_00" taborder="14" text="지급일" left="275" top="82" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="195"/>
-        <Static id="sta_txt00_00_01_00_00_00" taborder="15" text="리뷰정보" left="355" top="82" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="40"/>
-        <Static id="sta_txt01_01_00_00_01" taborder="16" text="리뷰제목" left="55" top="290" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Static id="sta_txt00_00_01_00_00_01" taborder="17" text="리뷰정보" left="135" top="290" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
-        <Static id="sta_txt01_01_00_00_01_00" taborder="18" text="리뷰내용" left="55" top="332" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
-        <Button id="btn_addpoint" taborder="20" text="포인트 지급" left="165" top="545" height="30" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" width="100" onclick="btn_addpoint_onclick"/>
-        <Button id="btn_close" taborder="21" text="닫기" left="284" top="545" height="30" borderRadius="5px" background="#f87171" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" width="100" onclick="btn_close_onclick"/>
-        <TextArea id="txtarea_content" taborder="21" left="60" top="375" width="446" height="155"/>
+        <Static id="th_sta_review_num" taborder="2" text="리뷰번호" left="55" top="122" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
+        <Static id="td_sta_review_num" taborder="3" text="리뷰정보" left="135" top="122" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
+        <Static id="th_sta_review_product_code" taborder="4" text="상품코드" left="55" top="164" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
+        <Static id="td_sta_review_product_code" taborder="5" text="리뷰정보" left="135" top="164" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
+        <Static id="th_sta_review_product_name" taborder="6" text="상품명" left="55" top="206" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
+        <Static id="td_sta_review_product_name" taborder="7" text="리뷰정보" left="135" top="206" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
+        <Static id="th_sta_review_member_id" taborder="8" text="회원ID" left="55" top="248" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
+        <Static id="td_sta_review_member_id" taborder="9" text="리뷰정보" left="135" top="248" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="320"/>
+        <Static id="th_sta_review_star" taborder="10" text="별점" left="275" top="246" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="195"/>
+        <Static id="td_sta_review_star" taborder="11" text="리뷰정보" left="355" top="246" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="80"/>
+        <Static id="td_sta_review_issued_state" taborder="12" text="리뷰정보" left="135" top="80" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="330"/>
+        <Static id="th_sta_review_issued_state" taborder="13" text="지급상태" left="55" top="80" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
+        <Static id="th_sta_review_issued_dt" taborder="14" text="지급일" left="275" top="82" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="195"/>
+        <Static id="td_sta_review_issued_dt" taborder="15" text="리뷰정보" left="355" top="82" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="40"/>
+        <Static id="th_sta_review_title" taborder="16" text="리뷰제목" left="55" top="290" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="415"/>
+        <Static id="td_sta_review_title" taborder="17" text="리뷰정보" left="135" top="290" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="85"/>
+        <Static id="th_sta_review_content" taborder="18" text="리뷰내용 및 작성일" left="55" top="332" height="40" onclick="static_board_onclick" font="normal 12pt/normal &quot;Noto Sans KR Black&quot;" color="black" right="320"/>
+        <Button id="btn_addpoint" taborder="19" text="포인트 지급" left="220" top="545" height="30" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" width="100" onclick="btn_addpoint_onclick"/>
+        <Button id="btn_close" taborder="20" text="닫기" left="339" top="545" height="30" borderRadius="5px" background="#f87171" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" width="100" onclick="btn_close_onclick"/>
+        <Edit id="edit_point_value" taborder="21" left="100" top="545" width="100" height="30" borderRadius="5px"/>
+        <Static id="td_sta_review_content" taborder="22" text="리뷰정보" left="60" top="434" height="96" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="54" borderRadius="5px" border="1px solid #cccCCC"/>
+        <Static id="td_sta_review_input_dt" taborder="23" text="리뷰정보" left="405" top="332" height="40" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;" color="black" right="60" textAlign="right"/>
+        <ImageViewer id="img_review_01" taborder="24" left="60" top="372" width="52" height="52" borderRadius="5px" stretch="fit"/>
+        <ImageViewer id="img_review_02" taborder="25" left="125" top="372" width="52" height="52" borderRadius="5px" border="1px solid #cccccc" stretch="fit"/>
+        <ImageViewer id="img_review_03" taborder="26" left="190" top="372" width="52" height="52" borderRadius="5px" border="1px solid #cccccc" stretch="fit"/>
+        <ImageViewer id="img_review_04" taborder="27" left="255" top="372" width="52" height="52" borderRadius="5px" border="1px solid #cccccc" stretch="fit"/>
+        <ImageViewer id="img_review_05" taborder="28" left="320" top="372" width="52" height="52" borderRadius="5px" border="1px solid #cccccc" stretch="fit"/>
+        <ImageViewer id="img_review_06" taborder="29" left="385" top="372" width="52" height="52" borderRadius="5px" border="1px solid #cccccc" stretch="fit"/>
+        <ImageViewer id="img_review_07" taborder="30" left="450" top="372" width="52" height="52" borderRadius="5px" border="1px solid #cccccc" stretch="fit"/>
       </Layout>
     </Layouts>
     <Bind>
       <BindItem id="item1" compid="sta_h4" propid="text" datasetid="gds_menu" columnid="MENU_NM"/>
-      <BindItem id="item3" compid="sta_txt00" propid="text" datasetid="ds_review_list" columnid="REVIEW_ID"/>
-      <BindItem id="item5" compid="sta_txt00_00" propid="text" datasetid="ds_review_list" columnid="PRODUCT_CODE"/>
-      <BindItem id="item7" compid="sta_txt00_00_00" propid="text" datasetid="ds_review_list" columnid="PRODUCT_NAME"/>
-      <BindItem id="item9" compid="sta_txt00_00_01" propid="text" datasetid="ds_review_list" columnid="MEMBER_ID"/>
-      <BindItem id="item11" compid="sta_txt00_00_01_00" propid="text" datasetid="ds_review_list" columnid="STAR_POINT"/>
-      <BindItem id="item12" compid="sta_txt00_00_01_00_00" propid="text" datasetid="ds_review_list" columnid="COUPON_ISSUED"/>
-      <BindItem id="item15" compid="sta_txt00_00_01_00_00_00" propid="text" datasetid="ds_review_list" columnid="ISSUED_DT"/>
-      <BindItem id="item17" compid="sta_txt00_00_01_00_00_01" propid="text" datasetid="ds_review_list" columnid="REVIEW_TITLE"/>
-      <BindItem id="item0" compid="txtarea_content" propid="value" datasetid="ds_review_info" columnid="REVIEW_CONTENT"/>
+      <BindItem id="item3" compid="td_sta_review_num" propid="text" datasetid="ds_review_list" columnid="REVIEW_ID"/>
+      <BindItem id="item5" compid="td_sta_review_product_code" propid="text" datasetid="ds_review_list" columnid="PRODUCT_CODE"/>
+      <BindItem id="item7" compid="td_sta_review_product_name" propid="text" datasetid="ds_review_list" columnid="PRODUCT_NAME"/>
+      <BindItem id="item9" compid="td_sta_review_member_id" propid="text" datasetid="ds_review_list" columnid="MEMBER_ID"/>
+      <BindItem id="item11" compid="td_sta_review_star" propid="text" datasetid="ds_review_info" columnid="STAR_POINT"/>
+      <BindItem id="item12" compid="td_sta_review_issued_state" propid="text" datasetid="ds_review_info" columnid="REVIEW_STATUS"/>
+      <BindItem id="item15" compid="td_sta_review_issued_dt" propid="text" datasetid="ds_review_info" columnid="ISSUED_DT"/>
+      <BindItem id="item17" compid="td_sta_review_title" propid="text" datasetid="ds_review_list" columnid="REVIEW_TITLE"/>
+      <BindItem id="item0" compid="td_sta_review_content" propid="text" datasetid="ds_review_info" columnid="REVIEW_CONTENT"/>
+      <BindItem id="item2" compid="td_sta_review_input_dt" propid="text" datasetid="ds_review_info" columnid="INPUT_DT"/>
     </Bind>
     <Objects>
       <Dataset id="ds_review_info">
@@ -66,6 +76,16 @@
           <Column id="ORDER_ID" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_point_value"/>
+      <Dataset id="ds_review_image">
+        <ColumnInfo>
+          <ConstColumn id="REVIEW_IMG_ID" type="STRING" size="30"/>
+          <ConstColumn id="REVIEW_ID" type="STRING" size="30"/>
+          <ConstColumn id="IMG_ORIGIN_NAME" type="STRING" size="30"/>
+          <ConstColumn id="IMG_ATTACHED_NAME" type="STRING" size="30"/>
+          <ConstColumn id="IMG_PATH" type="STRING" size="30"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.Form_ReviewDetail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
@@ -74,35 +94,42 @@
     // 부모에서 전달한 리뷰 정보 초기화
     if(this.parent.arguments){
         this.selectedReview = this.parent.arguments;
-        trace("초기 선택 리뷰: " + JSON.stringify(this.selectedReview));
 
-        // UI 초기화
-        this.sta_txt00.set_text(this.selectedReview.REVIEW_ID);
-        this.sta_txt00_00.set_text(this.selectedReview.PRODUCT_NAME);
-        this.sta_txt00_00_01.set_text(this.selectedReview.MEMBER_ID);
-        this.sta_txt00_00_01_00.set_text(this.selectedReview.REVIEW_TITLE);
-        this.txtarea_content.set_value(this.selectedReview.REVIEW_CONTENT);
+        var pointIssued = this.selectedReview.POINT_ISSUED;
+   
+        this.td_sta_review_issued_state.set_text(pointIssued);
+        this.td_sta_review_num.set_text(this.selectedReview.REVIEW_ID);
+        this.td_sta_review_member_id.set_text(this.selectedReview.MEMBER_ID);
+        this.td_sta_review_product_code.set_text(this.selectedReview.PRODUCT_CODE);
+        this.td_sta_review_product_name.set_text(this.selectedReview.PRODUCT_NAME);
+        
+        var REVIEW_TITLE = this.selectedReview.REVIEW_TITLE;
+        if (REVIEW_TITLE != null && REVIEW_TITLE != "")
+        {
+            this.td_sta_review_title.set_text(REVIEW_TITLE);
+        } else {
+            this.td_sta_review_title.set_text('[사용자가 작성한 리뷰입니다]');
+        }
+        
+        this.td_sta_review_content.set_text(this.selectedReview.REVIEW_CONTENT);
+        this.td_sta_review_star.set_text(this.selectedReview.STAR_POINT);
+        this.td_sta_review_issued_dt.set_text(this.selectedReview.ISSUED_DT || "-");
+        this.td_sta_review_input_dt.set_text(this.selectedReview.INPUT_DT);
+		
+		this.fnLoadReviewImages(); //이미지추가
+        
+        if(pointIssued == '지급'){
+            this.edit_point_value.set_enable(false);
+            this.edit_point_value.set_value("지급완료");
+            this.btn_addpoint.set_enable(false);
+        } else {
+            this.edit_point_value.set_enable(true);
+            this.edit_point_value.set_value(300);
+            this.btn_addpoint.set_enable(true);
+        }
     }
 };
 
-// 상세 Form 열기 (사용하지 않는 함수지만 일관성을 위해 수정)
-this.fn_openReviewDetail = function() {
-    var sId = "ReviewDetailFrame";
-    var sFormUrl = "Form_ReviewDetail.xfdl";
-    var oChild = new ChildFrame(sId, 0, 0, 560, 630, null, null, this);
-    
-    oChild.set_formurl(sFormUrl);
-    oChild.set_dragmovetype("all");
-    oChild.showModal(this.getOwnerFrame(), function(obj, e){
-        // 상세 Form 종료 시 선택 리뷰 전달 받음
-        if(e.returnvalue){
-            this.selectedReview = e.returnvalue;  // 변수명 통일
-            trace("선택 리뷰 전달받음: " + JSON.stringify(this.selectedReview));
-        }
-    }, this);
-};
-
-// 닫기 버튼
 this.btn_close_onclick = function(obj, e) {
     trace("btn_close_onclick 호출");
     this.close();
@@ -110,20 +137,37 @@ this.btn_close_onclick = function(obj, e) {
 
 // 포인트 지급 버튼 클릭
 this.btn_addpoint_onclick = function(obj, e) {
-    trace("btn_addpoint_onclick 호출");
     trace("현재 selectedReview 상태: " + JSON.stringify(this.selectedReview));
 
     if(!this.selectedReview){
         this.alert("리뷰를 선택하세요.");
-        trace("선택 리뷰 없음, 포인트 지급 중지");
+        trace("선택 리뷰 없음");
+        return;
+    }
+
+    // 포인트 값 검증
+    var pointValue = this.edit_point_value.value;
+    trace("포인트 값: " + pointValue);
+    
+    if(!pointValue || pointValue == "" || isNaN(pointValue) || parseInt(pointValue) <= 0){
+        trace("포인트 검증 실패!");
+        this.alert("올바른 포인트 값을 입력하세요.");
         return;
     }
 
     // 다이얼로그
-    var dTitle = "포인트 지급 확인";
-    var dMsg = "선택한 리뷰에 포인트를 지급하시겠습니까?";
-    var dType = "YESNO";
-    this.confirm(dMsg, dTitle, dType, "fn_pointConfirmCallback");
+    var dMsg = "선택한 리뷰에 " + pointValue + "포인트를 지급하시겠습니까? 지급된 포인트는 수정이 불가능합니다.";
+    var result = this.confirm(dMsg);
+    
+    trace("confirm 결과: " + result);
+    
+    if(result == true){
+        trace("YES 선택 - 지급 진행");
+        this.fn_prepareAddPointDataset();
+        this.fn_callAddPointTransaction();
+    } else {
+        trace("NO 선택 - 취소");
+    }
 };
 
 // 다이얼로그 콜백
@@ -134,11 +178,37 @@ this.fn_pointConfirmCallback = function(returnValue) {
         this.fn_prepareAddPointDataset();
         this.fn_callAddPointTransaction();
     } else {
-        this.alert("포인트 지급 중지");
+        this.alert("포인트 지급 취소");
     }
 };
 
-// Dataset에 선택 리뷰 담기
+this.fnImageCallback = function(svc, err, errMsg) {
+	var defaultImg = "https://placehold.co/200x200?text=NO_IMAGE";
+    
+    if (err < 0) {
+        trace("이미지 조회 실패: " + errMsg);
+        for(var i = 1; i <= 7; i++) {
+            this["img_review_0" + i].set_image(defaultImg);
+            this["img_review_0" + i].set_visible(true);
+        }
+        return;
+    }
+    
+    var imgCount = this.ds_review_image.getRowCount();
+    trace("조회된 이미지 개수: " + imgCount);
+    
+    for(var i = 1; i <= 7; i++) {
+        if(i <= imgCount) {
+            var imgPath = this.ds_review_image.getColumn(i-1, "IMG_PATH");
+            trace("ImageViewer " + i + "에 설정: " + imgPath);
+            this["img_review_0" + i].set_image("url('" + imgPath + "')");
+        } else {
+            this["img_review_0" + i].set_image(defaultImg);
+        }
+        this["img_review_0" + i].set_visible(true);
+    }
+};
+//리뷰에 ^이미지담기(위) 
 this.fn_prepareAddPointDataset = function() {
     trace("fn_prepareAddPointDataset 호출");
 
@@ -151,11 +221,12 @@ this.fn_prepareAddPointDataset = function() {
         return;
     }
 
+    var pointValue = this.edit_point_value.value;
     var row = this.ds_addpoint.addRow();
     this.ds_addpoint.setColumn(row, "MEMBER_ID", this.selectedReview.MEMBER_ID);
     this.ds_addpoint.setColumn(row, "CHANGE_TYPE", "적립");
-    this.ds_addpoint.setColumn(row, "POINT", 500);
-    this.ds_addpoint.setColumn(row, "DESCRIPTION", "[리뷰 이벤트 수동 지급]:" + this.selectedReview.REVIEW_ID);
+    this.ds_addpoint.setColumn(row, "POINT", pointValue);
+    this.ds_addpoint.setColumn(row, "DESCRIPTION", "[리뷰 이벤트 수동 지급]" + this.selectedReview.ORDER_ID + ":" + this.selectedReview.REVIEW_ID);
     this.ds_addpoint.setColumn(row, "ORDER_ID", this.selectedReview.ORDER_ID);
 
     // 디버깅 로그 추가
@@ -167,7 +238,7 @@ this.fn_prepareAddPointDataset = function() {
     trace("ORDER_ID: " + this.ds_addpoint.getColumn(row, "ORDER_ID"));
 };
 
-// 서버 전송
+// 수동 INSERT 서버 전송
 this.fn_callAddPointTransaction = function() {
     trace("fn_callAddPointTransaction 호출");
 
@@ -179,17 +250,27 @@ this.fn_callAddPointTransaction = function() {
     var strSvcID = "insertReviewRewardPointsByAdmin";
     var setURL = "svc::insertReviewRewardPointsByAdmin.do";
     var strInDatasets = "ds_addpoint=ds_addpoint";
-    var strOutDatasets = "";  // INSERT 작업이므로 outDatasets 제거
+    var strOutDatasets = "";
     var strArg = "";
-    var callBack = "fn_callBack";
+    var callBack = "fncallBack";
     var inAsync = true;
 
-    trace("transaction 호출: " + setURL + ", Dataset row count: " + this.ds_addpoint.getRowCount());
     this.transaction(strSvcID, setURL, strInDatasets, strOutDatasets, strArg, callBack, inAsync);
 };
 
+this.fnLoadReviewImages = function() {
+    var strSvcID = "selectReviewImages";
+    var strURL = "svc::selectReviewImageByAdmin.do"; 
+    var strInDatasets = "";
+    var strOutDatasets = "ds_review_image=ds_review_image";
+    var strArg = "REVIEW_ID=" + this.selectedReview.REVIEW_ID;
+    var strCallback = "fnImageCallback";
+	   
+    this.transaction(strSvcID, strURL, strInDatasets, strOutDatasets, strArg, strCallback);
+};
+
 // 공통 콜백
-this.fn_callBack = function(svcID, errorCode, errorMSG) {
+this.fncallBack = function(svcID, errorCode, errorMSG) {
     trace("fn_callBack 호출, svcID: " + svcID + ", errorCode: " + errorCode + ", errorMSG: " + errorMSG);
 
     if(errorCode == -1){
@@ -200,7 +281,6 @@ this.fn_callBack = function(svcID, errorCode, errorMSG) {
     switch(svcID){
         case "insertReviewRewardPointsByAdmin":
             this.alert("포인트 지급 완료");
-            // 팝업 닫으면서 메인 리스트에 새로고침 신호 전달
             this.close("REFRESH_NEEDED");
             break;
     }

@@ -4,9 +4,9 @@
     <Layouts>
       <Layout width="1280" height="800">
         <!-- 저장 버튼 (블랙 배경, 화이트 글자) -->
-        <Button id="btn_save" text="진열 순서 변경" left="1090" top="40" width="150" height="49" onclick="btn_save_onclick" background="#000000" color="#ffffff" borderRadius="6px" font="bold 12px 'Gulim'" cursor="pointer"/>
+        <Button id="btn_save" text="진열 순서 변경" left="1090" top="11" width="150" height="49" onclick="btn_save_onclick" background="#000000" color="#ffffff" borderRadius="6px" font="bold 12px 'Gulim'" cursor="pointer"/>
         <!-- 탭 (블랙&화이트) -->
-        <Tab id="tabDisplay" taborder="3" tabindex="0" left="40" top="50" width="210" height="35" onchanged="tabDisplay_onchanged" font="bold 10pt/normal &quot;Arial&quot;" borderRadius="1px" cursor="pointer" cssclass="Tab">
+        <Tab id="tabDisplay" taborder="3" tabindex="0" left="40" top="21" width="210" height="35" onchanged="tabDisplay_onchanged" font="bold 10pt/normal &quot;Arial&quot;" borderRadius="1px" cursor="pointer" cssclass="Tab">
           <Tabpages>
             <Tabpage id="tab_new" text="신상품" background="transparent" color="transparent">
               <Layouts>
@@ -18,7 +18,7 @@
           </Tabpages>
         </Tab>
         <!-- 상품 리스트 Grid -->
-        <Grid id="grid_list" binddataset="ds_out_proList" left="40" top="120" width="1200" height="570" autofittype="col" taborder="2" ondrop="grid_list_ondrop" onlbuttonup="grid_list_onlbuttonup" onlbuttondown="grid_list_onlbuttondown" cellmovingtype="none" onmousemove="grid_list_onmousemove" border="1px solid #000000" oncellclick="grid_list_oncellclick" useselcolor="false" onmousedown="grid_list_onmousedown">
+        <Grid id="grid_list" binddataset="ds_out_proList" left="40" top="91" width="1200" height="570" cssclass="GridDisplayOrder" autofittype="col" taborder="2" ondrop="grid_list_ondrop" onlbuttonup="grid_list_onlbuttonup" onlbuttondown="grid_list_onlbuttondown" cellmovingtype="none" onmousemove="grid_list_onmousemove" border="1px solid #000000" oncellclick="grid_list_oncellclick" useselcolor="false" onmousedown="grid_list_onmousedown">
           <Formats>
             <Format id="default">
               <Columns>
@@ -64,7 +64,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="stc_mv" taborder="3" text="&quot; 메인 상품의  진열 순서 관리 이므로 일반상품은 조회만 가능합니다.&quot;" left="635" top="40" width="605" height="45" font="bold 10pt &quot;Arial&quot;" onclick="Static00_onclick" textAlign="center" border="1px dashed black" visible="false"/>
+        <Static id="stc_mv" taborder="3" text="&quot; 메인 상품의  진열 순서 관리 이므로 일반상품은 조회만 가능합니다.&quot;" left="635" top="11" width="605" height="45" font="bold 10pt &quot;Arial&quot;" onclick="Static00_onclick" textAlign="center" border="1px dashed black" visible="false"/>
       </Layout>
     </Layouts>
     <!-- Dataset 정의 -->
@@ -96,7 +96,14 @@
 this.Form_ProductDisplayOrder_onload = function(obj,e){
     this.tabDisplay.set_tabindex(0);  
     this.fn_search("new");
+	this.trace(this.grid_list.cssclass);
+	
+	this.grid_list.set_userstatus("displayorder", true);
+	
 };
+
+
+
 
 
 //탭부분
@@ -117,9 +124,12 @@ this.tabDisplay_onchanged = function(obj,e){
 		this.btn_save.set_visible(false);
 		this.stc_mv.set_visible(true);
 		this.fn_search("normal");
-
+		
 	}
 };
+
+
+
 
 
 this.fn_search = function(displayType){
@@ -144,8 +154,8 @@ var selectedColor = "#6ac7fc" 	// 최종색
 
 
 /***************************************************
- * 드래그앤드롭 구현 (유령 박스 - 상품명만, 행 색상)
- ***************************************************/
+* 드래그앤드롭 구현 (유령 박스 - 상품명만, 행 색상)
+***************************************************/
 
 //  this.grid_list_onmousedown = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
 // {
@@ -153,30 +163,30 @@ var selectedColor = "#6ac7fc" 	// 최종색
 // 		
 // };
 //  
- 
+
 
 // 드래그 시작
 this.grid_list_onlbuttondown = function(obj, e)
 {
 	if (this.tabDisplay.tabindex == 2) return;
-
+	
     if (e.row >= 0) {
         this._dragRow = e.row;
-
+		
         var ghostText = this.ds_out_proList.getColumn(e.row, "PRODUCT_NAME");
-
+		
         if (this.st_ghost) {
             this.removeChild("st_ghost");
             this.st_ghost = null;
         }
-
+		
         var rowHeight = obj.getRealRowSize(e.row);
         var formX = obj.getOffsetLeft() + e.canvasx;
         var formY = obj.getOffsetTop() + e.canvasy;
-
+		
         var ghost = new Static("st_ghost", "absolute",
             formX, formY, 60, rowHeight, null, null);
-
+		
         ghost.set_text(ghostText);
         ghost.set_background("#d9fcf9");
         ghost.set_border("2px solid #0080ff");
@@ -189,11 +199,17 @@ this.grid_list_onlbuttondown = function(obj, e)
         this.addChild("st_ghost", ghost);
         ghost.show();
         ghost.bringToFront();
-
+		
         this.st_ghost = ghost;
         this._isDragging = true;
     }
 };
+
+
+
+
+
+
 
 // 드래그 중 → 유령박스 이동
 this.grid_list_onmousemove = function(obj, e)
@@ -210,7 +226,7 @@ this.grid_list_onmousemove = function(obj, e)
 // 드래그 끝 → 행 이동
 this.grid_list_onlbuttonup = function(obj, e)
 {
-
+	
 	
     if (this._isDragging && this._dragRow >= 0 && e.row >= 0) {
         var from = this._dragRow;
@@ -219,12 +235,12 @@ this.grid_list_onlbuttonup = function(obj, e)
             this.ds_out_proList.moveRow(from, to);
         }
     }
-
+	
     if (this.st_ghost) {
         this.removeChild("st_ghost");
         this.st_ghost = null;
     }
-
+	
     this._isDragging = false;
     this._dragRow = -1;
 };
@@ -233,11 +249,11 @@ this.grid_list_onlbuttonup = function(obj, e)
 this.grid_list_ondrop = function(obj, e)
 {
     if (this._dragRow == null || e.row < 0) return;
-
+	
     var fromRow = this._dragRow;
     var toRow   = e.row;
     this.ds_out_proList.moveRow(fromRow, toRow);
-
+	
     this._dragRow = null;
 };
 
@@ -248,25 +264,25 @@ this.btn_save_onclick = function(obj,e)
 {
     var total = this.ds_out_proList.getRowCount();
     this.ds_sortSave.clearData();  // 저장용 데이터셋 초기화
-
+	
     for (var i=0; i<total; i++) {
         var newSort = (i < 16) ? (16 - i) : 0;
         var oldSort = this.ds_out_proList.getColumn(i, "SORT_NUMBER");
-
+		
         if (oldSort != newSort) {
             this.ds_out_proList.setColumn(i, "SORT_NUMBER", newSort);
-
+			
             var row = this.ds_sortSave.addRow();
             this.ds_sortSave.setColumn(row, "PRODUCT_ID", this.ds_out_proList.getColumn(i, "PRODUCT_ID"));
             this.ds_sortSave.setColumn(row, "SORT_NUMBER", newSort);
         }
     }
-
+	
     if (this.ds_sortSave.getRowCount() == 0) {
-        alert("변경된 내용이 없습니다.");
+        this.alert("변경된 내용이 없습니다.");
         return;
     }
-
+	
     this.transaction(
         "updateProductSort",
         "svc::updateProductSort.do",
@@ -278,14 +294,16 @@ this.btn_save_onclick = function(obj,e)
 };
 
 
+
+
 // 콜백
 this.fn_callback = function(svcID, errCode, errMsg){
     if (errCode < 0) {
-        alert("오류: " + errMsg);
+        this.alert("오류: " + errMsg);
         return;
     }
     if (svcID == "updateProductSort") {
-        alert("진열순서 변경 완료!");
+        this.alert("진열순서 변경 완료!");
         this.fn_search(this._displayType);
     }
 };

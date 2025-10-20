@@ -214,15 +214,15 @@
     				console.log(list);
     				
     				// 장바구니가 비어있는 경우 처리
-    	            if(!list || list.length === 0) {
-    	                showEmptyCart();
-    	                return;
-    	            }
-    	            
-    	            // 기존 테이블 표시
-    	            $(".cart-table").show();
-    	            $(".cart-footer").show();
-    	            $("#empty-cart").hide();
+						if(!list || list.length === 0) {
+								showEmptyCart();
+								return;
+						}
+						
+						// 기존 테이블 표시
+						$(".cart-table").show();
+						$(".cart-footer").show();
+						$("#empty-cart").hide();
     				
     				var allCheck = true;
     				
@@ -238,7 +238,7 @@
     				    } else {
     				        html += '<td class="col-check"><input type="checkbox" class="check" id="'+ list[i].CART_ITEM_ID +'-checkbox" checked onchange="updateChkBox(' + list[i].CART_ITEM_ID + ')"></td>';
     				    }
-    				    html += '<td class="col-img"><img src="sample.jpg" width="50"></td>';
+    				    html += '<td class="col-img"><img src="'+ list[i].IMAGE_URL +'" width="50"></td>';
     				    html += '<td class="col-name"><span>' + list[i].PRODUCT_NAME + '</span></td>';
     				    
     				    if(list[i].options.length > 0){

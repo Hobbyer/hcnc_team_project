@@ -54,7 +54,7 @@ this.Form_ProductSearch_onload = function(obj,e)
 	
 	var nRow = this.ds_searchCond.addRow();
     this.ds_searchCond.setColumn(nRow, "SEARCH_TEXT", ""); // 빈 문자열 → 전체검색
-
+	
     // 전체 상품 조회 transaction 실행
     this.transaction(
         "selectProductListOptionByAdmin",
@@ -74,7 +74,7 @@ this.doSearch = function()
     this.ds_searchCond.clearData();
     var nRow = this.ds_searchCond.addRow();
     this.ds_searchCond.setColumn(nRow, "SEARCH_TEXT", this.edt_search.value);
-
+	
     this.transaction(
         "selectProductListOptionByAdmin",
         "svc::selectProductListOptionByAdmin.do?time=" + new Date().getTime(),
@@ -113,10 +113,10 @@ this.grd_prod_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventIn
 {
 	var nRow = e.row;
     if (nRow < 0) return;
-
+	
     var prodId   = this.ds_prod.getColumn(nRow, "PRODUCT_ID");
     var prodName = this.ds_prod.getColumn(nRow, "PRODUCT_NAME");
-
+	
     var rtn = JSON.stringify({PRODUCT_ID: prodId, PRODUCT_NAME: prodName});
     this.close(rtn);
 };

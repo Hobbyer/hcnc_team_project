@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user.mapper.UserBannerMapper">
 	<select id="selectBannerListByUser" resultType="java.util.Map">
-		SELECT *
+		SELECT BANNER_ID
+			 , BANNER_TYPE
+			 , BANNER_TITLE
+			 , IMG_ORIGIN_NAME
+			 , IMG_PATH
+			 , IS_VISIBLE
+			 , LINKED_URL
+			 , SORT_NUMBER
 		FROM BANNERS
 		WHERE 1=1
 			AND IS_VISIBLE = 'Y'

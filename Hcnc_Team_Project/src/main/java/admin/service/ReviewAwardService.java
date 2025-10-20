@@ -16,21 +16,26 @@ public class ReviewAwardService {
     private ReviewAwardMapper reviewAwardMapper;
     
     // 관리자 리뷰 리스트 조회
-    public List<Map<String, Object>> selectProductReviewListByAdmin(Map<String, Object> params) {
-        return reviewAwardMapper.selectProductReviewListByAdmin(params);
+    public List<Map<String, Object>> selectProductReviewListByAdmin(Map<String, Object> param) {
+    	if(param.get("POINT_ISSUED") != null) {
+	        param.put("POINT_ISSUED", String.valueOf(param.get("POINT_ISSUED")));
+	    }
+	    
+	    if(param.get("SEARCH_COMBO") != null) {
+	        param.put("SEARCH_COMBO", String.valueOf(param.get("SEARCH_COMBO")));
+	    }
+	    
+	    if(param.get("SEARCH_DATA") != null) {
+	        param.put("SEARCH_DATA", String.valueOf(param.get("SEARCH_DATA")));
+	    }
+	    
+        return reviewAwardMapper.selectProductReviewListByAdmin(param);
     }
     
-    // 자동 포인트 지급 (스케줄러->트리거)
-    @Transactional
-    public void insertAutoReviewRewardPointsByAdmin() {
-        Map<String, Object> params = new HashMap<>();
-        params.put("changeType", "적립");
-        params.put("rewardPoint", 500);
-        params.put("descriptionPrefix", "[리뷰 이벤트 포인트 지급]");
-        
-        int count = reviewAwardMapper.insertAutoReviewRewardPointsByAdmin(params);
-        System.out.println("자동 지급된 리뷰포인트 건수: " + count);
-    }
+	public List<Map<String, Object>> selectReviewImageByAdmin(String reviewId) {
+		// TODO Auto-generated method stub
+		return reviewAwardMapper.selectReviewImageByAdmin(reviewId);
+	}  
     
     // 수동 포인트 지급
     @Transactional 
@@ -40,4 +45,6 @@ public class ReviewAwardService {
         System.out.println("수동 포인트 지급 결과: " + result);
         return result;
     }
+
+
 }

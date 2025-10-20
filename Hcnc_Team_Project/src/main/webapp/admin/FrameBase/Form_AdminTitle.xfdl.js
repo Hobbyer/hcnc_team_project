@@ -31,7 +31,6 @@
 
             obj = new Static("sta_location","45","49",null,"20","102",null,null,null,null,null,this);
             obj.set_taborder("1");
-            obj.set_text("⌂ > 회원 > 회원관리");
             obj.set_font("normal 8pt/normal \"Noto Sans KR DemiLight\"");
             obj.set_color("#666666");
             this.addChild(obj.name, obj);

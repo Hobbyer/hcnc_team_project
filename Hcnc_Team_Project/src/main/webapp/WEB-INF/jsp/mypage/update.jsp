@@ -272,15 +272,15 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       if (confirm("회원탈퇴하시겠습니까? 해당작업은 돌이킬수없습니다.")) {
         const param = {};
         ajaxUtil(param, "updateWithDrawByUser.do", (res) => {
-          if (rse.status == 200) {
+          if (res.status == 200) {
             alert("회원탈퇴되었습니다.");
             location.href = "/login.do";
             history.deleteAll();
           }
-          if (rse.status == 400) {
+          if (res.status == 400) {
             alert("삭제에 실패하였습니다.");
           }
-          if (rse.status == 404) {
+          if (res.status == 404) {
             alert("세션정보를 찾을수없습니다. 다시 로그인해주세요");
           }
         });

@@ -36,51 +36,7 @@
 				AND O.IS_VISIBLE = 'Y'
 	</select>
 	
-	<!-- NG: 하나로 할수있겠지만 제가 하나로 못할거같아서 나눴음 -->
-	<select id="selectTypeProductListByUser" resultType="java.util.Map">
-	    SELECT p.PRODUCT_ID AS PRODUCT_ID
-	         , p.PRODUCT_NAME
-	         , p.PRODUCT_CODE
-	         , p.PRODUCT_PRICE
-	         , p.SALED_PRICE
-	         , p.SORT_NUMBER
-	         , p.PRODUCT_TYPE
-	         , pImg.IMAGE_URL AS imageUrl
-	         , pImg.ALT_TEXT AS ALT_TEXT
-	         , COALESCE(r.REVIEW_COUNT, 0) AS REVIEW_COUNT
-	         , COALESCE(r.AVG_RATING, 0) AS AVG_RATING
-	         , COALESCE(inv.TOTAL_QUANTITY, 0) AS STOCK_QUANTITY
-	    FROM PRODUCTS p
-	    LEFT JOIN PRODUCT_IMG pImg 
-           ON p.PRODUCT_ID = pImg.PRODUCT_ID 
-          AND pImg.SORT_NUMBER = 0
-	    LEFT JOIN (
-	        SELECT PRODUCT_ID
-	             , COUNT(*) AS REVIEW_COUNT
-	             , ROUND(AVG(STAR_POINT), 1) AS AVG_RATING
-	        FROM REVIEWS
-	        WHERE REVIEW_STATUS = 'Y'
-	        GROUP BY PRODUCT_ID
-	    ) r ON p.PRODUCT_ID = r.PRODUCT_ID
-	    LEFT JOIN (
-		    SELECT PRODUCT_ID
-		         , SUM(QUANTITY) AS TOTAL_QUANTITY
-		    FROM INVENTORIES
-		    GROUP BY PRODUCT_ID
-		) inv ON p.PRODUCT_ID = inv.PRODUCT_ID
-	    WHERE p.IS_VISIBLE = 'Y'
-	    <if test="productType != null and productType != ''">
-	        AND p.PRODUCT_TYPE = #{productType}
-	    </if>
-	    <if test="sortNumber != null and sortNumber != ''">
-	        AND p.SORT_NUMBER = #{sortNumber}
-	    </if>
-	    ORDER BY p.SORT_NUMBER DESC
-	    <if test="limit != null">
-	        LIMIT #{limit}
-	    </if>
-	</select>
-	
+
 	<!-- 신상 -->
 	<select id="selectNewProListByUser" resultType="java.util.Map">
 	    SELECT p.PRODUCT_ID
@@ -90,6 +46,7 @@
 	         , p.SALED_PRICE
 	         , p.SORT_NUMBER
 	         , p.PRODUCT_TYPE
+	         , p.VIEW_CNT
 	         , p.SUB_CATE_ID
 	         , sc.SUB_CATE_NM
 	         , sc.MAIN_CATE_ID
@@ -122,8 +79,12 @@
 	    </if>
 	    <choose>
 	        <when test="sortType == 'name'">ORDER BY p.SORT_NUMBER DESC, p.PRODUCT_NAME ASC</when>
-	        <when test="sortType == 'lowPrice'">ORDER BY p.SORT_NUMBER DESC, p.SALED_PRICE ASC</when>
-	        <when test="sortType == 'highPrice'">ORDER BY p.SORT_NUMBER DESC, p.SALED_PRICE DESC</when>
+	        <when test="sortType == 'lowPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) ASC
+			</when>
+			<when test="sortType == 'highPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) DESC
+			</when>
 	        <otherwise>ORDER BY p.SORT_NUMBER DESC, p.INPUT_DT DESC, p.PRODUCT_ID DESC</otherwise>
 	    </choose>
 	    LIMIT #{offset}, #{pageSize}
@@ -138,6 +99,7 @@
 	         , p.SALED_PRICE
 	         , p.SORT_NUMBER
 	         , p.PRODUCT_TYPE
+	         , p.VIEW_CNT
 	         , p.SUB_CATE_ID
 	         , sc.SUB_CATE_NM
 	         , sc.MAIN_CATE_ID
@@ -170,8 +132,12 @@
 	    </if>
 	    <choose>
 	        <when test="sortType == 'name'">ORDER BY p.SORT_NUMBER DESC, p.PRODUCT_NAME ASC</when>
-	        <when test="sortType == 'lowPrice'">ORDER BY p.SORT_NUMBER DESC, p.SALED_PRICE ASC</when>
-	        <when test="sortType == 'highPrice'">ORDER BY p.SORT_NUMBER DESC, p.SALED_PRICE DESC</when>
+	        <when test="sortType == 'lowPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) ASC
+			</when>
+			<when test="sortType == 'highPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) DESC
+			</when>
 	        <otherwise>ORDER BY p.SORT_NUMBER DESC, p.INPUT_DT DESC</otherwise>
 	    </choose>
 	    LIMIT #{offset}, #{pageSize}
@@ -186,6 +152,7 @@
 	         , p.SALED_PRICE
 	         , p.SORT_NUMBER
 	         , p.PRODUCT_TYPE
+	         , p.VIEW_CNT
 	         , p.SUB_CATE_ID
 	         , sc.SUB_CATE_NM
 	         , sc.MAIN_CATE_ID
@@ -218,13 +185,18 @@
 	    </if>
 	    <choose>
 	        <when test="sortType == 'name'">ORDER BY p.SORT_NUMBER DESC, p.PRODUCT_NAME ASC</when>
-	        <when test="sortType == 'lowPrice'">ORDER BY p.SORT_NUMBER DESC, p.SALED_PRICE ASC</when>
-	        <when test="sortType == 'highPrice'">ORDER BY p.SORT_NUMBER DESC, p.SALED_PRICE DESC</when>
+	        <when test="sortType == 'lowPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) ASC
+			</when>
+			<when test="sortType == 'highPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) DESC
+			</when>
 	        <otherwise>ORDER BY p.SORT_NUMBER DESC, COALESCE(r.REVIEW_COUNT, 0) DESC, COALESCE(r.AVG_RATING, 0) DESC</otherwise>
 	    </choose>
 	    LIMIT #{offset}, #{pageSize}
 	</select>
 
+	<!-- 카테 -->
 	<select id="selectCategoryProductsListByUser" resultType="java.util.Map">
 	    SELECT p.PRODUCT_ID
 	         , p.PRODUCT_NAME
@@ -233,6 +205,7 @@
 	         , p.SALED_PRICE
 	         , p.SORT_NUMBER
 	         , p.PRODUCT_TYPE
+	         , p.VIEW_CNT
 	         , p.SUB_CATE_ID
 	         , sc.SUB_CATE_NM
 	         , sc.MAIN_CATE_ID
@@ -277,25 +250,51 @@
 	            ORDER BY p.PRODUCT_NAME ASC
 	        </when>
 	        <when test="sortType == 'lowPrice'">
-	            ORDER BY p.SALED_PRICE ASC
-	        </when>
-	        <when test="sortType == 'highPrice'">
-	            ORDER BY p.SALED_PRICE DESC
-	        </when>
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) ASC
+			</when>
+			<when test="sortType == 'highPrice'">
+			    ORDER BY p.SORT_NUMBER DESC, COALESCE(p.SALED_PRICE, p.PRODUCT_PRICE) DESC
+			</when>
 	        <otherwise>
 	            ORDER BY p.INPUT_DT DESC, p.SORT_NUMBER DESC
 	        </otherwise>
 	    </choose>
 	    LIMIT #{offset}, #{pageSize}
 	</select>
-
-	<!-- 신규 COUNT -->
-	<select id="selectNewProCountByUser" resultType="int">
-	    SELECT COUNT(*)
+	
+	<!-- 일반 상품 최신순 (신상 부족시 채움용) -->
+	<select id="selectNormalProListByRecent" resultType="java.util.Map">
+	    SELECT p.PRODUCT_ID
+	         , p.PRODUCT_NAME
+	         , p.PRODUCT_CODE
+	         , p.PRODUCT_PRICE
+	         , p.SALED_PRICE
+	         , p.SORT_NUMBER
+	         , p.PRODUCT_TYPE
+	         , p.VIEW_CNT
+	         , p.SUB_CATE_ID
+	         , sc.SUB_CATE_NM
+	         , sc.MAIN_CATE_ID
+	         , mc.MAIN_CATE_NM
+	         , pImg.IMAGE_URL AS imageUrl
+	         , pImg.ALT_TEXT
+	         , COALESCE(r.REVIEW_COUNT, 0) AS REVIEW_COUNT
+	         , COALESCE(r.AVG_RATING, 0) AS AVG_RATING
+	         , COALESCE(inv.TOTAL_QUANTITY, 0) AS STOCK_QUANTITY
+	         , CASE WHEN COALESCE(inv.TOTAL_QUANTITY, 0) > 0 THEN 'N' ELSE 'Y' END AS IS_SOLDOUT
 	    FROM PRODUCTS p
 	    LEFT JOIN SUB_CATEGORIES sc ON p.SUB_CATE_ID = sc.SUB_CATE_ID
 	    LEFT JOIN MAIN_CATEGORIES mc ON sc.MAIN_CATE_ID = mc.MAIN_CATE_ID
-	    WHERE p.IS_VISIBLE = 'Y' AND p.PRODUCT_TYPE = 'new'
+	    LEFT JOIN PRODUCT_IMG pImg ON p.PRODUCT_ID = pImg.PRODUCT_ID AND pImg.IS_MAIN = 'Y'
+	    LEFT JOIN (
+	        SELECT PRODUCT_ID, COUNT(*) AS REVIEW_COUNT, ROUND(AVG(STAR_POINT), 1) AS AVG_RATING
+	        FROM REVIEWS WHERE REVIEW_STATUS = 'Y' GROUP BY PRODUCT_ID
+	    ) r ON p.PRODUCT_ID = r.PRODUCT_ID
+	    LEFT JOIN (
+	        SELECT PRODUCT_ID, SUM(QUANTITY) AS TOTAL_QUANTITY
+	        FROM INVENTORIES GROUP BY PRODUCT_ID
+	    ) inv ON p.PRODUCT_ID = inv.PRODUCT_ID
+	    WHERE p.IS_VISIBLE = 'Y' AND p.PRODUCT_TYPE = 'normal'
 	      AND sc.IS_ACTIVE = 'Y' AND mc.IS_ACTIVE = 'Y'
 	    <if test="mainCateId != null and mainCateId != ''">
 	        AND sc.MAIN_CATE_ID = #{mainCateId}
@@ -303,15 +302,43 @@
 	    <if test="subCateId != null and subCateId != ''">
 	        AND p.SUB_CATE_ID = #{subCateId}
 	    </if>
+	    ORDER BY p.INPUT_DT DESC, p.PRODUCT_ID DESC
+	    LIMIT #{offset}, #{pageSize}
 	</select>
 	
-	<!-- 추천 COUNT -->
-	<select id="selectRecommendProCountByUser" resultType="int">
-	    SELECT COUNT(*)
+	<!-- 일반 상품 조회수순 (인기 부족시 채움용) -->
+	<select id="selectNormalProListByViewCnt" resultType="java.util.Map">
+	    SELECT p.PRODUCT_ID
+	         , p.PRODUCT_NAME
+	         , p.PRODUCT_CODE
+	         , p.PRODUCT_PRICE
+	         , p.SALED_PRICE
+	         , p.SORT_NUMBER
+	         , p.PRODUCT_TYPE
+	         , p.VIEW_CNT
+	         , p.SUB_CATE_ID
+	         , sc.SUB_CATE_NM
+	         , sc.MAIN_CATE_ID
+	         , mc.MAIN_CATE_NM
+	         , pImg.IMAGE_URL AS imageUrl
+	         , pImg.ALT_TEXT
+	         , COALESCE(r.REVIEW_COUNT, 0) AS REVIEW_COUNT
+	         , COALESCE(r.AVG_RATING, 0) AS AVG_RATING
+	         , COALESCE(inv.TOTAL_QUANTITY, 0) AS STOCK_QUANTITY
+	         , CASE WHEN COALESCE(inv.TOTAL_QUANTITY, 0) > 0 THEN 'N' ELSE 'Y' END AS IS_SOLDOUT
 	    FROM PRODUCTS p
 	    LEFT JOIN SUB_CATEGORIES sc ON p.SUB_CATE_ID = sc.SUB_CATE_ID
 	    LEFT JOIN MAIN_CATEGORIES mc ON sc.MAIN_CATE_ID = mc.MAIN_CATE_ID
-	    WHERE p.IS_VISIBLE = 'Y' AND p.PRODUCT_TYPE = 'recommend'
+	    LEFT JOIN PRODUCT_IMG pImg ON p.PRODUCT_ID = pImg.PRODUCT_ID AND pImg.IS_MAIN = 'Y'
+	    LEFT JOIN (
+	        SELECT PRODUCT_ID, COUNT(*) AS REVIEW_COUNT, ROUND(AVG(STAR_POINT), 1) AS AVG_RATING
+	        FROM REVIEWS WHERE REVIEW_STATUS = 'Y' GROUP BY PRODUCT_ID
+	    ) r ON p.PRODUCT_ID = r.PRODUCT_ID
+	    LEFT JOIN (
+	        SELECT PRODUCT_ID, SUM(QUANTITY) AS TOTAL_QUANTITY
+	        FROM INVENTORIES GROUP BY PRODUCT_ID
+	    ) inv ON p.PRODUCT_ID = inv.PRODUCT_ID
+	    WHERE p.IS_VISIBLE = 'Y' AND p.PRODUCT_TYPE = 'normal'
 	      AND sc.IS_ACTIVE = 'Y' AND mc.IS_ACTIVE = 'Y'
 	    <if test="mainCateId != null and mainCateId != ''">
 	        AND sc.MAIN_CATE_ID = #{mainCateId}
@@ -319,39 +346,9 @@
 	    <if test="subCateId != null and subCateId != ''">
 	        AND p.SUB_CATE_ID = #{subCateId}
 	    </if>
-	</select>
-	
-	<!-- 인기 COUNT -->
-	<select id="selectHotProCountByUser" resultType="int">
-	    SELECT COUNT(*)
-	    FROM PRODUCTS p
-	    LEFT JOIN SUB_CATEGORIES sc ON p.SUB_CATE_ID = sc.SUB_CATE_ID
-	    LEFT JOIN MAIN_CATEGORIES mc ON sc.MAIN_CATE_ID = mc.MAIN_CATE_ID
-	    WHERE p.IS_VISIBLE = 'Y' AND p.PRODUCT_TYPE = 'hot'
-	      AND sc.IS_ACTIVE = 'Y' AND mc.IS_ACTIVE = 'Y'
-	    <if test="mainCateId != null and mainCateId != ''">
-	        AND sc.MAIN_CATE_ID = #{mainCateId}
-	    </if>
-	    <if test="subCateId != null and subCateId != ''">
-	        AND p.SUB_CATE_ID = #{subCateId}
-	    </if>
-	</select>
-	
-	<!-- 카테고리별 COUNT -->
-	<select id="selectCategoryProductsCountByUser" resultType="int">
-	    SELECT COUNT(*)
-	    FROM PRODUCTS p
-	    LEFT JOIN SUB_CATEGORIES sc ON p.SUB_CATE_ID = sc.SUB_CATE_ID
-	    LEFT JOIN MAIN_CATEGORIES mc ON sc.MAIN_CATE_ID = mc.MAIN_CATE_ID
-	    WHERE p.IS_VISIBLE = 'Y'
-	      AND sc.IS_ACTIVE = 'Y'
-	      AND mc.IS_ACTIVE = 'Y'
-	    <if test="mainCateId != null and mainCateId != ''">
-	        AND sc.MAIN_CATE_ID = #{mainCateId}
-	    </if>
-	    <if test="subCateId != null and subCateId != ''">
-	        AND p.SUB_CATE_ID = #{subCateId}
-	    </if>
+	    ORDER BY p.VIEW_CNT DESC
+	    	   , p.PRODUCT_ID DESC
+	    LIMIT #{offset}, #{pageSize}
 	</select>
 	
 	<select id="selectCartIdByUser" parameterType="java.util.Map" resultType="java.lang.Long">

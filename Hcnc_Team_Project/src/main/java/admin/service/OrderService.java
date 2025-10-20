@@ -63,7 +63,27 @@ public class OrderService {
 	public void updateOrderCommentByAdmin(Map<String, Object> row) {
 		orderMapper.updateOrderCommentByAdmin(row);
 	}
+
+	public int selectNewOrderCountByAdmin() {
+		return orderMapper.selectNewOrderCountByAdmin();
+	}
+
+	public int selectPendingPaymentCountByAdmin() {
+		// TODO Auto-generated method stub
+		return orderMapper.selectPendingPaymentCountByAdmin();
+	}
+
+	public int selectPendingShipCountByAdmin() {
+
+		return orderMapper.selectPendingShipCountByAdmin();
+	}
+
+	public List<Map<String, Object>> selectDashStatByAdmin() {
+		return orderMapper.selectDashStatByAdmin();
+	}
+
 	
+
 
 	
 }

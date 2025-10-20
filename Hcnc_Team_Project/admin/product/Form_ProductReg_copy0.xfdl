@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_ProductReg" width="1280" height="2070" titletext="상품등록" background="#f4f7fe" onload="Form_ProductReg_onload" ontimer="ProductReg_ontimer">
+    <Layouts>
+      <Layout width="1280" height="2070">
+        <!-- 타이틀 -->
+        <Static id="sta_title" text="상품 등록" left="40" top="20" width="400" height="50" font="bold 18pt 'Gulim'" color="#000000" textAlign="left"/>
+        <!-- ===== 표시 설정 섹션 ===== -->
+        <Static id="box_display" left="30" top="70" width="1220" height="120" background="#ffffff" border="1px solid #dcdcdc" borderRadius="8px"/>
+        <Static id="sta_display00_00" text="표시 설정" left="50" top="75" width="300" height="30" font="bold 11pt 'Gulim'" color="#000000"/>
+        <Static id="sta_display00" text="진열상태" left="60" top="105" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Static id="sta_display00_01" text="판매상태" left="60" top="145" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Radio id="rdo_display" left="156" top="87" width="195" height="64" innerdataset="ds_display" codecolumn="code" datacolumn="name" onitemchanged="rdo_display_onitemchanged" direction="vertical" index="0" text="진열함" value="Y" taborder="38"/>
+        <Radio id="rdo_sale" left="156" top="125" width="394" height="64" innerdataset="ds_sale" codecolumn="code" datacolumn="name" direction="vertical" index="0" text="기본" value="nomal" onitemchanged="rdo_sale_onitemchanged" taborder="39"/>
+        <!-- ===== 카테고리 섹션 ===== -->
+        <Static id="box_category" left="30" top="210" width="1220" height="100" background="#ffffff" border="1px solid #dcdcdc" borderRadius="8px"/>
+        <Static id="sta_display00_00_00" text="상품 분류" left="50" top="215" width="300" height="30" font="bold 11pt 'Gulim'" color="#000000"/>
+        <Static id="sta_display00_02" text="대분류" left="60" top="250" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Combo id="cmb_maincate" left="180" top="250" width="250" height="30" innerdataset="ds_cate_main" codecolumn="mainCateId" datacolumn="mainCateNm" onitemchanged="cmb_maincate_onitemchanged"/>
+        <Static id="sta_display00_01_00" text="중분류" left="460" top="250" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Combo id="cmb_subcate" left="580" top="250" width="250" height="30" innerdataset="ds_cate_sub" codecolumn="subCateId" datacolumn="subCateNm"/>
+        <!-- ===== 기본 정보 섹션 ===== -->
+        <Static id="box_basic" left="30" top="330" width="1220" height="210" background="#ffffff" border="1px solid #dcdcdc" borderRadius="8px"/>
+        <Static id="sta_display00_00_00_00" text="기본 정보" left="50" top="335" width="300" height="30" font="bold 11pt 'Gulim'" color="#000000"/>
+        <Static id="sta_display00_02_00" text="상품명" left="60" top="370" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_name" left="180" top="370" width="400" height="30" displaynulltext="상품명 입력"/>
+        <Static id="sta_display00_01_00_00" text="상품코드" left="60" top="410" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_code" left="180" top="410" width="400" height="30" text="자동생성" displaynulltext="ex) PRO001"/>
+        <Static id="sta_display00_01_00_00_00" text="상품설명" left="60" top="450" width="100" height="60" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_content" left="180" top="450" width="850" height="60" displaynulltext="상품 단순설명"/>
+        <!-- ===== 판매 정보 ===== -->
+        <Static id="box_saleinfo" left="30" top="560" width="1220" height="160" background="#ffffff" border="1px solid #dcdcdc" borderRadius="8px"/>
+        <Static id="sta_display00_00_00_00_00" text="판매 정보" left="50" top="565" width="300" height="30" font="bold 11pt 'Gulim'" color="#000000"/>
+        <Static id="sta_display00_02_00_00" text="판매가" left="60" top="600" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_price" left="180" top="600" width="200" height="30" textAlign="right" displaynulltext="0"/>
+        <Static id="sta_display00_01_00_00_01_01" text="원가" left="420" top="600" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_costprice" left="540" top="600" width="200" height="30" textAlign="right" displaynulltext="0"/>
+        <Static id="sta_display00_01_00_00_01" text="수량" left="60" top="640" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_stock" left="180" top="640" width="200" height="30" textAlign="right" displaynulltext="0"/>
+        <Static id="sta_display00_01_00_00_01_00" text="무게" left="420" top="640" width="100" height="30" font="normal 10pt 'Gulim'" color="#111111" textAlign="center" background="#f4f4f4" borderRadius="6px"/>
+        <Edit id="edt_weight" left="540" top="640" width="200" height="30" textAlign="right" displaynulltext="0"/>
+        <!-- ===== 상품 게시글 ===== -->
+        <Static id="box_saleinfo00" left="30" top="740" width="1220" height="500" background="#ffffff" border="1px solid #dcdcdc" borderRadius="8px"/>
+        <Static id="sta_display00_00_00_00_00_00" text="상품 게시글" left="50" top="745" width="300" height="30" font="bold 11pt 'Gulim'" color="#000000"/>
+        <WebBrowser id="web_postContent" left="50" top="780" width="1180" height="440" onloadcompleted="web_postContent_onloadcompleted" onusernotify="web_postContent_onusernotify"/>
+        <!-- ===== 이미지 정보 ===== -->
+        <Static id="box_saleinfo01" left="30" top="1270" width="1220" height="220" background="#ffffff" border="1px solid #dcdcdc" borderRadius="8px"/>
+        <Static id="sta_display00_00_00_00_00_00_00" text="이미지 정보" left="50" top="1275" width="300" height="30" font="bold 11pt 'Gulim'" color="#000000"/>
+        <Button id="btn_selectFile" left="1080" top="1300" width="150" height="40" text="파일찾기" background="#000000" color="#ffffff" borderRadius="6px" font="bold 10pt 'Gulim'" onclick="btn_selectFile_onclick"/>
+        <Static id="Static01" left="60" top="1305" width="300" height="25" text="* 최대 4개 첨부가능" font="normal 9pt 'Gulim'" color="#555555"/>
+        <!-- ===== 하단 버튼 ===== -->
+        <Button id="btn_save" text="저장" left="930" top="1700" width="150" height="45" background="#000000" color="#ffffff" borderRadius="8px" font="bold 10pt 'Gulim'" onclick="btn_save_onclick"/>
+        <Button id="btn_cancel" text="취소" left="1100" top="1700" width="150" height="45" background="#ffffff" color="#000000" border="1px solid #000000" borderRadius="8px" font="bold 10pt 'Gulim'" onclick="btn_cancel_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "common::common.xjs";
+
+
+var mode = "create";
+this.Form_ProductReg_onload = function(obj,e)
+{
+	this.categories.request("SEARCH", "GET", "http://localhost:8080/selectProductCategoryListByAdmin.do");  
+    this.setMemberId();
+	var sUrl = "http://localhost:8080/ckedit.do;";
+	this.web_postContent.set_url(sUrl);
+	// 모드 처리 param
+};
+
+// 저장 버튼 클릭
+this.btn_save_onclick = function(obj,e)
+{
+
+	function emptyCheck(value,errorMsg) {
+		if(value == null || value == ""){
+			this.alert(errorMsg);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	if(emptyCheck(this.cmb_subcate.value, "중분류를 선택해주세요."))return;
+	if(emptyCheck(this.edt_name.value,"상품명을 입력하세요."))return;
+	if(emptyCheck(this.edt_code.value,"상품 코드를 입력하세요."))return;
+	if(emptyCheck(this.edt_content.value,"상품 상세설명을 입력하세요."))return;
+	if(emptyCheck(this.edt_price.value,"판매가를 입력하세요."))return;
+	if(emptyCheck(this.edt_costprice.value,"원가를 입력하세요."))return;
+	if(emptyCheck(this.edt_weight.value,"상품무게를 입력하세요."))return;
+	if(emptyCheck(this.edt_stock.value,"수량을 입력하세요."))return;
+	
+	
+	this.fn_confirmCustom("상품을 등록하시겠습니까?",
+	
+		function(ok){
+			if(!ok) return;
+			
+			
+		// CKEditor 본문 가져오기
+		var desc = this.getEditorContent();
+
+		// ds_product 구성 (단일행)
+		this.ds_product.clearData();
+		var nRow = this.ds_product.addRow();
+		
+		this.ds_product.setColumn(nRow, "SUB_CATE_ID", this.cmb_subcate.value);
+		this.ds_product.setColumn(nRow, "PRODUCT_NAME", this.edt_name.value);
+		this.ds_product.setColumn(nRow, "PRODUCT_CODE", this.edt_code.value);
+		this.ds_product.setColumn(nRow, "PRODUCT_CONTENT", this.edt_content.value);
+		this.ds_product.setColumn(nRow, "PRODUCT_PRICE", this.edt_price.value);
+		this.ds_product.setColumn(nRow, "COST_PRICE", this.edt_costprice.value);
+		this.ds_product.setColumn(nRow, "PRODUCT_WEIGHT", this.edt_weight.value);
+		this.ds_product.setColumn(nRow, "IS_VISIBLE", this.rdo_display.value);
+		//this.ds_product.setColumn(nRow, "INPUT_ID", "admin");
+		this.ds_product.setColumn(nRow, "SORT_NUMBER", 0);
+		this.ds_product.setColumn(nRow, "DETAIL_DESCRIPTION", desc);
+		this.ds_product.setColumn(nRow, "PRODUCT_TYPE", this.rdo_sale.value);
+		this.ds_product.setColumn(nRow, "STOCK", this.edt_stock.value);
+
+
+		// 트랜잭션 호출
+		var strSvcId = "insertProductCreateByAdmin";
+		var strUrl = "svc::insertProductCreateByAdmin.do";
+
+		// IN/OUT Dataset 매핑
+		var strIn  = "ds_product=ds_product preview=preview";
+		var strOut = "createStatus=createStatus";
+
+		var strArg = "";
+		var callBack = "fn_callback";
+		var bAsync = true;
+
+		this.transaction(strSvcId, strUrl, strIn, strOut, strArg, callBack, bAsync);
+	
+		}.bind(this)
+	);
+};
+
+// 취소 버튼
+this.btn_cancel_onclick = function(obj,e) {
+    this.go("product::Form_Product.xfdl");
+};
+
+// 이미지등록버튼
+this.btn_selectFile_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	var previewRowCount = this.preview.getRowCount();
+	if(previewRowCount >= 4){
+		this.alert("이미지는 4개까지 등록가능합니다");
+		return;
+	}
+	this.productImage.open('nexacro17', 1);
+};
+
+// 콜백
+this.fn_callback = function(svcID, errCode, errMsg) {
+    if (errCode < 0) { this.alert("오류: " + errMsg); return; }
+	
+    switch(svcID){
+    }
+};
+
+// 대분류 로직
+this.categoriesJsonSuccess = function(obj:nexacro.DataObject,e:nexacro.DataObjectEventInfo)
+{
+	
+	var result = this.categories.getResponse();
+	var parseRes = JSON.parse(result);
+	parseRes.forEach(function(res) {
+    var target = this.ds_cate_main;
+    var rowIndex = target.addRow();
+
+    target.setColumn(rowIndex, "mainCateId", res.mainCateId);
+    target.setColumn(rowIndex, "mainCateNm", res.mainCateNm);
+    target.setColumn(rowIndex, "isActive", res.isActive);
+    target.setColumn(rowIndex, "sortNumber", res.sortNumber);
+
+    var subCategoriesJson = JSON.stringify(res.subCategories);
+    target.setColumn(rowIndex, "subCategories", subCategoriesJson);
+
+	}, this); 
+	
+	this.cmb_maincate.set_index(0);
+	this.subCateSolt(0);
+	
+};
+// 중분류 로직
+this.cmb_maincate_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	this.subCateSolt(e.postindex);
+};
+
+this.subCateSolt = function(index){
+	var selectIndex = index;
+	var sub = this.ds_cate_main.getColumn(selectIndex,"subCategories");
+	var parseRes = JSON.parse(sub);
+	var target = this.ds_cate_sub;
+	target.clearData();
+	parseRes.forEach(function(res) {
+    var rowIndex = target.addRow();
+    target.setColumn(rowIndex, "subCateId", res.subCateId);
+    target.setColumn(rowIndex, "subCateNm", res.subCateNm);
+	}, this); 
+	this.cmb_subcate.set_index(0);
+}
+
+
+////////// CK EDITOR ///////////
+
+// 사용자 ID 설정
+this.setMemberId = function()
+{
+    // 전역변수에서 USER_ID 가져오기 (전역변수 이름에 따라 수정)
+    var sUserId = nexacro.getApplication().gds_adminInfo.getColumn(0, "MEMBER_ID"); // 또는 gds_user.getColumn(0, "USER_ID") 등
+    
+	
+    if(sUserId) { //전역변수에서 받아온 내용이 있으면 넣어주고 아니면 예외 trace
+        this.ds_product.setColumn(0, "INPUT_ID", sUserId);
+        trace("사용자 ID 설정: " + sUserId);
+    } else {
+        trace("사용자 ID를 가져올 수 없습니다.");
+        // 필요시 로그인 페이지로 이동하거나 오류 처리
+    }
+};
+
+// 웹브라우저 로드 완료 후 실행
+this.web_postContent_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+    trace("에디터 로드 완료");
+    this.setTimer(1, 2000);
+};
+
+// 타이머 이벤트
+this.ProductReg_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+    if(e.timerid == 1) {
+        this.killTimer(1);
+        trace("에디터 준비 완료");
+        
+        // 초기 메시지 설정
+        this.setEditorContent("<p>내용을 입력해주세요.</p>");
+    }
+};
+
+this.getEditorContent = function()
+{
+    try {
+        var sContent = this.web_postContent.callMethod("getEditorContent", "");
+        
+        trace("=== 에디터 내용 디버깅 ===");
+        trace("가져온 내용: " + sContent);
+        trace("내용 타입: " + typeof sContent);
+        
+        if(!sContent || sContent === "undefined" || sContent === "null" || sContent === null) {
+            return "";
+        }
+        
+        return String(sContent);
+        
+    } catch(e) {
+        trace("에디터 내용 가져오기 실패: " + e.message);
+        return "";
+    }
+};
+
+// 에디터 내용 설정
+this.setEditorContent = function(sContent)
+{
+    try {
+        if(!sContent) {
+            sContent = "";
+        }
+        
+        var result = this.web_postContent.callMethod("setEditorContent", sContent);
+        trace("에디터 내용 설정 결과: " + result);
+        
+    } catch(e) {
+        trace("에디터 내용 설정 실패: " + e.message);
+    }
+};
+
+// 에디터 준비 상태 확인
+this.isEditorReady = function()
+{
+    try {
+        var result = this.web_postContent.callMethod("isEditorReady", "");
+        return result === true || result === "true";
+    } catch(e) {
+        trace("에디터 준비 상태 확인 실패: " + e.message);
+        return false;
+    }
+};
+//
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.productImage.open('nexacro17', FileDialog.LOAD);
+};
+
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{	
+	this.productImageTransfer.addFile("file",e.virtualfiles[0]);
+	this.productImageTransfer.upload('http://localhost:8080/previewProductCreateByAdmin.do');
+};
+
+this.FileUpTransfer00_onprogress = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferProgressEventInfo)
+{
+};
+
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferEventinfo)
+{	
+	
+	var imageUrl = e.datasets[0]._rawRecords[0][0];	
+	var nRow = this.preview.addRow();
+	trace("생성",nRow);
+	this.fn_createNewImageViewer(nRow,imageUrl);
+
+};
+
+this.FileUpTransfer00_onerror = function(obj:nexacro.FileUploadTransfer,e:nexacro.FileUploadTransferErrorEventInfo)
+{
+	trace(e.errormsg);
+	trace(e.statuscode);
+};
+
+this.fn_createNewImageViewer = function(rowIndex, imageUrl)
+{
+    try {
+        var imageViewerId = "ImageViewer_" + rowIndex + "_" + Date.now();
+        var newImageViewer = new ImageViewer();
+        
+        // 위치 계산 (4열 그리드 형태로 배치)
+        var baseLeft = 240;   // 시작 X 좌표
+        var baseTop = 1356;   // 시작 Y 좌표
+        var width = 219;      // ImageViewer 너비
+        var height = 214;     // ImageViewer 높이
+        var spacing = 15;     // 간격
+        
+        var col = rowIndex;  // 4열로 배치
+        var row = rowIndex; //Math.floor(rowIndex / 4);
+        
+        var left = baseLeft + col * (width + spacing);
+        var top = baseTop + row * (height + spacing);
+        trace(left);
+        // ImageViewer 초기화
+        newImageViewer.init(
+            imageViewerId,  // ID
+            left,           // left
+            baseTop,            // top
+            width,          // width
+            height          // height
+        );
+        
+        // ImageViewer 속성 설정
+        newImageViewer.set_image(imageUrl);
+        newImageViewer.set_stretch("fit");
+        newImageViewer.set_imagealign("center");
+        newImageViewer.set_cursor("pointer");
+        
+        
+        // 클릭 이벤트 - 이미지 삭제
+        newImageViewer.addEventHandler("onclick", function(obj, e) {
+            var result = confirm("이 이미지를 삭제하시겠습니까?");
+            if (result) {
+                this.fn_removeImageViewer(imageViewerId);
+            }
+        }.bind(this));
+        
+        
+        // Form에 ImageViewer 추가
+        this.addChild(imageViewerId, newImageViewer);
+        
+        // 화면에 표시
+        newImageViewer.show();
+        
+        // Dataset에 ViewerID 저장 (나중에 참조용)
+        this.preview.setColumn(rowIndex, "fileName", imageViewerId);
+		this.preview.setColumn(rowIndex, "fileUrl", imageUrl);
+        
+        trace("ImageViewer 생성 완료: " + imageViewerId + " at (" + left + ", " + top + ")");
+        
+        // Form의 스크롤 영역 조정 (이미지가 많아지면)
+        //this.fn_adjustFormSize(row);
+        
+    } catch (ex) {
+        trace("ImageViewer 생성 오류: " + ex.message);
+    }
+};
+
+// ImageViewer 삭제
+this.fn_removeImageViewer = function(viewerId)
+{
+    try {
+        // ImageViewer 컴포넌트 제거
+        if (this.components[viewerId]) {
+            this.removeChild(viewerId);
+            trace("ImageViewer 삭제: " + viewerId);
+        }
+        
+        // Dataset에서 해당 행 삭제
+		var target = this.preview.findRow("fileName",viewerId);
+		this.preview.deleteRow(target);
+        
+        // 나머지 ImageViewer들 위치 재조정
+        this.fn_rearrangeImageViewers();
+        
+        alert("이미지가 삭제되었습니다.");
+        
+    } catch (ex) {
+        trace("ImageViewer 삭제 오류: " + ex.message);
+    }
+};
+// 삭제 후 재배치
+this.fn_rearrangeImageViewers = function()
+{
+    try {
+        var baseLeft = 240;
+        var baseTop = 1356;
+        var width = 219;
+        var height = 214;
+        var spacing = 15;
+
+        var rowCount = this.preview.getRowCount();
+		trace("재배치"+rowCount);
+        for (var i = 0; i < rowCount; i++) {
+            var viewerId = this.preview.getColumn(i, "fileName");
+            var comp = this.components[viewerId];
+            if (comp) {
+				//var layOutIndex = i - 1
+                var col = i % 4;
+                var row = Math.floor(i / 4);
+
+                var left = baseLeft + col * (width + spacing);
+                var top  = baseTop  + row * (height + spacing);
+
+                comp.move(left, top, width, height);
+                trace("재배치: " + viewerId + " → (" + left + ", " + top + ")");
+            }
+        }
+    } catch (ex) {
+        trace("fn_rearrangeImageViewers 오류: " + ex.message);
+    }
+};
+
+]]></Script>
+  </Form>
+</FDL>

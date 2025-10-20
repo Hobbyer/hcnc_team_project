@@ -1,5 +1,6 @@
 package admin.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -200,4 +201,71 @@ public class OrderController {
 
         return result;
     }
+    
+    // 신규주문 건수
+    @RequestMapping(value="/selectNewOrderCountByAdmin.do")
+    public NexacroResult selectNewOrderCountByAdmin() {
+        NexacroResult result = new NexacroResult();
+
+        int orderCount = orderService.selectNewOrderCountByAdmin();
+        
+        // Map으로 감싸서 전송
+        Map<String, Object> map = new HashMap<>();
+        map.put("COUNT", orderCount);
+        
+        List<Map<String, Object>> list = new ArrayList<>();
+        list.add(map);
+        
+        result.addDataSet("ds_orderCount", list);
+        return result;
+    }
+    
+    // 결제대기 건수
+    @RequestMapping(value="/selectPendingPaymentCountByAdmin.do")
+    public NexacroResult selectPendingPaymentCountByAdmin() {
+        NexacroResult result = new NexacroResult();
+
+        int payCount = orderService.selectPendingPaymentCountByAdmin();
+        
+        // Map으로 감싸서 전송
+        Map<String, Object> map = new HashMap<>();
+        map.put("COUNT", payCount);
+        
+        List<Map<String, Object>> list = new ArrayList<>();
+        list.add(map);
+        
+        result.addDataSet("ds_payCount", list);
+        return result;
+    }
+    // 배송대기 건수
+    @RequestMapping(value="/selectPendingShipCountByAdmin.do")
+    public NexacroResult selectPendingShipCountByAdmin() {
+        NexacroResult result = new NexacroResult();
+
+        int shipCount = orderService.selectPendingShipCountByAdmin();
+        
+        // Map으로 감싸서 전송
+        Map<String, Object> map = new HashMap<>();
+        map.put("COUNT", shipCount);
+        
+        List<Map<String, Object>> list = new ArrayList<>();
+        list.add(map);
+        
+        result.addDataSet("ds_shipCount", list);
+        return result;
+    }
+    
+    // 대쉬보드 
+    @RequestMapping(value="/selectDashStatByAdmin.do")
+    public NexacroResult selectDashStatByAdmin() {
+        NexacroResult result = new NexacroResult();
+
+        List<Map<String, Object>> dashStat = orderService.selectDashStatByAdmin();
+        
+        result.addDataSet("ds_stat", dashStat);
+        return result;
+    }
+    
+    
+    
 }

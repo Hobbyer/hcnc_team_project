@@ -9,7 +9,7 @@
             <Layout>
               <Static id="stc_ship" taborder="0" text="택배사" left="30" top="9" width="80" height="36" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick"/>
               <Combo id="Combo00" taborder="1" text="" left="7.83%" top="13" width="160" height="32" innerdataset="ds_cate" codecolumn="COURIER_NAME" datacolumn="COURIER_NAME" onitemchanged="search_area_Combo00_onitemchanged" index="0" value=""/>
-              <Static id="stc_ship00" taborder="2" text="택배비, 무료배송조건, 추가사유, 추가금 수정후 저장버튼을 눌러주세요 -&gt;" top="10" width="460" height="36" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" textAlign="right" right="12%"/>
+              <Static id="stc_ship00" taborder="2" text="* 택배비, 무료배송조건, 추가사유, 추가금 수정후 저장버튼을 눌러주세요 -&gt;" top="10" width="460" height="36" font="normal 9pt/normal &quot;Noto Sans KR Medium&quot;" onclick="search_area_txt_th_onclick" textAlign="right" right="12%"/>
               <Button id="btn_save" taborder="3" text="저장" top="14" height="30" onclick="search_area_btn_save_onclick" borderRadius="5px" background="#135dae" color="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" textAlign="center" cursor="pointer" right="3.00%" width="8.00%"/>
             </Layout>
           </Layouts>

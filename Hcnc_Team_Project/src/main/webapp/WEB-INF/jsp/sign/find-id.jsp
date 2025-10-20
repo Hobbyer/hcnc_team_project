@@ -186,6 +186,7 @@
         cursor: pointer;
       }
     </style>
+    <jsp:include page="../layout/header.jsp" />
     <div class="container">
       <div class="inner" style="margin-top: 20px">
         <div class="loginbox">
@@ -345,5 +346,7 @@
         </div>
       </div>
     </div>
+    <div style="height: 20px"></div>
+    <jsp:include page="../layout/footer.jsp" />
   </body>
 </html>

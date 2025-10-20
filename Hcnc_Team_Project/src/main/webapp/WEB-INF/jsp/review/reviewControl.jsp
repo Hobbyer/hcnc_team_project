@@ -10,6 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="../layout/headertop.jsp" />
+
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/global.css'/>"/>
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/layout.css'/>"/>
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/common.css'/>"/>
@@ -23,7 +25,6 @@
 
 <!-- j쿼리를 실행하기 위해 스크립트 선언을 해줘야한다. -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script type="text/javascript" src="<c:url value='/js/review/orderProductListRead.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/review/reviewWriteModal.js'/>"></script>
@@ -32,6 +33,7 @@
 
 </head>
 <body>
+	<jsp:include page="../layout/header.jsp" />
 	<div class="container" style="display: flex; gap: 10px;">
     	<div class="inner">
     		<div class="order-product-list">
@@ -178,5 +180,6 @@
 			<button type="button" class="review-read-btn-cancel" onclick="cancelReviewEditing()">취소</button>
 		</div>
 	</div>
+	<jsp:include page="../layout/footer.jsp" />
 </body>
 </html>

@@ -35,9 +35,9 @@ public class UserController {
 	    List<Map<String,Object>> popupBanners = new ArrayList<>();
 	    
 	    //상품
-	    List<Map<String, Object>> newProducts = userProductService.selectNewProductList(1, 8, null, null, null);
-	    List<Map<String, Object>> recommendProducts = userProductService.selectRecommendProductList(1, 4, null, null, null);
-	    List<Map<String, Object>> hotProducts = userProductService.selectHotProductList(1, 8, null, null, null);
+	    List<Map<String, Object>> newProducts = userService.selectMainNewProducts(null, null);
+	    List<Map<String, Object>> recommendProducts = userService.selectMainRecommendProducts(null, null);
+	    List<Map<String, Object>> hotProducts = userService.selectMainHotProducts(null, null);
 	    
 	    for(Map<String,Object> banner : bannerList) {
 	        String type = (String) banner.get("BANNER_TYPE");

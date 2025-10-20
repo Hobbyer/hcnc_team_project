@@ -34,7 +34,7 @@ public class UserWishController {
 	    System.out.println("위시리스트 조회 파라미터: " + param);
 	    
 	    @SuppressWarnings("unchecked")
-		Map<String, Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
+			Map<String, Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
 	    if(userInfo != null) {
 	    	String memberId = (String) userInfo.get("MEMBER_ID");
 	    	param.put("memberId", memberId);

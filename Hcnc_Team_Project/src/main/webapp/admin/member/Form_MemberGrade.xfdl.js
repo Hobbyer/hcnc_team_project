@@ -43,7 +43,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("grade_search_box","20","17","1240","203",null,null,null,null,null,null,this);
+            obj = new Static("grade_search_box","40","17","1200","203",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("white");
             obj.set_text("");
@@ -60,7 +60,7 @@
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00","44","57","36","27",null,null,null,null,null,null,this);
+            obj = new Static("Static00","54","57","36","27",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("등급");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
@@ -99,21 +99,26 @@
             obj = new Button("search_btn","540","165","97","35",null,null,null,null,null,null,this);
             obj.set_taborder("8");
             obj.set_text("검색");
-            obj.set_background("#2563eb");
+            obj.set_background("#667eea");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
-            obj.set_color("white");
+            obj.set_color("#ffffff");
             obj.set_borderRadius("4px");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("reset_btn","650","165","97","35",null,null,null,null,null,null,this);
             obj.set_taborder("9");
             obj.set_text("초기화");
-            obj.set_background(" #9ca3af");
+            obj.set_background("#f5f5f5");
             obj.set_borderRadius("4px");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_color("#666666");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("grid_list","20","230","1240","480",null,null,null,null,null,null,this);
+            obj = new Grid("grid_list","40","230","1200",null,null,"20",null,null,null,null,this);
             obj.set_taborder("10");
             obj.set_background("#FFFFFF");
             obj.set_border("0px none");
@@ -123,16 +128,18 @@
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"52\"/><Column size=\"165\"/><Column size=\"136\"/><Column size=\"164\"/><Column size=\"162\"/><Column size=\"145\"/><Column size=\"237\"/><Column size=\"179\"/></Columns><Rows><Row size=\"48\" band=\"head\"/><Row size=\"40\"/></Rows><Band id=\"head\"><Cell text=\"NO\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"1\" text=\"아이디\" textAlign=\"CENTER\" font=\"11pt/normal &quot;LG Smart UI Bold&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"2\" text=\"이름\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"3\" text=\"이메일\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"4\" text=\"전화번호\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"5\" text=\"구매액\" textAlign=\"CENTER\" font=\"bold 11pt &apos;LG Smart UI Bold&apos;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"6\" text=\"가입일\" textAlign=\"CENTER\" font=\"11pt/normal &quot;LG Smart UI Bold&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"7\" text=\"등급변경\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\" font=\"11pt/normal &quot;LG Smart UI Bold&quot;\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"1\" text=\"bind:MEMBER_ID\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"2\" text=\"bind:USER_NAME\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"3\" text=\"bind:EMAIL_ADDR\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"4\" text=\"bind:PHONE_NUMBER\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" displaytype=\"mask\" edittype=\"mask\" maskedittype=\"string\" maskeditformat=\"###-####-####\"/><Cell col=\"5\" edittype=\"normal\" text=\"bind:PRICE_AMOUNT\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"6\" text=\"bind:INPUT_DT\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"7\" text=\"bind:GRADE_CODE\" displaytype=\"combocontrol\" edittype=\"combo\" combocodecol=\"GRADE_CODE\" combodatacol=\"GRADE_NAME\" combodataset=\"ds_grade_edit\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Button("update_grade","1141","165","99","35",null,null,null,null,null,null,this);
+            obj = new Button("update_grade","1121","165","99","35",null,null,null,null,null,null,this);
             obj.set_taborder("11");
             obj.set_text("등급 변경");
-            obj.set_background("#2563eb");
+            obj.set_background("#667eea");
             obj.set_borderRadius("4px");
-            obj.set_color("white");
+            obj.set_color("#ffffff");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00_01","44","110","26","27",null,null,null,null,null,null,this);
+            obj = new Static("Static00_01","54","110","26","27",null,null,null,null,null,null,this);
             obj.set_taborder("12");
             obj.set_text("이름");
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
@@ -150,7 +157,7 @@
             obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02","1131","200","129","23",null,null,null,null,null,null,this);
+            obj = new Static("Static02","1111","200","129","23",null,null,null,null,null,null,this);
             obj.set_taborder("15");
             obj.set_text("*등급을 선택하고 클릭");
             obj.set_font("12px/normal \"Noto Sans KR Black\"");

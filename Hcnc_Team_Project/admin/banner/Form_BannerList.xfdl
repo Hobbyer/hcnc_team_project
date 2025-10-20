@@ -8,7 +8,7 @@
         <Static id="txt_h4_00" taborder="1" text="총       개 | 활성화       개" left="50" top="170" width="153" height="20" font="normal 700 10pt/normal &quot;Noto Sans KR Medium&quot;" color="#333333" onclick="search_area_search_txt01_onclick"/>
         <Static id="txt_bannertotal" taborder="2" text="0" left="10" top="170" width="70" height="20" font="normal 700 10pt/normal &quot;Noto Sans KR Medium&quot;" color="#1017ac" onclick="search_area_search_txt01_onclick" textAlign="right"/>
         <Static id="txt_bannertotal00" taborder="3" text="0" left="140" top="170" width="15" height="20" font="normal 700 10pt/normal &quot;Noto Sans KR Medium&quot;" color="#1017ac" onclick="search_area_search_txt01_onclick" cursor="copy" textAlign="right"/>
-        <Button id="btn_write" taborder="4" text="글쓰기" background="#1017ac" color="#ffffff" borderRadius="5px" border="0px none" right="40" width="140" font="normal bold 10pt/normal &quot;Noto Sans KR Medium&quot;" onclick="btn_write_onclick" height="40" bottom="40"/>
+        <Button id="btn_write" taborder="4" text="글쓰기" background="#1017ac" color="#ffffff" borderRadius="5px" border="0px none" right="40" width="140" font="normal bold 10pt/normal &quot;Noto Sans KR Medium&quot;" height="40" bottom="40" onclick="btn_write_onclick"/>
         <Button id="btn_delete" taborder="5" text="선택지우기" background="#d92d06" color="#ffffff" borderRadius="5px" border="0px none" width="140" font="normal bold 10pt/normal &quot;Noto Sans KR Medium&quot;" bottom="40" onclick="btn_delete_onclick" height="40" left="40"/>
         <Div id="search_area" taborder="6" left="40" top="20" height="140" background="#ffffff" borderRadius="10px" text="" right="40">
           <Layouts>

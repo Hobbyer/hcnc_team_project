@@ -71,6 +71,7 @@ public class UserProductController {
 		// 나머지 파라미터 데이터 Map으로 처리
 		Map<String, Object> param = new HashMap<>();
 		
+		@SuppressWarnings("unchecked")
 		Map<String, Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
 		if(userInfo != null) {
 			String memberId = (String) userInfo.get("MEMBER_ID");
@@ -112,6 +113,7 @@ public class UserProductController {
 			// 나머지 파라미터 데이터 Map으로 처리
 			Map<String, Object> param = new HashMap<>();
 			
+			@SuppressWarnings("unchecked")
 			Map<String, Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
 			if(userInfo != null) {
 				String memberId = (String) userInfo.get("MEMBER_ID");
@@ -127,9 +129,6 @@ public class UserProductController {
 	    param.put("quantity", request.getParameter("quantity"));
 	    param.put("subTotal", request.getParameter("subTotal"));
 		
-		
-	    System.out.println("옵션 IDs: " + optionIds);
-	    System.out.println("파라미터: " + param);
 	    
 	    HashMap<String, Object> resultData = userProductService.insertCartItemByUser(param, optionIds);
 	    
@@ -152,8 +151,15 @@ public class UserProductController {
 	}
 	
 	@RequestMapping(value="/insertQnA.do")
-	public ModelAndView insertQnAByUser(@RequestParam Map<String, Object> param, RedirectAttributes redirectAttributes) {
+	public ModelAndView insertQnAByUser(@RequestParam Map<String, Object> param, RedirectAttributes redirectAttributes, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
+
+		@SuppressWarnings("unchecked")
+		Map<String, Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
+	    if(userInfo != null) {
+	    	String memberId = (String) userInfo.get("MEMBER_ID");
+	    	param.put("memberId", memberId);
+	    }
 		
 		String productId = (String) param.get("productId");
 		
@@ -172,6 +178,7 @@ public class UserProductController {
 		ModelAndView mav = new ModelAndView("jsonView");
 		
 		String memberId = "";
+		@SuppressWarnings("unchecked")
 		Map<String, Object> userInfo = (Map<String, Object>) session.getAttribute("userInfo");
 		if(userInfo != null) {
 			memberId = (String) userInfo.get("MEMBER_ID");
@@ -232,140 +239,139 @@ public class UserProductController {
 	}
 	
 	// hot, new, recommend 공통 메서드
-    private ModelAndView productListCommon(
-            List<Map<String, Object>> products,
-            int totalCount,
-            int page,
-            int pageSize,
-            String sortType,
-            String mainCateId,
-            String subCateId,
-            String viewName) {
-        
-        ModelAndView mav = new ModelAndView();
-        
-        // 페이지네이션 계산
-        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-        int pageGroupSize = 10;
-        int startPage = ((page - 1) / pageGroupSize) * pageGroupSize + 1;
-        int endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
-        
-        // 데이터 추가
-        mav.addObject("productList", products);
-        mav.addObject("totalCount", totalCount);
-        mav.addObject("currentPage", page);
-        mav.addObject("pageSize", pageSize);
-        mav.addObject("totalPages", totalPages);
-        mav.addObject("startPage", startPage);
-        mav.addObject("endPage", endPage);
-        mav.addObject("sortType", sortType);
-        mav.addObject("mainCateId", mainCateId);
-        mav.addObject("subCateId", subCateId);
-        
-        mav.setViewName(viewName);
-        
-        return mav;
-    }
-    
-    // 신규
-    @RequestMapping("/newlist.do")
-    public ModelAndView selectNewProductList(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "20") int pageSize,
-            @RequestParam(required = false) String sortType,
-            @RequestParam(required = false) String mainCateId,
-            @RequestParam(required = false) String subCateId) {
-        
-        List<Map<String, Object>> products = userProductService.selectNewProductList(page, pageSize, sortType, mainCateId, subCateId);
-        int totalCount = userProductService.selectNewProductCount(sortType, mainCateId, subCateId);
-        
-        return productListCommon(products, totalCount, page, pageSize, sortType, mainCateId, subCateId, "product/new");
-    }
-    
-    // 추천
-    @RequestMapping("/recommendlist.do")
-    public ModelAndView selectRecommendProductList(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "20") int pageSize,
-            @RequestParam(required = false) String sortType,
-            @RequestParam(required = false) String mainCateId,
-            @RequestParam(required = false) String subCateId) {
-        
-        List<Map<String, Object>> products = userProductService.selectRecommendProductList(page, pageSize, sortType, mainCateId, subCateId);
-        int totalCount = userProductService.selectRecommendProductCount(sortType, mainCateId, subCateId);
-        
-        return productListCommon(products, totalCount, page, pageSize, sortType, mainCateId, subCateId, "product/recommend");
-    }
-    
-    // 인기
-    @RequestMapping("/hotlist.do")
-    public ModelAndView selectHotProductList(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "20") int pageSize,
-            @RequestParam(required = false) String sortType,
-            @RequestParam(required = false) String mainCateId,
-            @RequestParam(required = false) String subCateId) {
-        
-        List<Map<String, Object>> products = userProductService.selectHotProductList(page, pageSize, sortType, mainCateId, subCateId);
-        int totalCount = userProductService.selectHotProductCount(sortType, mainCateId, subCateId);
-        
-        return productListCommon(products, totalCount, page, pageSize, sortType, mainCateId, subCateId, "product/hot");
-    }
+	private ModelAndView productListCommon(
+	        List<Map<String, Object>> products,
+	        int page,
+	        int pageSize,
+	        String sortType,
+	        String mainCateId,
+	        String subCateId,
+	        String viewName) {
+	    
+	    ModelAndView mav = new ModelAndView();
+	    
+	    // totalCount는 products.size()로 계산
+	    int totalCount = products.size();
+	    
+	    // 페이지네이션 계산
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+	    int pageGroupSize = 5;
+	    int startPage = ((page - 1) / pageGroupSize) * pageGroupSize + 1;
+	    int endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
+	    
+	    // 데이터 추가
+	    mav.addObject("productList", products);
+	    mav.addObject("totalCount", totalCount);
+	    mav.addObject("currentPage", page);
+	    mav.addObject("pageSize", pageSize);
+	    mav.addObject("totalPages", totalPages);
+	    mav.addObject("startPage", startPage);
+	    mav.addObject("endPage", endPage);
+	    mav.addObject("sortType", sortType);
+	    mav.addObject("mainCateId", mainCateId);
+	    mav.addObject("subCateId", subCateId);
+	    
+	    mav.setViewName(viewName);
+	    
+	    return mav;
+	}
+
+	// 신규
+	@RequestMapping("/newlist.do")
+	public ModelAndView selectNewProductList(
+	        @RequestParam(defaultValue = "1") int page,
+	        @RequestParam(defaultValue = "16") int pageSize,
+	        @RequestParam(required = false) String sortType,
+	        @RequestParam(required = false) String mainCateId,
+	        @RequestParam(required = false) String subCateId) {
+	    
+	    List<Map<String, Object>> products = userProductService.selectNewProductList(page, pageSize, sortType, mainCateId, subCateId);
+	    
+	    return productListCommon(products, page, pageSize, sortType, mainCateId, subCateId, "product/new");
+	}
+
+	// 추천
+	@RequestMapping("/recommendlist.do")
+	public ModelAndView selectRecommendProductList(
+	        @RequestParam(defaultValue = "1") int page,
+	        @RequestParam(defaultValue = "16") int pageSize,
+	        @RequestParam(required = false) String sortType,
+	        @RequestParam(required = false) String mainCateId,
+	        @RequestParam(required = false) String subCateId) {
+	    
+	    List<Map<String, Object>> products = userProductService.selectRecommendProductList(page, pageSize, sortType, mainCateId, subCateId);
+	    
+	    return productListCommon(products, page, pageSize, sortType, mainCateId, subCateId, "product/recommend");
+	}
+
+	// 인기
+	@RequestMapping("/hotlist.do")
+	public ModelAndView selectHotProductList(
+	        @RequestParam(defaultValue = "1") int page,
+	        @RequestParam(defaultValue = "16") int pageSize,
+	        @RequestParam(required = false) String sortType,
+	        @RequestParam(required = false) String mainCateId,
+	        @RequestParam(required = false) String subCateId) {
+	    
+	    List<Map<String, Object>> products = userProductService.selectHotProductList(page, pageSize, sortType, mainCateId, subCateId);
+	    
+	    return productListCommon(products, page, pageSize, sortType, mainCateId, subCateId, "product/hot");
+	}
 
 	// 카테고리별
-    @RequestMapping(value="/product/list.do")
-    public ModelAndView selectCategoryProductList(
-            @RequestParam(defaultValue = "1") int page,
-            @RequestParam(defaultValue = "20") int pageSize,
-            @RequestParam(required = false) String sortType,
-            @RequestParam(required = false) String mainCateId,
-            @RequestParam(required = false) String subCateId) {
-        
-        ModelAndView mav = new ModelAndView();
-        
-        List<Map<String, Object>> products = userProductService.selectCategoryProductList(page, pageSize, sortType, mainCateId, subCateId);
-        int totalCount = userProductService.selectCategoryProductCount(sortType, mainCateId, subCateId);
-        
-        // 페이지네이션 
-        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
-        int pageGroupSize = 10;
-        int startPage = ((page - 1) / pageGroupSize) * pageGroupSize + 1;
-        int endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
-        
-        // 기본 데이터
-        mav.addObject("productList", products);
-        mav.addObject("totalCount", totalCount);
-        mav.addObject("currentPage", page);
-        mav.addObject("pageSize", pageSize);
-        mav.addObject("totalPages", totalPages);
-        mav.addObject("startPage", startPage);
-        mav.addObject("endPage", endPage);
-        mav.addObject("sortType", sortType);
-        mav.addObject("mainCateId", mainCateId);
-        mav.addObject("subCateId", subCateId);
-        
-        if (mainCateId != null && !mainCateId.isEmpty()) {
-            int mainCateIdInt = Integer.parseInt(mainCateId);
-            
-            List<Map<String, Object>> allMainCategories = userCategoryService.selectMainCategoryListByUser();
-            Map<String, Object> mainCategory = null;
-            for (Map<String, Object> main : allMainCategories) {
-                int id = ((Number) main.get("MAIN_CATE_ID")).intValue();
-                if (id == mainCateIdInt) {
-                    mainCategory = main;
-                    break;
-                }
-            }
-            
-            List<Map<String, Object>> subCategories = userCategoryService.selectSubCategoryListByUser(mainCateIdInt);
-            
-            mav.addObject("mainCategory", mainCategory);
-            mav.addObject("subCategories", subCategories);
-        }
-        
-        mav.setViewName("product/list");
-        
-        return mav;
-    }
+	@RequestMapping(value="/product/list.do")
+	public ModelAndView selectCategoryProductList(
+	        @RequestParam(defaultValue = "1") int page,
+	        @RequestParam(defaultValue = "16") int pageSize,
+	        @RequestParam(required = false) String sortType,
+	        @RequestParam(required = false) String mainCateId,
+	        @RequestParam(required = false) String subCateId) {
+	    
+	    ModelAndView mav = new ModelAndView();
+	    
+	    List<Map<String, Object>> products = userProductService.selectCategoryProductList(page, pageSize, sortType, mainCateId, subCateId);
+	    int totalCount = products.size();
+	    
+	    // 페이지네이션 
+	    int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+	    int pageGroupSize = 5;
+	    int startPage = ((page - 1) / pageGroupSize) * pageGroupSize + 1;
+	    int endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
+	    
+	    // 기본 데이터
+	    mav.addObject("productList", products);
+	    mav.addObject("totalCount", totalCount);
+	    mav.addObject("currentPage", page);
+	    mav.addObject("pageSize", pageSize);
+	    mav.addObject("totalPages", totalPages);
+	    mav.addObject("startPage", startPage);
+	    mav.addObject("endPage", endPage);
+	    mav.addObject("sortType", sortType);
+	    mav.addObject("mainCateId", mainCateId);
+	    mav.addObject("subCateId", subCateId);
+	    
+	    if (mainCateId != null && !mainCateId.isEmpty()) {
+	        int mainCateIdInt = Integer.parseInt(mainCateId);
+	        
+	        List<Map<String, Object>> allMainCategories = userCategoryService.selectMainCategoryListByUser();
+	        Map<String, Object> mainCategory = null;
+	        for (Map<String, Object> main : allMainCategories) {
+	            int id = ((Number) main.get("MAIN_CATE_ID")).intValue();
+	            if (id == mainCateIdInt) {
+	                mainCategory = main;
+	                break;
+	            }
+	        }
+	        
+	        List<Map<String, Object>> subCategories = userCategoryService.selectSubCategoryListByUser(mainCateIdInt);
+	        
+	        mav.addObject("mainCategory", mainCategory);
+	        mav.addObject("subCategories", subCategories);
+	    }
+	    
+	    mav.setViewName("product/list");
+	    
+	    return mav;
+	}
 }
 	

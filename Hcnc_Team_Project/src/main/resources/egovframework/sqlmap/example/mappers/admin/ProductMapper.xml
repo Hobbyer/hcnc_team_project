@@ -51,8 +51,7 @@
 		NULL))
 		WHERE 1=1
 		<!-- 검색어 -->
-		<if
-			test="SEARCH_TYPE != null and SEARCH_TEXT != null and SEARCH_TEXT != ''">
+		<if test="SEARCH_TYPE != null and SEARCH_TEXT != null and SEARCH_TEXT != ''">
 			<choose>
 				<when test="SEARCH_TYPE == 'PRODUCT_CODE'">
 					AND LOWER(REPLACE(p.PRODUCT_CODE, ' ', '')) COLLATE utf8mb4_general_ci
@@ -87,13 +86,12 @@
 
 		<!-- 등록일/수정일 (둘 중 입력된 값 기준으로 필터) -->
 		<if test="START_DATE != null and START_DATE != ''">
-			AND DATE(COALESCE(p.UPDATE_DT, p.INPUT_DT)) <![CDATA[>]]>=
-			#{START_DATE}
+		    AND DATE(p.INPUT_DT) <![CDATA[>=]]> #{START_DATE}
 		</if>
 		<if test="END_DATE != null and END_DATE != ''">
-			AND DATE(COALESCE(p.UPDATE_DT, p.INPUT_DT)) <![CDATA[<]]>=
-			#{END_DATE}
+		    AND DATE(p.INPUT_DT) <![CDATA[<=]]> #{END_DATE}
 		</if>
+
 
 		<!-- 카테고리 -->
 		<if test="MAIN_CATE_ID != null and MAIN_CATE_ID != ''">
@@ -103,7 +101,7 @@
 			AND sc.SUB_CATE_ID = #{SUB_CATE_ID}
 		</if>
 
-		ORDER BY p.PRODUCT_ID, o.OPTION_ID
+		ORDER BY p.PRODUCT_ID ASC, o.OPTION_ID ASC
 	</select>
 
 	<!-- 대분류 콤보 -->
@@ -220,66 +218,69 @@
 	<!-- ___________재고 입출고 리스트___________  -->
 	<!-- 재고/입출고 리스트  -->
 	<select id="selectStockMovementsListByAdmin"
-			parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT	p.PRODUCT_CODE,
-			p.PRODUCT_NAME,
-			SUM(i.QUANTITY) OVER (PARTITION BY p.PRODUCT_ID) AS TOTAL_QUANTITY,
-			mc.MAIN_CATE_NM,
-			sc.SUB_CATE_NM,
-			o.OPTION_NAME,
-			o.OPTION_VALUE,
-			o.IS_VISIBLE,
-			i.QUANTITY AS CURRENT_QUANTITY,
-			sm.MOVE_QUANTITY,
-			sm.MOVE_TYPE,
-			sm.INPUT_DT,
-			o.INPUT_ID,
-			o.UPDATE_ID 
-	  FROM
-			PRODUCTS p
-	  JOIN SUB_CATEGORIES sc ON
-			p.SUB_CATE_ID = sc.SUB_CATE_ID
-	  JOIN MAIN_CATEGORIES mc ON
-			sc.MAIN_CATE_ID = mc.MAIN_CATE_ID
-	  LEFT JOIN OPTIONS o ON
-			p.PRODUCT_ID = o.PRODUCT_ID
-	  LEFT JOIN INVENTORIES i ON
-			p.PRODUCT_ID = i.PRODUCT_ID
-		AND (o.OPTION_ID IS NULL
-			OR o.OPTION_ID = i.OPTION_ID)
-	  LEFT JOIN STOCK_MOVEMENTS sm ON
-			i.INVENTORY_ID = sm.INVENTORY_ID
-
+	        parameterType="java.util.Map"
+	        resultType="java.util.Map">
+	
+	SELECT
+	    p.PRODUCT_CODE,
+	    p.PRODUCT_NAME,
+	    SUM(i.QUANTITY) OVER (PARTITION BY p.PRODUCT_ID) AS TOTAL_QUANTITY,
+	    mc.MAIN_CATE_NM,
+	    sc.SUB_CATE_NM,
+	    o.OPTION_NAME,
+	    o.OPTION_VALUE,
+	    o.IS_VISIBLE,
+	    i.QUANTITY AS CURRENT_QUANTITY,
+	    sm.MOVE_QUANTITY,
+	    sm.MOVE_TYPE,
+	    sm.INPUT_DT,
+	    o.INPUT_ID,
+	    o.UPDATE_ID
+	FROM
+	    STOCK_MOVEMENTS sm
+	    INNER JOIN INVENTORIES i ON sm.INVENTORY_ID = i.INVENTORY_ID
+	    INNER JOIN PRODUCTS p ON i.PRODUCT_ID = p.PRODUCT_ID
+	    LEFT JOIN OPTIONS o ON p.PRODUCT_ID = o.PRODUCT_ID
+	                         AND (o.OPTION_ID IS NULL OR o.OPTION_ID = i.OPTION_ID)
+	    INNER JOIN SUB_CATEGORIES sc ON p.SUB_CATE_ID = sc.SUB_CATE_ID
+	    INNER JOIN MAIN_CATEGORIES mc ON sc.MAIN_CATE_ID = mc.MAIN_CATE_ID
 	WHERE 1=1
-		<!-- 검색어 -->
-		<if
-			test="SEARCH_TYPE != null and SEARCH_TEXT != null and SEARCH_TEXT != ''">
+	    <!-- 검색어 -->
+		<if test="SEARCH_TYPE != null and SEARCH_TEXT != null and SEARCH_TEXT != ''">
 			<choose>
 				<when test="SEARCH_TYPE == 'PRODUCT_CODE'">
-					AND p.PRODUCT_CODE LIKE CONCAT('%', #{SEARCH_TEXT},	'%')
+					AND LOWER(REPLACE(p.PRODUCT_CODE, ' ', '')) COLLATE utf8mb4_general_ci
+					LIKE CONCAT('%', LOWER(REPLACE(#{SEARCH_TEXT}, ' ', '')),
+					'%')
 				</when>
 				<when test="SEARCH_TYPE == 'PRODUCT_NAME'">
-					AND p.PRODUCT_NAME LIKE CONCAT('%', #{SEARCH_TEXT},	'%')
+					AND LOWER(REPLACE(p.PRODUCT_NAME, ' ', '')) COLLATE utf8mb4_general_ci
+					LIKE CONCAT('%', LOWER(REPLACE(#{SEARCH_TEXT}, ' ', '')),
+					'%')
 				</when>
 				<when test="SEARCH_TYPE == 'MOVE_TYPE'">
-					AND sm.MOVE_TYPE LIKE CONCAT('%', #{SEARCH_TEXT}, '%')
-						OR (#{SEARCH_TEXT} = '입고' AND sm.MOVE_TYPE = 'Inbound')
-				        OR (#{SEARCH_TEXT} = '출고' AND sm.MOVE_TYPE = 'Outbound')
-				        OR (#{SEARCH_TEXT} = '옵션추가' AND sm.MOVE_TYPE = 'Add option')
+				    AND (
+				        LOWER(sm.MOVE_TYPE) LIKE CONCAT('%', LOWER(#{SEARCH_TEXT}), '%')
+				        OR (INSTR('입고', #{SEARCH_TEXT}) > 0 AND sm.MOVE_TYPE = 'Inbound')
+				        OR (INSTR('출고', #{SEARCH_TEXT}) > 0 AND sm.MOVE_TYPE = 'Outbound')
+				        OR (INSTR('추가옵션', #{SEARCH_TEXT}) > 0 AND sm.MOVE_TYPE = 'Add option')
+				    )
 				</when>
+			
 			</choose>
 		</if>
 
 		<!-- 진열상태 (Controller에서 'all'은 제거함) -->
 		<if test="IS_VISIBLE != null and IS_VISIBLE != ''">
-			AND o.IS_VISIBLE = #{IS_VISIBLE}
+			AND p.IS_VISIBLE = #{IS_VISIBLE}
 		</if>
 
 		<!-- 판매상태 (Controller에서 'allS'는 제거함) -->
 		<if test="QUANTITY_STATUS != null and QUANTITY_STATUS != ''">
 			<choose>
 				<when test="QUANTITY_STATUS == 'sale'">
-					AND IFNULL(i.QUANTITY, 0) <![CDATA[>]]> 0
+					AND IFNULL(i.QUANTITY, 0) <![CDATA[>]]>
+					0
 				</when>
 				<when test="QUANTITY_STATUS == 'nosale'">
 					AND IFNULL(i.QUANTITY, 0) = 0
@@ -289,11 +290,12 @@
 
 		<!-- 등록일/수정일 (둘 중 입력된 값 기준으로 필터) -->
 		<if test="START_DATE != null and START_DATE != ''">
-			AND DATE(sm.INPUT_DT) <![CDATA[>]]>= #{START_DATE}
+		    AND DATE(p.INPUT_DT) <![CDATA[>=]]> #{START_DATE}
 		</if>
 		<if test="END_DATE != null and END_DATE != ''">
-			AND DATE(sm.INPUT_DT) <![CDATA[<]]>= #{END_DATE}
+		    AND DATE(p.INPUT_DT) <![CDATA[<=]]> #{END_DATE}
 		</if>
+
 
 		<!-- 카테고리 -->
 		<if test="MAIN_CATE_ID != null and MAIN_CATE_ID != ''">
@@ -302,9 +304,10 @@
 		<if test="SUB_CATE_ID != null and SUB_CATE_ID != ''">
 			AND sc.SUB_CATE_ID = #{SUB_CATE_ID}
 		</if>
-	ORDER BY
-		sm.INPUT_DT DESC
+
+		ORDER BY sm.INPUT_DT ASC
 	</select>
+
 	
 	
 
@@ -318,6 +321,21 @@
 
 
 	<!-- ___________카테고리 관리___________ -->
+	
+	<!-- 대분류명 중복 체크 -->
+	<select id="checkDuplicateMainCateNm" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		FROM MAIN_CATEGORIES
+		WHERE MAIN_CATE_NM = #{MAIN_CATE_NM}
+	</select>
+	
+	<!-- 중분류명 중복 체크 -->
+	<select id="checkDuplicateSubCateNm" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		FROM SUB_CATEGORIES
+		WHERE SUB_CATE_NM = #{SUB_CATE_NM}
+	</select>
+	
 	<!-- 대분류 -->
 	<select id="selectMainCategoryByAdmin"
 		resultType="java.util.Map">
@@ -357,7 +375,7 @@
 
 	<update id="updateCategoryByAdmin" parameterType="java.util.Map">
 		<choose>
-			<when test="TYPE == 'main'">
+			<when test="TYPE eq 'main'">
 				UPDATE MAIN_CATEGORIES
 				SET MAIN_CATE_NM =
 				#{MAIN_CATE_NM},

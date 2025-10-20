@@ -18,13 +18,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
     const params = new URLSearchParams(val);
     const keyword = params.get("keyword");
     $("#keyword").text(keyword);
-    console.log(keyword);
   </script>
   <body>
     <style>
       .prdList .prdItem {
-        width: 31%;
-        margin: 0 1.1% 30px;
+        width: 23%;
+        margin: 0 1% 30px;
       }
       .prdList .prdItem.no-product {
         width: 100%;

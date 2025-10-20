@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_MemberBlackListDetail" width="710" height="530" titletext="New Form" onkeyup="Form_MemberBlackListDetail_onkeyup" onload="Form_MemberBlackListDetail_onload" background="#F4F7FE">
+  <Form id="Form_MemberBlackListDetail" width="710" height="540" titletext="New Form" onkeyup="Form_MemberBlackListDetail_onkeyup" onload="Form_MemberBlackListDetail_onload" background="#F4F7FE">
     <Layouts>
-      <Layout height="530" width="710">
+      <Layout height="540" width="710">
         <Div id="Div00" taborder="0" left="10" top="40" width="690" height="445" background="lightGray" borderRadius="12px" text="">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Static id="Static00" taborder="1" text="ESC[닫기]" left="630" top="495" width="66" height="25" color="RED" font="bold 12px/normal &quot;Gulim&quot;" onclick="Static00_onclick"/>
+        <Static id="Static00" taborder="1" text="ESC[닫기]" left="630" top="500" width="60" height="25" color="RED" font="14px/normal &quot;Noto Sans KR Black&quot;" onclick="Static00_onclick"/>
         <Static id="Static01" taborder="2" text="신고 내역" left="20" top="10" width="70" height="25" font="14px/normal &quot;Noto Sans KR Black&quot;"/>
         <Grid id="black_list" taborder="3" left="20" top="50" height="420" background="#FFFFFF" border="0px none" borderRadius="10px" autofittype="col" binddataset="ds_list" oncellclick="black_list_oncellclick" width="670">&gt;
           <Formats><Format id="default"><Columns><Column size="43"/><Column size="91"/><Column size="74"/><Column size="214"/><Column size="106"/><Column size="144"/></Columns><Rows><Row size="48" band="head"/><Row size="40"/></Rows><Band id="head"><Cell text="NO" textAlign="CENTER" font="11pt/normal &quot;Noto Sans KR Black&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="1" text="아이디" textAlign="CENTER" font="11pt/normal &quot;Noto Sans KR Black&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="2" text="신고유형" textAlign="CENTER" font="11pt/normal &quot;Noto Sans KR Black&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="3" text="신고내용" textAlign="CENTER" font="11pt/normal &quot;Noto Sans KR Black&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="4" text="상태" textAlign="CENTER" font="11pt/normal &quot;Noto Sans KR Black&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/><Cell col="5" text="신고일자" textAlign="CENTER" font="11pt/normal &quot;Noto Sans KR Black&quot;" background="#ffffff" border="0px none, 0px none, 1px solid #eeeeee, 0px none" color="#222222"/></Band><Band id="body"><Cell text="expr:currow + 1" textAlign="center" font="12px/normal &quot;LG Smart UI Bold&quot;"/><Cell col="1" text="bind:MEMBER_ID" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="2" text="bind:REPORT_TYPE" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="3" text="bind:REPORT_CONTENT" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/><Cell col="4" text="bind:REPORT_STATUS" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;" displaytype="combocontrol" edittype="combo" combocodecol="REPORT_STATUS" combodatacol="REPORT_STATUS" combodataset="ds_status"/><Cell col="5" text="bind:INPUT_DT" textAlign="center" font="12px/normal &quot;Noto Sans KR Black&quot;"/></Band></Format></Formats></Grid>
-        <Button id="status_change_btn" taborder="4" text="상태 변경" left="304" top="490" width="95" height="30" background="#2563eb" borderRadius="4px" font="11px/normal &quot;Noto Sans KR Black&quot;" color="white" onclick="status_change_btn_onclick"/>
+        <Button id="status_change_btn" taborder="4" text="상태 변경" left="303" top="495" width="95" height="35" background="#667eea" borderRadius="8px" font="14px/normal &quot;Noto Sans KR Black&quot;" color="#ffffff" onclick="status_change_btn_onclick" border="0px solid #667eea" cursor="pointer"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.Form_MemberBlackListDetail_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)

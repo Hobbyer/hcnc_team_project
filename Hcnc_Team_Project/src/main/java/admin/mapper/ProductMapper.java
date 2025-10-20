@@ -26,7 +26,8 @@ public interface ProductMapper {
 	void insertCategoryByAdmin(Map<String,Object> p);
 	void updateCategoryByAdmin(Map<String,Object> p);
 	void deleteCategoryByAdmin(Map<String,Object> p);
-	
+	int checkDuplicateMainCateNm(Map<String,Object> p);
+	int checkDuplicateSubCateNm(Map<String,Object> p);
 	
 	
 	// ----- 옵션 -----

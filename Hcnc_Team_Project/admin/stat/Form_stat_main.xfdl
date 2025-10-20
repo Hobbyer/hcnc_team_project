@@ -3,20 +3,19 @@
   <Form id="Form_Stat_Main" width="1280" height="720" titletext="New Form" background="#F4F7FE" onload="Form_Stat_Main_onload">
     <Layouts>
       <Layout height="720" width="1280">
-        <Div id="search_area" taborder="0" top="0" background="#ffffff" borderRadius="10px" text="" height="60" left="40" right="40">
+        <Div id="search_area" taborder="0" top="10" background="#ffffff" borderRadius="10px" text="" height="60" left="40" right="40" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)">
           <Layouts>
             <Layout>
               <Static id="txt_cnt" taborder="0" left="110" top="15" width="80" height="36" font="normal 10pt/normal &quot;Noto Sans KR&quot;"/>
-              <Static id="txt_th01" taborder="1" text="주문 내역" left="29" top="14" width="80" height="36" font="normal 13pt/normal &quot;Noto Sans KR Black&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
+              <Static id="txt_th01" taborder="1" text="주문 내역" left="29" top="13" width="80" height="36" font="normal 13pt/normal &quot;Noto Sans KR Black&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
               <Combo id="Combo00" taborder="2" text="일별" left="247" top="17" width="120" height="30" innerdataset="ds_statname" codecolumn="NAME" datacolumn="NAME" index="0" value="일별" onitemchanged="search_area_Combo00_onitemchanged"/>
               <Static id="txt_th01_00" taborder="3" text="기본 설정" left="177" top="14" width="80" height="36" font="normal 10pt/normal &quot;Noto Sans KR&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
-              <Static id="txt_th01_00_00" taborder="4" text="상세 설정" left="630" top="13" width="80" height="36" font="normal 10pt/normal &quot;Noto Sans KR&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
-              <Combo id="Combo00_00" taborder="5" text="일별" left="700" top="16" width="120" height="30" innerdataset="ds_payment" codecolumn="NAME" datacolumn="NAME" index="0" value="일별" onitemchanged="search_area_Combo00_00_onitemchanged"/>
-              <Calendar id="Calendar00" taborder="6" left="700" top="16" width="120" height="30" onchanged="search_area_Calendar00_onchanged"/>
+              <Static id="txt_th01_00_00" taborder="4" text="상세 설정" left="52.5%" top="13" width="80" height="36" font="normal 10pt/normal &quot;Noto Sans KR&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
+              <Calendar id="Calendar00" taborder="5" left="58.33%" top="16" width="120" height="30" onchanged="search_area_Calendar00_onchanged"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div00" taborder="1" text=" " left="40" top="90" width="47%" background="white" borderRadius="10px" bottom="50">
+        <Div id="Div00" taborder="1" text=" " left="40" top="90" width="47%" background="white" borderRadius="10px" bottom="50" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)">
           <Layouts>
             <Layout>
               <BasicChart id="BasicChart00" taborder="0" left="0" top="57" bottom="0" background="white" borderRadius="10px" binddataset="ds_stat" categorycolumn="bind:CHART_LABEL" onseriesclick="Div00_BasicChart00_onseriesclick" right="0">
@@ -197,7 +196,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div00_00" taborder="2" text="Div00" top="90" background="white" bottom="50" borderRadius="10px" right="40" width="47%">
+        <Div id="Div00_00" taborder="2" text="Div00" top="90" background="white" bottom="50" borderRadius="10px" right="40" width="47%" boxShadow="0px 0px 2px 2px rgba(229,229,229,0.15)">
           <Layouts>
             <Layout>
               <Div id="Div00" taborder="1" left="0" top="53" width="100%" height="35" border="1px solid #eeeeee,0px none,0px none">
@@ -205,10 +204,10 @@
                   <Layout/>
                 </Layouts>
               </Div>
-              <Static id="txt_th01" taborder="1" text="상세 내역" left="29" top="10" width="80" height="36" font="normal 13pt/normal &quot;Noto Sans KR Black&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
-              <Static id="txt_th01_00" taborder="2" text="상세 내역을 보려면 포인터를 클릭하세요" left="360" top="21" width="199" height="16" font="normal 9pt/normal &quot;Noto Sans KR Light&quot;" onclick="txt_th_onclick" color="#4b4b4b" textAlign="right"/>
-              <Static id="txt_th01_01" taborder="3" left="106" top="11" width="80" height="36" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
-              <Grid id="grid_list" taborder="4" top="63" background="#FFFFFF" border="0px none" borderRadius="10px" right="0" autofittype="col" binddataset="ds_detailstat" bottom="0" width="100.00%">&gt; <Formats><Format id="default"><Columns><Column size="107"/><Column size="80"/><Column size="80"/><Column size="80"/><Column size="80"/></Columns><Rows><Row size="44" band="head"/><Row size="33"/></Rows><Band id="head"><Cell text="주문번호" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="1" text="주문ID" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="2" text="주문자" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="3" text="결제금액" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="4" text="주문일" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/></Band><Band id="body"><Cell text="bind:ORDER_NUMBER" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/><Cell col="1" text="bind:MEMBER_ID" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/><Cell col="2" text="bind:USER_NAME" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/><Cell col="3" text="bind:FINAL_AMOUNT" textAlign="right" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Medium&quot;"/><Cell col="4" text="bind:ORDER_DT" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/></Band></Format></Formats></Grid>
+              <Static id="txt_th01" taborder="0" text="상세 내역" left="29" top="10" width="80" height="36" font="normal 13pt/normal &quot;Noto Sans KR Black&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
+              <Static id="txt_th01_01" taborder="2" left="106" top="11" width="80" height="36" font="normal 9pt/normal &quot;Noto Sans KR&quot;" onclick="txt_th_onclick" color="#4b4b4b"/>
+              <Grid id="grid_list" taborder="3" top="63" background="#FFFFFF" border="0px none" borderRadius="10px" right="0" autofittype="col" binddataset="ds_detailstat" bottom="0" width="100.00%">&gt; <Formats><Format id="default"><Columns><Column size="107"/><Column size="80"/><Column size="80"/><Column size="80"/><Column size="80"/></Columns><Rows><Row size="44" band="head"/><Row size="33"/></Rows><Band id="head"><Cell text="주문번호" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="1" text="주문ID" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="2" text="주문자" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="3" text="결제금액" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/><Cell col="4" text="주문일" background="white" font="normal 11pt/normal &quot;Noto Sans KR Medium&quot;" border="0px,0px,1px solid #eeeeee" color="black"/></Band><Band id="body"><Cell text="bind:ORDER_NUMBER" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/><Cell col="1" text="bind:MEMBER_ID" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/><Cell col="2" text="bind:USER_NAME" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/><Cell col="3" text="bind:FINAL_AMOUNT" textAlign="right" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Black&quot;" color="#135dae"/><Cell col="4" text="bind:ORDER_DT" textAlign="center" border="0px" font="normal 10pt/normal &quot;Noto Sans KR Light&quot;"/></Band></Format></Formats></Grid>
+              <Static id="txt_th01_00" taborder="4" text="상세 내역을 보려면 포인터를 클릭하세요" left="350" top="21" height="16" font="normal 9pt/normal &quot;Noto Sans KR Light&quot;" onclick="txt_th_onclick" color="#4b4b4b" textAlign="right" right="20"/>
             </Layout>
           </Layouts>
         </Div>
@@ -272,10 +271,12 @@ this.fnCallback = function(svc, err, errMsg) {
 				case "결제수단별":
 				this.search_area.form.Calendar00.set_visible(false);
 				this.search_area.form.Calendar00.set_value("");
+				this.search_area.form.txt_th01_00_00.set_text("");
 				break;
 				
 				default :
 				this.search_area.form.Calendar00.set_visible(true);
+				this.search_area.form.txt_th01_00_00.set_text("상세 설정");
 				break;
 			}
 			this.ds_search.setColumn(0,"SEARCH_DATA","")

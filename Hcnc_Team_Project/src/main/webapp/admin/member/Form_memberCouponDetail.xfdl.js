@@ -38,14 +38,14 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("point_detail_box","25","14","1245","156",null,null,null,null,null,null,this);
+            obj = new Static("point_detail_box","40","14","1200","156",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_background("white");
             obj.set_text("");
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("coupon","25","180","1245","476",null,null,null,null,null,null,this);
+            obj = new Grid("coupon","40","180","1200",null,null,"60",null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_background("#FFFFFF");
             obj.set_border("0px none");
@@ -82,39 +82,48 @@
             obj.set_borderRadius("8px");
             this.addChild(obj.name, obj);
 
-            obj = new Button("back_btn","555","670","104","34",null,null,null,null,null,null,this);
+            obj = new Button("back_btn","556","670","104","34",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("뒤로가기");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_color("white");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_color("#ffffff");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button00","562","125","78","31",null,null,null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_text("조회하기");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_color("white");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_color("#ffffff");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button01","652","126","78","30",null,null,null,null,null,null,this);
             obj.set_taborder("8");
             obj.set_text("초기화");
-            obj.set_background(" #9ca3af");
-            obj.set_borderRadius("4px");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
+            obj.set_background(" #f5f5f5");
+            obj.set_borderRadius("8px");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_color("#666666");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button02","690","670","98","34",null,null,null,null,null,null,this);
+            obj = new Button("Button02","670","670","98","34",null,null,null,null,null,null,this);
             obj.set_taborder("9");
             obj.set_text("쿠폰 지급");
-            obj.set_borderRadius("4px");
-            obj.set_color("black");
-            obj.set_font("12px/normal \"Noto Sans KR Black\"");
-            obj.set_background(" #9ca3af");
+            obj.set_borderRadius("8px");
+            obj.set_color("#666666");
+            obj.set_font("11px/normal \"Noto Sans KR Black\"");
+            obj.set_background(" #f5f5f5");
+            obj.set_border("1px solid #e0e0e0");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static01","53","31","54","24",null,null,null,null,null,null,this);

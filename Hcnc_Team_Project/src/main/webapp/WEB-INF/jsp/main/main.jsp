@@ -30,7 +30,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                       <div class="swiper-slide">
                         <c:choose>
                           <c:when test="${not empty banner['LINKED_URL']}">
-                            <a href="${banner['LINKED_URL']}" class="full-link">
+                            <a href="${banner['LINKED_URL']}" target="_blank" class="full-link">
                               <div
                                 class="img-area"
                                 style="
@@ -190,6 +190,24 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                   loopAdditionalSlides: 1,
                   slidesPerView: 4,
                   spaceBetween: 20,
+                  breakpoints: {
+                      1080: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                      },
+                      960: {
+                        slidesPerView: 3,
+                        spaceBetween: 15,
+                      },
+                      760: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                      },
+                      0: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                      }
+                    }
                 });
               </script>
               <div class="btn-view-more-wrap flex ju-center">
@@ -271,45 +289,62 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 >
               </div>
               <script>
-                var swiper = new Swiper(".recoSwiper", {
-                  loop: true,
-                  spaceBetween: 20,
-                  slidesPerView: 2,
-                  grid: {
-                    rows: 2, // 세로 2줄
-                    fill: "row", // row 기준으로 채우기
-                  },
-                  freeMode: true,
-                  watchSlidesProgress: true,
-                });
-                var swiper2 = new Swiper(".recoSwiperSub", {
-                  loop: true,
-                  spaceBetween: 20,
-                  autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  },
-                  thumbs: {
-                    swiper: swiper,
-                  },
-                });
-
-                swiper2.on("slideChange", function () {
-                  const activeIndex = swiper2.realIndex;
-                  // 기존 모든 썸네일에서 'on' 클래스 제거
-                  $(".recoSwiper .prdInfo").removeClass("showon");
-                  // 현재 활성화된 썸네일에 'on' 클래스 추가
-                  $(".recoSwiper .prdInfo").eq(activeIndex).addClass("showon");
-                });
-
-                document
-                  .querySelectorAll(".recoSwiper .prdLink")
-                  .forEach((link) => {
-                    link.addEventListener("click", function (e) {
-                      e.preventDefault(); // 클릭 막기
-                    });
-                  });
-              </script>
+				  var swiper = new Swiper(".recoSwiper", {
+				    loop: true,
+				    spaceBetween: 20,
+				    slidesPerView: 2,
+				    grid: {
+				      rows: 2, // 세로 2줄
+				      fill: "row", // row 기준으로 채우기
+				    },
+				    freeMode: true,
+				    watchSlidesProgress: true,
+				    // 여기에 추가 ↓
+				    breakpoints: {
+				      960: {
+				        slidesPerView: 2,
+				        spaceBetween: 20,
+				        grid: { rows: 2 }
+				      },
+				      760: {
+				        slidesPerView: 2,
+				        spaceBetween: 15,
+				        grid: { rows: 1 }
+				      },
+				      0: {
+				        slidesPerView: 1,
+				        spaceBetween: 10,
+				        grid: { rows: 1 }
+				      }
+				    }
+				  });
+				  
+				  var swiper2 = new Swiper(".recoSwiperSub", {
+				    loop: true,
+				    spaceBetween: 20,
+				    autoplay: {
+				      delay: 2500,
+				      disableOnInteraction: false,
+				    },
+				    thumbs: {
+				      swiper: swiper,
+				    },
+				  });
+				  
+				  swiper2.on("slideChange", function () {
+				    const activeIndex = swiper2.realIndex;
+				    $(".recoSwiper .prdInfo").removeClass("showon");
+				    $(".recoSwiper .prdInfo").eq(activeIndex).addClass("showon");
+				  });
+				  
+				  document
+				    .querySelectorAll(".recoSwiper .prdLink")
+				    .forEach((link) => {
+				      link.addEventListener("click", function (e) {
+				        e.preventDefault();
+				      });
+				    });
+				</script>
             </div>
           </section>
 
@@ -378,27 +413,28 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                     el: ".hot-swiper-pagination",
                     clickable: true,
                   },
+                  breakpoints: {
+                      1080: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                      },
+                      960: {
+                        slidesPerView: 3,
+                        spaceBetween: 15,
+                      },
+                      760: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                      },
+                      0: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                      }
+                    }
                 });
               </script>
             </div>
           </section>
-
-          <!-- 이벤트 영역 3개?이미지카드라서-->
-          <!--<section class="review_event_area">
-			    <div class="inner">
-			        <p class="sub-comment">두디 소식</p>
-			        <div class="review_event_list flex">
-			            <div class="event_card">
-			                <p class="event_title">{이벤트게시판타이틀}</p>
-			                <p class="event_desc">{이벤트게시판 디스크립션}</p>
-			            </div>
-			            <div class="event_card">
-			                <p class="event_title">리뷰 작성 이벤트</p>
-			                <p class="event_desc">리뷰 작성 시 포인트 500원 지급???</p>
-			            </div>
-			        </div>
-			    </div>
-			</section> -->
         </main>
       </div>
 

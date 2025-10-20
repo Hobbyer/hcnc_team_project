@@ -25,29 +25,23 @@ public interface UserProductMapper {
 
 	int deleteQnAByUser(Map<String, Object> param);
 
-	List<Map<String, Object>> selectTypeProductListByUser();//메인에서 NEW BEST불러가는용 
-
-	List<Map<String, Object>> selectHotProductListByUser();//메인에서 HOT불러가는용 임시
-
 	HashMap<String, Object> selectProductDescriptionByUser(Map<String, Object> param);
 
 	int selectCategoryProductsCount(Map<String, Object> params);
 
 	// 신상 
     List<Map<String, Object>> selectNewProListByUser(Map<String, Object> params);
-    int selectNewProCountByUser(Map<String, Object> params);
+    List<Map<String, Object>> selectNormalProListByRecent(Map<String, Object> params);//채움용
     
     // 추천 
     List<Map<String, Object>> selectRecommendProListByUser(Map<String, Object> params);
-    int selectRecommendProCountByUser(Map<String, Object> params);
     
     // 인기
     List<Map<String, Object>> selectHotProListByUser(Map<String, Object> params);
-    int selectHotProCountByUser(Map<String, Object> params);
+    List<Map<String, Object>> selectNormalProListByViewCnt(Map<String, Object> params);//채움용
     
     // 카테고리별
     List<Map<String, Object>> selectCategoryProductsListByUser(Map<String, Object> params);
-    int selectCategoryProductsCountByUser(Map<String, Object> params);
 
 
 	int insertCartItemOptionByUser(Map<String, Object> optionId);

@@ -14,7 +14,7 @@
             this.set_background("#F4F7FE");
             if (Form == this.constructor)
             {
-                this._setFormPosition(710,530);
+                this._setFormPosition(710,540);
             }
             
             // Object(Dataset, ExcelExportObject) Initialize
@@ -40,11 +40,11 @@
             obj.set_text("");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00","630","495","66","25",null,null,null,null,null,null,this);
+            obj = new Static("Static00","630","500","60","25",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_text("ESC[닫기]");
             obj.set_color("RED");
-            obj.set_font("bold 12px/normal \"Gulim\"");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static01","20","10","70","25",null,null,null,null,null,null,this);
@@ -63,17 +63,19 @@
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"43\"/><Column size=\"91\"/><Column size=\"74\"/><Column size=\"214\"/><Column size=\"106\"/><Column size=\"144\"/></Columns><Rows><Row size=\"48\" band=\"head\"/><Row size=\"40\"/></Rows><Band id=\"head\"><Cell text=\"NO\" textAlign=\"CENTER\" font=\"11pt/normal &quot;Noto Sans KR Black&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"1\" text=\"아이디\" textAlign=\"CENTER\" font=\"11pt/normal &quot;Noto Sans KR Black&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"2\" text=\"신고유형\" textAlign=\"CENTER\" font=\"11pt/normal &quot;Noto Sans KR Black&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"3\" text=\"신고내용\" textAlign=\"CENTER\" font=\"11pt/normal &quot;Noto Sans KR Black&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"4\" text=\"상태\" textAlign=\"CENTER\" font=\"11pt/normal &quot;Noto Sans KR Black&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/><Cell col=\"5\" text=\"신고일자\" textAlign=\"CENTER\" font=\"11pt/normal &quot;Noto Sans KR Black&quot;\" background=\"#ffffff\" border=\"0px none, 0px none, 1px solid #eeeeee, 0px none\" color=\"#222222\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" textAlign=\"center\" font=\"12px/normal &quot;LG Smart UI Bold&quot;\"/><Cell col=\"1\" text=\"bind:MEMBER_ID\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"2\" text=\"bind:REPORT_TYPE\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"3\" text=\"bind:REPORT_CONTENT\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/><Cell col=\"4\" text=\"bind:REPORT_STATUS\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\" displaytype=\"combocontrol\" edittype=\"combo\" combocodecol=\"REPORT_STATUS\" combodatacol=\"REPORT_STATUS\" combodataset=\"ds_status\"/><Cell col=\"5\" text=\"bind:INPUT_DT\" textAlign=\"center\" font=\"12px/normal &quot;Noto Sans KR Black&quot;\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Button("status_change_btn","304","490","95","30",null,null,null,null,null,null,this);
+            obj = new Button("status_change_btn","303","495","95","35",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("상태 변경");
-            obj.set_background("#2563eb");
-            obj.set_borderRadius("4px");
-            obj.set_font("11px/normal \"Noto Sans KR Black\"");
-            obj.set_color("white");
+            obj.set_background("#667eea");
+            obj.set_borderRadius("8px");
+            obj.set_font("14px/normal \"Noto Sans KR Black\"");
+            obj.set_color("#ffffff");
+            obj.set_border("0px solid #667eea");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
-            obj = new Layout("default","",710,530,this,function(p){});
+            obj = new Layout("default","",710,540,this,function(p){});
             this.addLayout(obj.name, obj);
             
             // BindItem Information

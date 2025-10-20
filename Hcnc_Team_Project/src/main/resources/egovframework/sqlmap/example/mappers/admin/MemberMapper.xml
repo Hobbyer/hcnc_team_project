@@ -338,18 +338,29 @@
     </update>
     
 	<!-- 포인트/쿠폰 관리 : 회원 조회 관리  -->
-	<select id="selectPointAndCouponList">
+	<select id="selectPointAndCouponList" resultType="java.util.Map">
 	    SELECT 
 	        M.MEMBER_ID,
 	        M.USER_NAME,
 	        M.PHONE_NUMBER,
-	        COALESCE(SUM(P.POINT), 0) AS POINT,
-	        COALESCE(SUM(CASE WHEN C.IS_USED = 'N' THEN 1 ELSE 0 END), 0) AS COUPON_CNT
+	        COALESCE(PT.TOTAL_POINT, 0) AS POINT,
+	        COALESCE(CP.COUPON_CNT, 0) AS COUPON_CNT
 	    FROM MEMBERS M 
-	    <!-- LEFT JOIN으로 포인트나 쿠폰이 없는 사람도 조회 -->
-	    <!-- FROM절에 있는게 왼쪽 테이블 LEFT JOIN에 있는 테이블이 오른쪽 테이블 -->
-	    LEFT JOIN POINTS P ON M.MEMBER_ID = P.MEMBER_ID
-	    LEFT JOIN COUPONS C ON M.MEMBER_ID = C.MEMBER_ID
+	    LEFT JOIN (
+	        SELECT 
+	            MEMBER_ID,
+	            SUM(POINT) AS TOTAL_POINT
+	        FROM POINTS
+	        GROUP BY MEMBER_ID
+	    ) PT ON M.MEMBER_ID = PT.MEMBER_ID
+	    LEFT JOIN (
+	        SELECT 
+	            MEMBER_ID,
+	            COUNT(*) AS COUPON_CNT
+	        FROM COUPONS
+	        WHERE IS_USED = 'N'
+	        GROUP BY MEMBER_ID
+	    ) CP ON M.MEMBER_ID = CP.MEMBER_ID
 	    WHERE M.STATUS NOT IN('N', 'R', 'B')
 	    <if test="MEMBER_ID != '' and MEMBER_ID != null">
 	        AND M.MEMBER_ID LIKE CONCAT('%', TRIM(#{MEMBER_ID}), '%')
@@ -360,11 +371,9 @@
 	    <if test="PHONE_NUMBER != '' and PHONE_NUMBER != null">
 	        AND M.PHONE_NUMBER LIKE CONCAT('%', TRIM(#{PHONE_NUMBER}), '%')
 	    </if>
-	    <!-- GROUP BY를 쓰면 집계함수가 포함된 컬럼을 제외한 모든 컬럼이 GROUP BY에 들어가야함 -->
-	    GROUP BY M.MEMBER_ID, M.USER_NAME, M.PHONE_NUMBER
 	    ORDER BY POINT DESC, COUPON_CNT DESC
 	</select>
-	    
+    
     <!-- 포인트 유형 조회  -->
     <select id="selectMemberChageTypeList" parameterType="java.util.Map" resultType="java.util.Map" >
 	    SELECT 
@@ -421,7 +430,7 @@
     		,O.ORDER_NUMBER
     		,C.USED_DT
     	 FROM COUPONS C
-    	 <!-- 사용안한 쿠폰도 조회 -->
+    	 <!-- 사용한 쿠폰도 조회 -->
          LEFT JOIN ORDERS O
            ON C.ORDER_ID = O.ORDER_ID
     	 WHERE C.MEMBER_ID = #{MEMBER_ID}
@@ -447,39 +456,40 @@
        ORDER BY C.ISSUED_DT DESC
     </select>
     
+	
 	<!-- 포인트 적립 및 차감 (잔액 체크 포함) -->
 	<insert id="insertPoint" parameterType="java.util.Map">
-	    INSERT INTO POINTS(
-	        MEMBER_ID,     
-	        CHANGE_TYPE,   
-	        POINT,         
-	        DESCRIPTION,  
-	        INPUT_DT       
-	    )
-	    SELECT 
-	        #{MEMBER_ID},                   
-	        #{CHANGE_TYPE},                 
-	        CASE 
-	            WHEN #{CHANGE_TYPE} = '사용' THEN -ABS(#{POINT})  
-	            ELSE ABS(#{POINT})                               
-	        END,
-	        #{DESCRIPTION},                
-	        NOW()
-	    <!-- 조건1: 적립인 경우 무조건 실행 (잔액 체크 불필요) -->                          
-	    WHERE #{CHANGE_TYPE} != '사용'  
-	       OR (SELECT COALESCE(SUM(POINT), 0)     <!-- 조건2: '사용'인 경우 잔액 체크 -->     
-	           FROM POINTS                        <!-- 현재 회원의 포인트 총합 계산 -->
-	           WHERE MEMBER_ID = #{MEMBER_ID}) >= ABS(#{POINT}) <!-- 현재잔액 >= 사용요청포인트 일때만 실행 -->
-	    <!--결과: 잔액 부족시 INSERT 안됨 (return 0), 충분하면 차감 실행 (return 1) --> 
+	       INSERT INTO POINTS(
+	           MEMBER_ID,     
+	           CHANGE_TYPE,   
+	           POINT,         
+	           DESCRIPTION,  
+	           INPUT_DT       
+	       )
+	       SELECT 
+	           #{MEMBER_ID},                   
+	           #{CHANGE_TYPE},                 
+	           CASE 
+	               WHEN #{CHANGE_TYPE} = '사용' THEN -ABS(#{POINT})  
+	               ELSE ABS(#{POINT})                               
+	           END,
+	           #{DESCRIPTION},                
+	           NOW()
+	       <!-- 조건1: 적립인 경우 무조건 실행 (잔액 체크 불필요) -->                          
+	       WHERE #{CHANGE_TYPE} != '사용'  
+	          OR (SELECT COALESCE(SUM(POINT), 0)     <!-- 조건2: '사용'인 경우 잔액 체크 -->     
+	              FROM POINTS                        <!-- 현재 회원의 포인트 총합 계산 -->
+	              WHERE MEMBER_ID = #{MEMBER_ID}) >= ABS(#{POINT}) <!-- 현재잔액 >= 사용요청포인트 일때만 실행 -->
+	       <!--결과: 잔액 부족시 INSERT 안됨 (return 0), 충분하면 차감 실행 (return 1) --> 
 	</insert>
-	<!-- 
-	INSERT할떄 조건을 넣고 싶을때 SELECT
-	
-	INSERT INTO 테이블명(컬럼들...)
-	SELECT 파라미터값들...
-	FROM 테이블 (또는 생략 가능)
-	WHERE 조건; 
-	-->
+   <!-- 
+   INSERT할떄 조건을 넣고 싶을때 SELECT
+   
+   INSERT INTO 테이블명(컬럼들...)
+   SELECT 파라미터값들...
+   FROM 테이블 (또는 생략 가능)
+   WHERE 조건; 
+   -->
 	
 	<!-- 쿠폰 지급 -->
 	<insert id="insertCoupon" parameterType="java.util.Map">

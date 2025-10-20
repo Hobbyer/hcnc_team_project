@@ -28,7 +28,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Button("btn_save","1090","40","150","49",null,null,null,null,null,null,this);
+            obj = new Button("btn_save","1090","11","150","49",null,null,null,null,null,null,this);
             obj.set_text("진열 순서 변경");
             obj.set_background("#000000");
             obj.set_color("#ffffff");
@@ -37,7 +37,7 @@
             obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Tab("tabDisplay","40","50","210","35",null,null,null,null,null,null,this);
+            obj = new Tab("tabDisplay","40","21","210","35",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_tabindex("0");
             obj.set_font("bold 10pt/normal \"Arial\"");
@@ -64,8 +64,9 @@
             obj.set_color("#000000");
             this.tabDisplay.addChild(obj.name, obj);
 
-            obj = new Grid("grid_list","40","120","1200","570",null,null,null,null,null,null,this);
+            obj = new Grid("grid_list","40","91","1200","570",null,null,null,null,null,null,this);
             obj.set_binddataset("ds_out_proList");
+            obj.set_cssclass("GridDisplayOrder");
             obj.set_autofittype("col");
             obj.set_taborder("2");
             obj.set_cellmovingtype("none");
@@ -74,7 +75,7 @@
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"110\"/><Column size=\"83\"/><Column size=\"200\"/><Column size=\"105\"/><Column size=\"105\"/><Column size=\"54\"/><Column size=\"100\"/><Column size=\"60\"/><Column size=\"73\"/><Column size=\"297\"/></Columns><Rows><Row size=\"44\" band=\"head\"/><Row size=\"34\"/></Rows><Band id=\"head\"><Cell text=\"SORT_NUMBER&#13;&#10;높을수록 상위\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"1\" text=\"상품코드\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"2\" text=\"상품명\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"3\" text=\"대분류\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"4\" text=\"중분류\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"5\" text=\"진열\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"6\" text=\"등록일\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"7\" text=\"재고수량\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"8\" text=\"품절여부\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/><Cell col=\"9\" text=\"옵션\" background=\"#000000\" color=\"#ffffff\" font=\"bold 12px/normal &quot;Arial&quot;\" border=\"1px solid #cccccc\"/></Band><Band id=\"body\"><Cell text=\"bind:SORT_NUMBER\" textAlign=\"center\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"1\" text=\"bind:PRODUCT_CODE\" textAlign=\"center\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"2\" text=\"bind:PRODUCT_NAME\" textAlign=\"left\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"3\" text=\"bind:MAIN_CATE_NM\" textAlign=\"center\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"4\" text=\"bind:SUB_CATE_NM\" textAlign=\"center\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"5\" text=\"bind:IS_VISIBLE\" textAlign=\"center\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"6\" text=\"bind:INPUT_DT\" displaytype=\"date\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"7\" text=\"bind:TOTAL_QUANTITY\" textAlign=\"right\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"8\" text=\"bind:OUT_OF_STOCK\" textAlign=\"center\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/><Cell col=\"9\" text=\"bind:OPTION_LIST\" background=\"#ffffff\" color=\"#000000\" border=\"1px solid #cccccc\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Static("stc_mv","635","40","605","45",null,null,null,null,null,null,this);
+            obj = new Static("stc_mv","635","11","605","45",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_text("\" 메인 상품의  진열 순서 관리 이므로 일반상품은 조회만 가능합니다.\"");
             obj.set_font("bold 10pt \"Arial\"");
@@ -107,7 +108,14 @@
         this.Form_ProductDisplayOrder_onload = function(obj,e){
             this.tabDisplay.set_tabindex(0);
             this.fn_search("new");
+        	this.trace(this.grid_list.cssclass);
+
+        	this.grid_list.set_userstatus("displayorder", true);
+
         };
+
+
+
 
 
         //탭부분
@@ -133,6 +141,9 @@
         };
 
 
+
+
+
         this.fn_search = function(displayType){
             this._displayType = displayType;
             this.transaction(
@@ -155,8 +166,8 @@
 
 
         /***************************************************
-         * 드래그앤드롭 구현 (유령 박스 - 상품명만, 행 색상)
-         ***************************************************/
+        * 드래그앤드롭 구현 (유령 박스 - 상품명만, 행 색상)
+        ***************************************************/
 
         //  this.grid_list_onmousedown = function(obj:nexacro.Grid,e:nexacro.GridMouseEventInfo)
         // {
@@ -205,6 +216,12 @@
                 this._isDragging = true;
             }
         };
+
+
+
+
+
+
 
         // 드래그 중 → 유령박스 이동
         this.grid_list_onmousemove = function(obj, e)
@@ -274,7 +291,7 @@
             }
 
             if (this.ds_sortSave.getRowCount() == 0) {
-                alert("변경된 내용이 없습니다.");
+                this.alert("변경된 내용이 없습니다.");
                 return;
             }
 
@@ -289,14 +306,16 @@
         };
 
 
+
+
         // 콜백
         this.fn_callback = function(svcID, errCode, errMsg){
             if (errCode < 0) {
-                alert("오류: " + errMsg);
+                this.alert("오류: " + errMsg);
                 return;
             }
             if (svcID == "updateProductSort") {
-                alert("진열순서 변경 완료!");
+                this.alert("진열순서 변경 완료!");
                 this.fn_search(this._displayType);
             }
         };
